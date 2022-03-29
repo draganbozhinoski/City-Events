@@ -1,0 +1,13 @@
+spring:
+  flyway:
+    locations:
+      - classpath:db/migration
+      - classpath:db/migration-dev
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cityEvents
+    username: sorsix
+    password: sorsix
+  jpa:
+    show-sql: true
+server:
+  port: 8082
