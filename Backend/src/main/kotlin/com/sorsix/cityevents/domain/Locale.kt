@@ -16,15 +16,15 @@ data class Locale(
     @Enumerated(EnumType.STRING)
     val type:LocaleType,
     @OneToMany(mappedBy = "locale")
-    @JsonBackReference
+    @JsonManagedReference
     val tablesList:MutableList<com.sorsix.cityevents.domain.Table> = mutableListOf(),
     @OneToMany(mappedBy = "locale")
-    @JsonBackReference
+    @JsonManagedReference
     val reservationsList:MutableList<Reservation> = mutableListOf(),
     @OneToMany(mappedBy = "locale")
-    @JsonBackReference
+    @JsonManagedReference
     val eventsList:MutableList<Event> = mutableListOf(),
     @OneToMany(mappedBy = "locale")
-    @JsonBackReference
+    @JsonManagedReference
     val reviewsList:MutableList<Review> = mutableListOf()
 )
