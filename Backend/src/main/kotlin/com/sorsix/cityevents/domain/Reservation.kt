@@ -1,5 +1,6 @@
 package com.sorsix.cityevents.domain
 
+import com.sun.istack.Nullable
 import java.time.LocalDateTime
 import javax.persistence.*
 
@@ -11,12 +12,11 @@ data class Reservation(
     val id:Long,
     val name:String,
     val phoneNumber:String,
-    val from:LocalDateTime,
-    @OneToOne
+    val datetime:LocalDateTime,
+    @OneToOne(mappedBy = "reservation")
     val table:Table,
     @ManyToOne
     val locale:Locale,
     @ManyToOne
     val user:User
-
 )

@@ -4,7 +4,7 @@ import javax.persistence.*
 import javax.persistence.Table
 
 @Entity
-@Table(name="city_reviews")
+@Table(name = "city_reviews")
 data class Review(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
