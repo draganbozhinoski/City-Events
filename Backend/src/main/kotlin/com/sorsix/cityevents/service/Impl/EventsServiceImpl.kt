@@ -32,7 +32,7 @@ class EventsServiceImpl(private val eventsRepository: EventsRepository) :EventsS
         adult: Boolean,
         covidCertificate: Boolean,
         date: LocalDateTime,
-        locale: Locale?
+        locale: Locale
     ) {
         eventsRepository.save(Event(name = name, numReservations = numReservations, city = city,adult=adult, covidCertificate = covidCertificate, date = date,locale=locale))
     }

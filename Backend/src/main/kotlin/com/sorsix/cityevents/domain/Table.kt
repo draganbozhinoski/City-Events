@@ -1,5 +1,6 @@
 package com.sorsix.cityevents.domain
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import org.hibernate.Hibernate
 import javax.persistence.*
 import javax.persistence.Table
@@ -14,5 +15,6 @@ data class Table(
     @OneToOne
     val reservation: Reservation,
     @ManyToOne
+    @JsonManagedReference
     val locale:Locale
 )

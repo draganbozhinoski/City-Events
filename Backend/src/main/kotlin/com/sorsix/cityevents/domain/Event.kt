@@ -1,4 +1,5 @@
 package com.sorsix.cityevents.domain
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import com.sun.istack.Nullable
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -17,5 +18,6 @@ data class Event(
     val covidCertificate:Boolean,
     val date:LocalDateTime,
     @ManyToOne
-    val locale:Locale?
+    @JsonManagedReference
+    val locale:Locale
 )

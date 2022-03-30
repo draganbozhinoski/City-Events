@@ -1,5 +1,7 @@
 package com.sorsix.cityevents.domain
 
+import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import com.sorsix.cityevents.domain.enums.LocaleType
 import javax.persistence.*
 import javax.persistence.Table
@@ -9,16 +11,20 @@ import javax.persistence.Table
 data class Locale(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id:Long,
+    val id:Long = -1L,
     val name:String,
     @Enumerated(EnumType.STRING)
     val type:LocaleType,
     @OneToMany(mappedBy = "locale")
-    val tablesList:List<com.sorsix.cityevents.domain.Table>,
+    @JsonBackReference
+    val tablesList:MutableList<com.sorsix.cityevents.domain.Table> = mutableListOf(),
     @OneToMany(mappedBy = "locale")
-    val reservationsList:List<Reservation>,
+    @JsonBackReference
+    val reservationsList:MutableList<Reservation> = mutableListOf(),
     @OneToMany(mappedBy = "locale")
-    val eventsList:List<Event>,
+    @JsonBackReference
+    val eventsList:MutableList<Event> = mutableListOf(),
     @OneToMany(mappedBy = "locale")
-    val reviewsList:List<Review>
+    @JsonBackReference
+    val reviewsList:MutableList<Review> = mutableListOf()
 )

@@ -9,10 +9,6 @@ import org.springframework.stereotype.Service
 interface LocaleService {
     fun getLocale(id :Long):LocaleResponse
     fun getAll():List<Locale>
-    fun saveLocale(id: Long,
-                   name:String,
-                   type: LocaleType,
-                   tablesList:List<Table>,
-                   reservationList:List<Reservation>,
-                   eventsList:List<Event>, reviewsList:List<Review>):Locale
+    fun saveLocale(name:String,
+                   type: LocaleType):Locale
 }

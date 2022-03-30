@@ -1,7 +1,7 @@
 package com.sorsix.cityevents.api
 
 import com.sorsix.cityevents.domain.Locale
-import com.sorsix.cityevents.api.requests.LocaleDto
+import com.sorsix.cityevents.api.requests.LocaleRequest
 import com.sorsix.cityevents.api.responses.LocaleError
 import com.sorsix.cityevents.api.responses.LocaleResponse
 import com.sorsix.cityevents.api.responses.LocaleSuccess
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/locale")
-class LocalController (val localeService: LocaleService){
+class LocaleController (val localeService: LocaleService){
 
     @GetMapping("/{id}")
     fun getById(@PathVariable id:Long):ResponseEntity<LocaleResponse>{
@@ -27,9 +27,9 @@ class LocalController (val localeService: LocaleService){
     }
 
     @PostMapping("/save")
-    fun saveLocale(@RequestBody locale: LocaleDto):Locale {
+    fun saveLocale(@RequestBody locale: LocaleRequest):Locale {
         with(locale) {
-            return localeService.saveLocale(id, name, type, tablesList, reservationList, eventsList, reviewsList)
+            return localeService.saveLocale(name = name,type = type)
         }
     }
 

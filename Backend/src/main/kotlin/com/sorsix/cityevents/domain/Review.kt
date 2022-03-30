@@ -1,5 +1,6 @@
 package com.sorsix.cityevents.domain
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import javax.persistence.*
 import javax.persistence.Table
 
@@ -12,5 +13,6 @@ data class Review(
     val review:String,
     val stars:Int,
     @ManyToOne
+    @JsonManagedReference
     val locale:Locale
 )

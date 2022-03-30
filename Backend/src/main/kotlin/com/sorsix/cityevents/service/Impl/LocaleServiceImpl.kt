@@ -23,12 +23,8 @@ class LocaleServiceImpl(val repository: LocaleRepository) :LocaleService{
         return repository.findAll()
     }
 
-    override fun saveLocale(id: Long,
-                            name:String,
-                            type: LocaleType,
-                            tablesList:List<Table>,
-                            reservationList:List<Reservation>,
-                            eventsList:List<Event>,reviewsList:List<Review>): Locale {
-        return repository.save(Locale(id,name,type,tablesList,reservationList, eventsList ,reviewsList))
+    override fun saveLocale(name:String,
+                            type: LocaleType): Locale {
+        return repository.save(Locale(name=name,type=type))
     }
 }

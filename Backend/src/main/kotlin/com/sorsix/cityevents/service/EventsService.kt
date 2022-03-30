@@ -8,5 +8,5 @@ import java.time.LocalDateTime
 interface EventsService {
     fun findAll():MutableList<Event>
     fun findById(id:Long):EventResponse
-    fun save(name:String,numReservations:Int,city:String,adult:Boolean,covidCertificate:Boolean,date:LocalDateTime,locale:Locale?)
+    fun save(name:String,numReservations:Int,city:String,adult:Boolean,covidCertificate:Boolean,date:LocalDateTime,locale:Locale)
 }

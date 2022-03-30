@@ -1,5 +1,6 @@
 package com.sorsix.cityevents.domain
 
+import com.fasterxml.jackson.annotation.JsonManagedReference
 import com.sun.istack.Nullable
 import java.time.LocalDateTime
 import javax.persistence.*
@@ -16,7 +17,9 @@ data class Reservation(
     @OneToOne(mappedBy = "reservation")
     val table:Table,
     @ManyToOne
+    @JsonManagedReference
     val locale:Locale,
     @ManyToOne
+    @JsonManagedReference
     val user:User
 )

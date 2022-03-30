@@ -12,5 +12,5 @@ data class EventRequest(
     val adult:Boolean,
     val covidCertificate:Boolean,
     val date:LocalDateTime,
-    val locale: Locale?
+    val locale: Locale
 )
