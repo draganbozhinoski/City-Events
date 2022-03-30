@@ -1,6 +1,5 @@
 package com.sorsix.cityevents.domain
-
-import com.fasterxml.jackson.module.kotlin.jacksonMapperBuilder
+import com.sun.istack.Nullable
 import java.time.LocalDateTime
 import javax.persistence.*
 import javax.persistence.Table
@@ -10,7 +9,7 @@ import javax.persistence.Table
 data class Event(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id:Long,
+    val id:Long = -1L,
     val name:String,
     val numReservations:Int,
     val city:String,
@@ -18,5 +17,5 @@ data class Event(
     val covidCertificate:Boolean,
     val date:LocalDateTime,
     @ManyToOne
-    val locale:Locale
+    val locale:Locale?
 )
