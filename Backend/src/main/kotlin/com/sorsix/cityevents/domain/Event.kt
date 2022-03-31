@@ -1,7 +1,10 @@
 package com.sorsix.cityevents.domain
 import com.fasterxml.jackson.annotation.JsonBackReference
+import com.fasterxml.jackson.annotation.JsonFormat
 import com.fasterxml.jackson.annotation.JsonManagedReference
 import com.sun.istack.Nullable
+import org.hibernate.annotations.OnDelete
+import org.hibernate.annotations.OnDeleteAction
 import java.time.LocalDateTime
 import javax.persistence.*
 import javax.persistence.Table
@@ -17,6 +20,7 @@ data class Event(
     val city:String,
     val adult:Boolean,
     val covidCertificate:Boolean,
+    @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     val date:LocalDateTime,
     @ManyToOne
     @JsonBackReference
