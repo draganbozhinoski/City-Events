@@ -1,0 +1,12 @@
+.testimonial-group > .row {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  .testimonial-group > .row > .col-sm-4 {
+    display: inline-block;
+  }
+  .spaceAround{
+    padding: 20px;
+    margin: 20px 10px;
+  }
