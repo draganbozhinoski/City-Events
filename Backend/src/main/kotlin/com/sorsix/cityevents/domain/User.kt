@@ -13,6 +13,10 @@ data class User(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id:Long,
     val name:String,
+    val email:String,
+    val password:String,
+    val username:String,
+    val phoneNumber:String,
     @Enumerated(EnumType.STRING)
     val type:UserType,
     @OneToOne

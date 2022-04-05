@@ -78,6 +78,10 @@ class LocaleController (val localeService: LocaleService){
             }
         }
     }
+    @DeleteMapping("/delete/{id}")
+    fun deleteLocale(@PathVariable id:Long) {
+        localeService.deleteById(id)
+    }
 
 
 }
