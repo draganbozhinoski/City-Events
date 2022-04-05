@@ -3,9 +3,7 @@ package com.sorsix.cityevents.api
 import com.sorsix.cityevents.domain.Locale
 import com.sorsix.cityevents.api.requests.LocaleRequest
 import com.sorsix.cityevents.api.requests.ReviewRequest
-import com.sorsix.cityevents.api.responses.LocaleError
-import com.sorsix.cityevents.api.responses.LocaleResponse
-import com.sorsix.cityevents.api.responses.LocaleSuccess
+import com.sorsix.cityevents.api.responses.*
 import com.sorsix.cityevents.domain.Review
 import com.sorsix.cityevents.service.LocaleService
 import com.sorsix.cityevents.service.ReviewService
@@ -13,6 +11,8 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import javax.transaction.TransactionScoped
+import javax.transaction.Transactional
 
 @RestController
 @RequestMapping("/api/locales")
@@ -80,8 +80,10 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
             }
         }
     }
+    //expects locale id
+    //returns all the reviews in the given locale
     @GetMapping("/{id}/reviews")
-    fun getAllReviews(@PathVariable id:Long):ResponseEntity<List<Review>> {
+    fun getAllReviewsByLocaleId(@PathVariable id:Long):ResponseEntity<List<Review>> {
         return when(val locale = localeService.getLocale(id)) {
             is LocaleSuccess -> {
                 logger.info("Locale was found by the id, attempting to get reviews..")
@@ -94,8 +96,10 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
             }
         }
     }
+    //expects Locale id, review
+    //creates and adds review to the given locale
     @PostMapping("/{id}/reviews/add")
-    fun addReview(@PathVariable id:Long,@RequestBody reviewRequest:ReviewRequest):ResponseEntity<List<Review>> {
+    fun addReview(@PathVariable id:Long, @RequestBody reviewRequest: ReviewRequest): ResponseEntity<List<Review>> {
         with(reviewRequest) {
             return when (val locale = localeService.getLocale(id)) {
                 is LocaleSuccess -> {
@@ -111,6 +115,4 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
             }
         }
     }
-
-
 }
