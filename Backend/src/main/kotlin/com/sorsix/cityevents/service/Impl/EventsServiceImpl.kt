@@ -10,6 +10,7 @@ import com.sorsix.cityevents.service.EventsService
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
+import javax.transaction.Transactional
 
 @Service
 class EventsServiceImpl(private val eventsRepository: EventsRepository) :EventsService {
@@ -44,7 +45,7 @@ class EventsServiceImpl(private val eventsRepository: EventsRepository) :EventsS
             )
         )
     }
-
+    @Transactional
     override fun update(
         id: Long,
         name: String,
@@ -57,6 +58,10 @@ class EventsServiceImpl(private val eventsRepository: EventsRepository) :EventsS
     :EventResponse {
         eventsRepository.updateEvent(id,name,numReservations,city,adult,covidCertificate,date,locale)
         return EventSuccess(eventsRepository.findByIdOrNull(id)!!)
+    }
+    @Transactional
+    override fun deleteById(id: Long) {
+        eventsRepository.deleteById(id)
     }
 
 }
