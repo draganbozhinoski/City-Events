@@ -64,7 +64,26 @@ class EventController(val eventService:EventsService,val localeService:LocaleSer
                 }
             }
         }
-
     }
     //delete
+    @DeleteMapping("/delete/{id}")
+    fun deleteById(@PathVariable id:Long) :ResponseEntity<EventResponse> {
+        return when(val event = eventService.findById(id)) {
+            is EventSuccess -> {
+                logger.info("Event was deleted successfully.")
+                ResponseEntity.ok().body(event)
+            }
+            is EventError -> {
+                logger.error(event.errorMessage)
+                ResponseEntity.badRequest().body(event)
+            }
+        }
+    }
+    //delete all events by given locale
+    @DeleteMapping("/delete/locale/{id}")
+    fun deleteAllByLocaleId(@PathVariable id:Long) {
+
+
+    }
+
 }
