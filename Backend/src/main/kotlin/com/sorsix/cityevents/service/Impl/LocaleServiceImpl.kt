@@ -11,20 +11,24 @@ import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
-class LocaleServiceImpl(val repository: LocaleRepository) :LocaleService{
+class LocaleServiceImpl(val localeRepository: LocaleRepository) :LocaleService{
     override fun getLocale(id :Long): LocaleResponse {
-        return when(val  result = repository.findByIdOrNull(id)){
+        return when(val  result = localeRepository.findByIdOrNull(id)){
             null->LocaleError("Can't find locale with that id!")
             else->LocaleSuccess(result)
         }
     }
 
     override fun getAll(): List<Locale> {
-        return repository.findAll()
+        return localeRepository.findAll()
     }
 
     override fun saveLocale(name:String,
-                            type: LocaleType): Locale {
-        return repository.save(Locale(name=name,type=type))
+                            type: LocaleType): LocaleResponse {
+        if(type in LocaleType.values()){
+            return LocaleSuccess(localeRepository.save(Locale(name=name,type=type)))
+        }
+        return LocaleError("Type missmatch")
+
     }
 }

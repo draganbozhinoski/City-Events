@@ -25,15 +25,38 @@ class EventsServiceImpl(private val eventsRepository: EventsRepository) :EventsS
         }
     }
 
-    override fun save(
+    override fun save(name: String,
+                      numReservations: Int,
+                      city: String,
+                      adult: Boolean,
+                      covidCertificate: Boolean,
+                      date: LocalDateTime,
+                      locale: Locale) {
+        eventsRepository.save(
+            Event(
+                name = name,
+                numReservations = numReservations,
+                city = city,
+                adult = adult,
+                covidCertificate = covidCertificate,
+                date = date,
+                locale = locale
+            )
+        )
+    }
+
+    override fun update(
+        id: Long,
         name: String,
         numReservations: Int,
         city: String,
         adult: Boolean,
         covidCertificate: Boolean,
         date: LocalDateTime,
-        locale: Locale
-    ) {
-        eventsRepository.save(Event(name = name, numReservations = numReservations, city = city,adult=adult, covidCertificate = covidCertificate, date = date,locale=locale))
+        locale: Locale)
+    :EventResponse {
+        eventsRepository.updateEvent(id,name,numReservations,city,adult,covidCertificate,date,locale)
+        return EventSuccess(eventsRepository.findByIdOrNull(id)!!)
     }
+
 }
