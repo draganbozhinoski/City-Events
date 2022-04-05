@@ -10,6 +10,7 @@ import com.sorsix.cityevents.repository.LocaleRepository
 import com.sorsix.cityevents.service.LocaleService
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
+import javax.transaction.Transactional
 
 @Service
 class LocaleServiceImpl(val localeRepository: LocaleRepository) :LocaleService{
@@ -32,12 +33,12 @@ class LocaleServiceImpl(val localeRepository: LocaleRepository) :LocaleService{
         return LocaleError("Type missmatch")
 
     }
-
+    @Transactional
     override fun updateLocale(id:Long, name: String, type: LocaleType): LocaleResponse {
         localeRepository.update(id,name,type)
         return LocaleSuccess(localeRepository.findByIdOrNull(id)!!)
     }
-
+    @Transactional
     override fun deleteById(id: Long): LocaleResponse {
         return when(val locale = localeRepository.findByIdOrNull(id)) {
             null -> LocaleError("Locale with that id was not found in the database.")

@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/locale")
+@RequestMapping("/api/locales")
 class LocaleController (val localeService: LocaleService){
     val logger:Logger = LoggerFactory.getLogger("Locale controller")
     //getbyid
@@ -54,7 +54,7 @@ class LocaleController (val localeService: LocaleService){
                 is LocaleSuccess -> {
                     localeService.updateLocale(id,name,type)
                     logger.info("Locale updated successfully")
-                    ResponseEntity.ok().body(locale)
+                    ResponseEntity.ok().body(localeService.getLocale(id))
                 }
                 is LocaleError -> {
                     logger.error("Some error occured")
@@ -64,16 +64,17 @@ class LocaleController (val localeService: LocaleService){
         }
     }
     //delete
+    //TODO: Brishenje na sve entitetite pred brishenje na lokalot, da se naprae u when findById pa funkcie clear locale.
     @DeleteMapping("/delete/{id}")
-    fun deleteLocale(@PathVariable id:Long):ResponseEntity<LocaleResponse> {
-        return when(val locale=localeService.deleteById(id)) {
+    fun deleteLocale(@PathVariable id:Long):ResponseEntity<String> {
+        return when(localeService.deleteById(id)) {
             is LocaleSuccess -> {
                 logger.info("Locale deleted successfully")
-                ResponseEntity.ok().body(locale)
+                ResponseEntity.ok().body("locale with id $id was successfully deleted.")
             }
             is LocaleError -> {
                 logger.error("locale with that id was not found or something else occured")
-                ResponseEntity.badRequest().body(locale)
+                ResponseEntity.badRequest().body("Locale with that id was not found")
             }
         }
     }

@@ -71,6 +71,7 @@ class EventController(val eventService:EventsService,val localeService:LocaleSer
         return when(val event = eventService.findById(id)) {
             is EventSuccess -> {
                 logger.info("Event was deleted successfully.")
+                eventService.deleteById(id)
                 ResponseEntity.ok().body(event)
             }
             is EventError -> {
