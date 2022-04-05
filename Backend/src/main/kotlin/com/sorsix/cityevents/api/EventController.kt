@@ -83,7 +83,6 @@ class EventController(val eventService:EventsService,val localeService:LocaleSer
     @DeleteMapping("/delete/locale/{id}")
     fun deleteAllByLocaleId(@PathVariable id:Long) {
 
-
     }
 
 }
