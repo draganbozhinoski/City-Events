@@ -8,4 +8,5 @@ import com.sorsix.cityevents.domain.enums.LocaleType
 
 data class LocaleRequest(
     val name:String,
-    val type: LocaleType)
+    val type: LocaleType,
+    val numTables: Int)

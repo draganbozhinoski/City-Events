@@ -10,9 +10,11 @@ import javax.persistence.Table
 @Table(name = "city_users")
 data class User(
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id:Long,
+    val username:String,
     val name:String,
+    val email:String,
+    val password:String,
+    val phoneNumber:String,
     @Enumerated(EnumType.STRING)
     val type:UserType,
     @OneToOne

@@ -2,19 +2,21 @@ package com.sorsix.cityevents.api
 
 import com.sorsix.cityevents.domain.Locale
 import com.sorsix.cityevents.api.requests.LocaleRequest
-import com.sorsix.cityevents.api.responses.LocaleError
-import com.sorsix.cityevents.api.responses.LocaleResponse
-import com.sorsix.cityevents.api.responses.LocaleSuccess
+import com.sorsix.cityevents.api.requests.ReviewRequest
+import com.sorsix.cityevents.api.responses.*
+import com.sorsix.cityevents.domain.Review
 import com.sorsix.cityevents.service.LocaleService
-import org.apache.coyote.Response
+import com.sorsix.cityevents.service.ReviewService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import javax.transaction.TransactionScoped
+import javax.transaction.Transactional
 
 @RestController
 @RequestMapping("/api/locales")
-class LocaleController (val localeService: LocaleService){
+class LocaleController (val localeService: LocaleService,val reviewService:ReviewService){
     val logger:Logger = LoggerFactory.getLogger("Locale controller")
     //getbyid
     //read
@@ -78,6 +80,39 @@ class LocaleController (val localeService: LocaleService){
             }
         }
     }
-
-
+    //expects locale id
+    //returns all the reviews in the given locale
+    @GetMapping("/{id}/reviews")
+    fun getAllReviewsByLocaleId(@PathVariable id:Long):ResponseEntity<List<Review>> {
+        return when(val locale = localeService.getLocale(id)) {
+            is LocaleSuccess -> {
+                logger.info("Locale was found by the id, attempting to get reviews..")
+                val reviews = locale.locale.reviewsList
+                ResponseEntity.ok().body(reviews)
+            }
+            is LocaleError -> {
+                logger.error("Locale with that id was not found.")
+                ResponseEntity.badRequest().body(listOf())
+            }
+        }
+    }
+    //expects Locale id, review
+    //creates and adds review to the given locale
+    @PostMapping("/{id}/reviews/add")
+    fun addReview(@PathVariable id:Long, @RequestBody reviewRequest: ReviewRequest): ResponseEntity<List<Review>> {
+        with(reviewRequest) {
+            return when (val locale = localeService.getLocale(id)) {
+                is LocaleSuccess -> {
+                    logger.info("Locale was found, attempting to add review")
+                    locale.locale.reviewsList.add(Review(review=review,stars=stars,locale=locale.locale))
+                    reviewService.addReview(review,stars,locale.locale)
+                    ResponseEntity.ok().body(locale.locale.reviewsList)
+                }
+                is LocaleError -> {
+                    logger.error("Locale cannot be found by that id")
+                    ResponseEntity.badRequest().body(listOf())
+                }
+            }
+        }
+    }
 }

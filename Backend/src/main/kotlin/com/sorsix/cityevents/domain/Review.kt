@@ -10,7 +10,7 @@ import javax.persistence.Table
 data class Review(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id:Long,
+    val id:Long = -1L,
     val review:String,
     val stars:Int,
     @ManyToOne
