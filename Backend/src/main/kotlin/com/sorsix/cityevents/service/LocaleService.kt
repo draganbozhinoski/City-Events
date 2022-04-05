@@ -10,7 +10,7 @@ interface LocaleService {
     fun getLocale(id :Long):LocaleResponse
     fun getAll():List<Locale>
     fun saveLocale(name:String,
-                   type: LocaleType,
-                   numTables:Int):Locale
-    fun initTables(locale:Locale):Locale
+                   type: LocaleType):LocaleResponse
+    fun updateLocale(id:Long, name:String, type:LocaleType):LocaleResponse
+    fun deleteById(id:Long):LocaleResponse
 }

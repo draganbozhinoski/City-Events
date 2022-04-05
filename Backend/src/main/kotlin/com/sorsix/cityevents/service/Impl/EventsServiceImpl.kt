@@ -1,19 +1,19 @@
 package com.sorsix.cityevents.service.Impl
 
-import com.sorsix.cityevents.api.requests.EventRequest
-import com.sorsix.cityevents.api.responses.*
+import com.sorsix.cityevents.api.responses.EventError
+import com.sorsix.cityevents.api.responses.EventResponse
+import com.sorsix.cityevents.api.responses.EventSuccess
 import com.sorsix.cityevents.domain.Event
 import com.sorsix.cityevents.domain.Locale
 import com.sorsix.cityevents.repository.EventsRepository
-import com.sorsix.cityevents.repository.LocaleRepository
 import com.sorsix.cityevents.service.EventsService
 import org.springframework.data.repository.findByIdOrNull
-import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
+import javax.transaction.Transactional
 
 @Service
-class EventsServiceImpl(private val eventsRepository: EventsRepository,private val localeRepository:LocaleRepository) :EventsService {
+class EventsServiceImpl(private val eventsRepository: EventsRepository) :EventsService {
 
     override fun findAll():MutableList<Event> {
         return eventsRepository.findAll()
@@ -26,18 +26,40 @@ class EventsServiceImpl(private val eventsRepository: EventsRepository,private v
         }
     }
 
-    override fun save(
+    override fun save(name: String,
+                      numReservations: Int,
+                      city: String,
+                      adult: Boolean,
+                      covidCertificate: Boolean,
+                      date: LocalDateTime,
+                      locale: Locale) {
+        eventsRepository.save(
+            Event(
+                name = name,
+                numReservations = numReservations,
+                city = city,
+                adult = adult,
+                covidCertificate = covidCertificate,
+                date = date,
+                locale = locale
+            )
+        )
+    }
+    @Transactional
+    override fun update(
+        id: Long,
         name: String,
         numReservations: Int,
         city: String,
         adult: Boolean,
         covidCertificate: Boolean,
         date: LocalDateTime,
-        locale: Locale
-    ) {
-        eventsRepository.save(Event(name = name, numReservations = numReservations, city = city,adult=adult, covidCertificate = covidCertificate, date = date,locale=locale))
+        locale: Locale)
+    :EventResponse {
+        eventsRepository.updateEvent(id,name,numReservations,city,adult,covidCertificate,date,locale)
+        return EventSuccess(eventsRepository.findByIdOrNull(id)!!)
     }
-
+    @Transactional
     override fun deleteById(id: Long) {
         eventsRepository.deleteById(id)
     }

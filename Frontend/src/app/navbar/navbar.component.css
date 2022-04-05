@@ -1,0 +1,17 @@
+.navbar{
+    position:fixed;
+    width:100%;
+    background-color:rgba(0, 0, 0, 0.8);
+    font-size: 1.4em;
+}
+.centered{
+    margin:auto;
+}
+a{
+    font-family: BabasNeue;
+    color:white !important;
+}
+@font-face {
+    font-family: BabasNeue;
+    src: url(../../assets/fonts/BabasNeue/BebasNeue-Regular.ttf) format("truetype")
+}
