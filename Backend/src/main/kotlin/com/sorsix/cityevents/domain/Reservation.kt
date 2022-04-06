@@ -18,7 +18,8 @@ data class Reservation(
     val phoneNumber:String,
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     val dateTime:LocalDateTime,
-    @OneToOne(mappedBy = "reservation")
+    @OneToOne
+    @JsonBackReference
     val table:Table,
     @ManyToOne
     @JsonBackReference

@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.Query
 import org.springframework.stereotype.Repository
 
 @Repository
-interface LocaleRepository : JpaRepository<Locale,Long> {
+interface LocalesRepository : JpaRepository<Locale,Long> {
     @Modifying
-    @Query("update Locale l set l.name=:name,l.type=:type where l.id=:id")
-    fun update(id:Long,name:String,type:LocaleType)
+    @Query("update Locale l set l.name=:name,l.type=:type,l.logoUrl=:logoUrl where l.id=:id")
+    fun update(id:Long,name:String,type:LocaleType,logoUrl:String)
 }

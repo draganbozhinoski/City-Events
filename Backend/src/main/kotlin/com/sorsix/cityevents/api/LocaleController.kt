@@ -6,6 +6,7 @@ import com.sorsix.cityevents.api.requests.ReservationRequest
 import com.sorsix.cityevents.api.requests.ReviewRequest
 import com.sorsix.cityevents.api.responses.*
 import com.sorsix.cityevents.domain.Review
+import com.sorsix.cityevents.domain.Table
 import com.sorsix.cityevents.service.LocaleService
 import com.sorsix.cityevents.service.ReviewService
 import org.slf4j.Logger
@@ -37,7 +38,7 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
     @PostMapping("/save")
     fun saveLocale(@RequestBody localeRequest: LocaleRequest):ResponseEntity<LocaleResponse> {
         with(localeRequest) {
-            return when(val locale = localeService.saveLocale(name=name,type=type,numTables=numTables)) {
+            return when(val locale = localeService.saveLocale(name=name,type=type,numTables=numTables,logoUrl)) {
                 is LocaleError -> {
                     logger.error(locale.errorMessage)
                     ResponseEntity.badRequest().body(locale)
@@ -55,7 +56,7 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
         with(localeRequest) {
             return when(val locale = localeService.getLocale(id)) {
                 is LocaleSuccess -> {
-                    localeService.updateLocale(id,name,type)
+                    localeService.updateLocale(id,name,type,logoUrl)
                     logger.info("Locale updated successfully")
                     ResponseEntity.ok().body(localeService.getLocale(id))
                 }
@@ -96,6 +97,20 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
             is LocaleError -> {
                 logger.error("Locale with that id was not found.")
                 ResponseEntity.badRequest().body(listOf())
+            }
+        }
+    }
+    //get all tables given locale id
+    //expects: locale id
+    //returns: all tables from that locale
+    @GetMapping("/{id}/tables")
+    fun getAllTables(@PathVariable id:Long):ResponseEntity<Any> {
+        return when(val locale = localeService.getLocale(id)) {
+            is LocaleSuccess -> {
+                ResponseEntity.ok().body(locale.locale.tablesList)
+            }
+            is LocaleError -> {
+                ResponseEntity.badRequest().body(listOf("Locale with that id was not found"))
             }
         }
     }

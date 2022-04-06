@@ -3,7 +3,7 @@ package com.sorsix.cityevents.api
 import com.sorsix.cityevents.api.requests.EventRequest
 import com.sorsix.cityevents.api.responses.*
 import com.sorsix.cityevents.domain.Event
-import com.sorsix.cityevents.service.EventsService
+import com.sorsix.cityevents.service.EventService
 import com.sorsix.cityevents.service.LocaleService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @CrossOrigin(origins = ["http://localhost:4200"])
 @RequestMapping("/api/events")
-class EventController(val eventService:EventsService,val localeService:LocaleService) {
+class EventController(val eventService:EventService, val localeService:LocaleService) {
     val logger: Logger = LoggerFactory.getLogger("Event controller")
     //read all
     @GetMapping
@@ -34,7 +34,7 @@ class EventController(val eventService:EventsService,val localeService:LocaleSer
                     ResponseEntity.badRequest().body(locale)
                 }
                 is LocaleSuccess -> {
-                    eventService.save(name,numReservations,city,adult,covidCertificate,date,locale.locale)
+                    eventService.save(name,numReservations,city,adult,covidCertificate,date,locale.locale,logoUrl)
                     logger.info("Event successfully saved.")
                     ResponseEntity.ok().body(locale)
                 }
@@ -49,7 +49,7 @@ class EventController(val eventService:EventsService,val localeService:LocaleSer
                 is EventSuccess -> {
                     return when(val locale = localeService.getLocale(localeId)) {
                         is LocaleSuccess -> {
-                            eventService.update(id,name,numReservations,city,adult,covidCertificate,date,locale.locale)
+                            eventService.update(id,name,numReservations,city,adult,covidCertificate,date,locale.locale,logoUrl)
                             logger.info("Event successfully updated.")
                             ResponseEntity.ok().body(event)
                         }
@@ -97,5 +97,7 @@ class EventController(val eventService:EventsService,val localeService:LocaleSer
             }
         }
     }
+
+
 
 }

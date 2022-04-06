@@ -12,8 +12,8 @@ interface LocaleService {
     fun getLocale(id :Long):LocaleResponse
     fun getAll():List<Locale>
     fun saveLocale(name:String,
-                   type: LocaleType,numTables:Int):LocaleResponse
-    fun updateLocale(id:Long, name:String, type:LocaleType):LocaleResponse
+                   type: LocaleType,numTables:Int,logoUrl:String):LocaleResponse
+    fun updateLocale(id:Long, name:String, type:LocaleType, logoUrl:String):LocaleResponse
     fun deleteById(id:Long):LocaleResponse
     fun clearLocale(id:Long):LocaleResponse
     fun reserveTable(id: Long, name:String, phoneNumber:String, dateTime: LocalDateTime, username:String,description:String):ReservationResponse

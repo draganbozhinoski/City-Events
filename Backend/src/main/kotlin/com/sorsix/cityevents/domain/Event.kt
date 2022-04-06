@@ -19,6 +19,7 @@ data class Event(
     val numReservations:Int,
     val city:String,
     val adult:Boolean,
+    val logoUrl:String,
     val covidCertificate:Boolean,
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     val date:LocalDateTime,
