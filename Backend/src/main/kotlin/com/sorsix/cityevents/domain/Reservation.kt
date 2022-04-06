@@ -12,11 +12,12 @@ import javax.persistence.*
 data class Reservation(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id:Long,
+    val id:Long = -1L,
     val name:String,
+    val description:String, // separe, gore levo, dole desno, do sank ..
     val phoneNumber:String,
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
-    val datetime:LocalDateTime,
+    val dateTime:LocalDateTime,
     @OneToOne(mappedBy = "reservation")
     val table:Table,
     @ManyToOne
@@ -24,5 +25,5 @@ data class Reservation(
     val locale:Locale,
     @ManyToOne
     @JsonBackReference
-    val user:User
+    val user:User? // TODO:ne smee da e null,samo za testing e null
 )

@@ -10,6 +10,6 @@ data class ReservationRequest(
     val dateTime:LocalDateTime,
     //TODO: id na masa da prima rezervacijata taka shto kje se assign-e direktno na taa masa.
     // sega za sega kje ostane na prvata slobodna masa vo ciklusot od lokalot.
-    val localeId:Long,
-    val username:String
+    val username:String,
+    val description:String
 )

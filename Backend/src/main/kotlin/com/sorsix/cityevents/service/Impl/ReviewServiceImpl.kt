@@ -31,4 +31,8 @@ class ReviewServiceImpl(val reviewsRepository: ReviewsRepository,val localeRepos
     override fun findAll():List<Review> {
         return reviewsRepository.findAll()
     }
+
+    override fun deleteAll(reviewsList:List<Review>) {
+        reviewsRepository.deleteAll(reviewsList)
+    }
 }

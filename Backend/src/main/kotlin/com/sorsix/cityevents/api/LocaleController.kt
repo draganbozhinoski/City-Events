@@ -2,6 +2,7 @@ package com.sorsix.cityevents.api
 
 import com.sorsix.cityevents.domain.Locale
 import com.sorsix.cityevents.api.requests.LocaleRequest
+import com.sorsix.cityevents.api.requests.ReservationRequest
 import com.sorsix.cityevents.api.requests.ReviewRequest
 import com.sorsix.cityevents.api.responses.*
 import com.sorsix.cityevents.domain.Review
@@ -36,7 +37,7 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
     @PostMapping("/save")
     fun saveLocale(@RequestBody localeRequest: LocaleRequest):ResponseEntity<LocaleResponse> {
         with(localeRequest) {
-            return when(val locale = localeService.saveLocale(name=name,type=type)) {
+            return when(val locale = localeService.saveLocale(name=name,type=type,numTables=numTables)) {
                 is LocaleError -> {
                     logger.error(locale.errorMessage)
                     ResponseEntity.badRequest().body(locale)
@@ -66,11 +67,13 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
         }
     }
     //delete
-    //TODO: Brishenje na sve entitetite pred brishenje na lokalot, da se naprae u when findById pa funkcie clear locale.
+    //Brishenje na sve entitetite pred brishenje na lokalot, da se naprae u when findById pa funkcie clear locale.
     @DeleteMapping("/delete/{id}")
     fun deleteLocale(@PathVariable id:Long):ResponseEntity<String> {
-        return when(localeService.deleteById(id)) {
+        return when(localeService.getLocale(id)) {
             is LocaleSuccess -> {
+                localeService.clearLocale(id)
+                localeService.deleteById(id)
                 logger.info("Locale deleted successfully")
                 ResponseEntity.ok().body("locale with id $id was successfully deleted.")
             }
@@ -111,6 +114,35 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
                 is LocaleError -> {
                     logger.error("Locale cannot be found by that id")
                     ResponseEntity.badRequest().body(listOf())
+                }
+            }
+        }
+    }
+    @PostMapping("/{id}/clear")
+    fun clearLocale(@PathVariable id:Long):ResponseEntity<LocaleResponse> {
+        return when(val locale = localeService.clearLocale(id)) {
+            is LocaleSuccess -> {
+                logger.info("Locale $id cleared successfully")
+                ResponseEntity.ok().body(locale)
+            }
+            is LocaleError -> {
+                logger.error(locale.errorMessage)
+                ResponseEntity.badRequest().body(locale)
+            }
+        }
+    }
+    //method that allows reserving a table with given locale id
+    @PostMapping("/{id}/reserve")
+    fun reserveTable(@PathVariable id:Long,@RequestBody reservationRequest:ReservationRequest):ResponseEntity<ReservationResponse> {
+        with(reservationRequest) {
+            return when (val reservation = localeService.reserveTable(id,name,phoneNumber,dateTime,username,description)) {
+                is ReservationSuccess -> {
+                    logger.info("Reservation successfull.")
+                    ResponseEntity.ok().body(reservation)
+                }
+                is ReservationError -> {
+                    logger.error(reservation.errorMessage)
+                    ResponseEntity.badRequest().body(reservation)
                 }
             }
         }
