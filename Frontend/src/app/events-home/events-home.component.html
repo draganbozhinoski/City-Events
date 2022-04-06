@@ -1,4 +1,18 @@
-<div class="testimonial-group">
+<br><br>
+
+<div class="row text-center">
+  <div *ngFor="let e of events" class="col-sm-4">
+    <div class="card spaceAround">
+      <div class="card-body">
+        {{ e.name }}
+      </div>
+    </div>
+  </div>
+</div> 
+
+ <br><br>
+
+<!-- <div class="testimonial-group">
   <div class="row text-center">
     <div *ngFor="let e of events" class="col-sm-4">
       <div class="card spaceAround">
@@ -7,8 +21,8 @@
     </div>
   </div>
 </div>
-<br><br>
-
+<br><br> -->
+<!-- 
 <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
       <div *ngFor="let e of events;first as isFirst" class="carousel-item " [class.active]="isFirst">
@@ -25,6 +39,5 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
-  </div>
-  
-  <br><br>
+  </div> --> 
+    

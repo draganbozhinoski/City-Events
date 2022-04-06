@@ -11,85 +11,21 @@ import { EventsService } from './events.service';
   styleUrls: ['./events-home.component.css']
 })
 export class EventsHomeComponent implements OnInit {
-  events: CityEvent[] = [
-    {"id" :1,
-    "name":"One",
-    "numReservations":1,
-    "city":"String",
-    "adult":true,
-    "covidCertificate":true,
-    "date":1,
-    "locale":1
-  },
-  {"id" :1,
-    "name":"Two",
-    "numReservations":1,
-    "city":"String",
-    "adult":true,
-    "covidCertificate":true,
-    "date":1,
-    "locale":1
-  },
-  {"id" :1,
-    "name":"Three",
-    "numReservations":1,
-    "city":"String",
-    "adult":true,
-    "covidCertificate":true,
-    "date":1,
-    "locale":1
-  },
-  {"id" :1,
-    "name":"Four",
-    "numReservations":1,
-    "city":"String",
-    "adult":true,
-    "covidCertificate":true,
-    "date":1,
-    "locale":1
-  },
-  {"id" :1,
-    "name":"Five",
-    "numReservations":1,
-    "city":"String",
-    "adult":true,
-    "covidCertificate":true,
-    "date":1,
-    "locale":1
-  },
-  {"id" :1,
-    "name":"Six",
-    "numReservations":1,
-    "city":"String",
-    "adult":true,
-    "covidCertificate":true,
-    "date":1,
-    "locale":1
-  },
-  {"id" :1,
-    "name":"Seven",
-    "numReservations":1,
-    "city":"String",
-    "adult":true,
-    "covidCertificate":true,
-    "date":1,
-    "locale":1
-  }
-];
+  events: CityEvent[] = [];
   eventsSub$: Observable<CityEvent[]> = this.service.getEvents();
 
 
   constructor(private service: EventsService) { }
 
   ngOnInit(): void {
-  //   this.eventsSub$.subscribe({
-  //     next: (data) => {
-  //         this.events = data;
-  //     },
-  //     error: (error) => {
-  //         console.log('error', error);
-  //     },
-  // });
+    this.eventsSub$.subscribe({
+      next: (data) => {
+          this.events = data;
+      },
+      error: (error) => {
+          console.log('error', error);
+      },
+  });
 
   }
 

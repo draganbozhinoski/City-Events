@@ -1,17 +1,31 @@
 .bg{
     background-color:rgb(57, 56, 56)
 }
-#title{
-    background-image: url("../../assets/images/frida-aguilar-estrada-4g0XOeKt5ns-unsplash.jpg");
-    height: 50em;
+/* #title{
+     background-image: url("../../assets/images/frida-aguilar-estrada-4g0XOeKt5ns-unsplash.jpg"); 
+     height: 50em;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover; 
+    background-size: cover;  
     font-family: BabasNeue;
     color:white !important;
-    vertical-align: middle;
-}
+    margin:auto;
+    position: relative;
+}  */
 @font-face {
     font-family: BabasNeue;
     src: url(../../assets/fonts/BabasNeue/BebasNeue-Regular.ttf) format("truetype")
-}
+} 
+#image {
+    position: relative;
+    text-align: center;
+    color: white;
+    font-family: BabasNeue;
+    font-size: 13vmax;
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
