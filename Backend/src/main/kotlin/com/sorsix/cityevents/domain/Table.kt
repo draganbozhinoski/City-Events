@@ -13,7 +13,8 @@ data class Table(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id:Long = -1,
     val reserved:Boolean,
-    @OneToOne
+    @OneToOne(mappedBy = "table")
+    @JsonManagedReference
     val reservation: Reservation?,
     @ManyToOne
     @JsonBackReference

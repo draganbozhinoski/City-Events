@@ -11,6 +11,6 @@ import java.time.LocalDateTime
 @Repository
 interface EventsRepository: JpaRepository<Event, Long> {
     @Modifying
-    @Query("update Event e set e.name=:name,e.numReservations=:numReservations,e.city=:city,e.adult=:adult,e.covidCertificate=:covidCertificate,e.date=:date,e.locale=:locale where e.id=:id")
-    fun updateEvent(id: Long, name: String, numReservations: Int, city: String, adult: Boolean, covidCertificate: Boolean, date: LocalDateTime, locale: Locale)
+    @Query("update Event e set e.name=:name,e.numReservations=:numReservations,e.city=:city,e.adult=:adult,e.covidCertificate=:covidCertificate,e.date=:date,e.locale=:locale,e.logoUrl=:logoUrl where e.id=:id")
+    fun updateEvent(id: Long, name: String, numReservations: Int, city: String, adult: Boolean, covidCertificate: Boolean, date: LocalDateTime, locale: Locale,logoUrl:String)
 }

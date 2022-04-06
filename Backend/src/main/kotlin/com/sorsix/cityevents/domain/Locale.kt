@@ -17,8 +17,12 @@ data class Locale(
 
     val name:String,
 
+    val logoUrl:String,
+
     @Enumerated(EnumType.STRING)
     val type:LocaleType,
+
+    val numTables:Int,
 
     @OneToMany(mappedBy = "locale")
     @JsonManagedReference

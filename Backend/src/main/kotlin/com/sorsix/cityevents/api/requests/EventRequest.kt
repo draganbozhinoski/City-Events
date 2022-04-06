@@ -14,5 +14,6 @@ data class EventRequest(
     val covidCertificate:Boolean,
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     val date:LocalDateTime,
-    val localeId: Long
+    val localeId: Long,
+    val logoUrl:String
 )
