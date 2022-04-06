@@ -13,4 +13,5 @@ interface LocaleService {
                    type: LocaleType):LocaleResponse
     fun updateLocale(id:Long, name:String, type:LocaleType):LocaleResponse
     fun deleteById(id:Long):LocaleResponse
+    fun clearLocale(id:Long):LocaleResponse
 }

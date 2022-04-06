@@ -115,4 +115,18 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
             }
         }
     }
+    //TODO:Clear locale
+    @PostMapping("/{id}/clear")
+    fun clearLocale(@PathVariable id:Long):ResponseEntity<LocaleResponse> {
+        return when(val locale = localeService.clearLocale(id)) {
+            is LocaleSuccess -> {
+                logger.info("Locale $id cleared successfully")
+                ResponseEntity.ok().body(locale)
+            }
+            is LocaleError -> {
+                logger.error(locale.errorMessage)
+                ResponseEntity.badRequest().body(locale)
+            }
+        }
+    }
 }

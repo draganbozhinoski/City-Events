@@ -8,4 +8,5 @@ interface ReviewService {
     fun addReview(review:String, stars:Int,locale: Locale)
     fun deleteReview(id:Long):ReviewResponse
     fun findAll():List<Review>
+    fun deleteAll(reviewsList:List<Review>)
 }
