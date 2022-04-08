@@ -10,3 +10,8 @@
     padding: 20px;
     margin: 20px 10px;
   }
+  .tags{
+    position: absolute;
+    margin-top: -3.5vmax;
+    margin-left: -2vmax;
+  }

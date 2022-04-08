@@ -22,10 +22,15 @@
     color: white;
     font-family: BabasNeue;
     font-size: 13vmax;
+    height: 10%;
   }
   .centered {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+  
+  #backphoto{
+    width: 100%;
   }

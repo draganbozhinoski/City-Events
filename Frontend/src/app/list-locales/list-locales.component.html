@@ -1,0 +1,21 @@
+<div id="bg">
+  <app-navbar></app-navbar>
+
+  <div class="container locales">
+    <div *ngFor="let l of locales" class="locale row">
+      <div class="col-4" style="padding: 50px ;background-color:yellow">
+        image
+    </div>
+      <div class="col-8">
+        <div class="row upper-des">
+          {{ l.name }}
+        </div>
+        <div class="row lower-des">
+          Descripiont
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+  <!-- problem ako ima samo 2 lokala footerot ne sedi dole-->
+</div>

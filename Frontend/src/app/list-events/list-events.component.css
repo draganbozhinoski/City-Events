@@ -1,0 +1,11 @@
+#bg{
+    background-color:rgb(57, 56, 56);
+}
+.event{
+    height: 10vmax;
+    background-color: aliceblue;
+    margin: 1vmax 0;
+}
+.events{
+    padding-top: 5.5vmax;
+}
