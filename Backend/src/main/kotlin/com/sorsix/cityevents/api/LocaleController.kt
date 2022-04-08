@@ -18,27 +18,30 @@ import javax.transaction.Transactional
 
 @RestController
 @RequestMapping("/api/locales")
-class LocaleController (val localeService: LocaleService,val reviewService:ReviewService){
-    val logger:Logger = LoggerFactory.getLogger("Locale controller")
+class LocaleController(val localeService: LocaleService, val reviewService: ReviewService) {
+    val logger: Logger = LoggerFactory.getLogger("Locale controller")
+
+    //findall
+    @GetMapping
+    fun getLocales(): List<Locale> {
+        return localeService.getAll()
+    }
     //getbyid
     //read
     @GetMapping("/{id}")
-    fun getById(@PathVariable id:Long):ResponseEntity<LocaleResponse>{
-        return when(val locale = localeService.getLocale(id)){
+    fun getById(@PathVariable id: Long): ResponseEntity<LocaleResponse> {
+        return when (val locale = localeService.getLocale(id)) {
             is LocaleSuccess -> ResponseEntity.ok().body(locale)
             is LocaleError -> ResponseEntity.badRequest().body(locale)
         }
     }
-    //findall
-    @GetMapping
-    fun getLocales():List<Locale>{
-        return localeService.getAll()
-    }
+
     //create
     @PostMapping("/save")
-    fun saveLocale(@RequestBody localeRequest: LocaleRequest):ResponseEntity<LocaleResponse> {
+    fun saveLocale(@RequestBody localeRequest: LocaleRequest): ResponseEntity<LocaleResponse> {
         with(localeRequest) {
-            return when(val locale = localeService.saveLocale(name=name,type=type,numTables=numTables,logoUrl)) {
+            return when (val locale =
+                localeService.saveLocale(name = name, type = type, numTables = numTables, logoUrl)) {
                 is LocaleError -> {
                     logger.error(locale.errorMessage)
                     ResponseEntity.badRequest().body(locale)
@@ -50,13 +53,17 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
             }
         }
     }
+
     //update
     @PutMapping("/update/{id}")
-    fun updateLocale(@RequestBody localeRequest:LocaleRequest,@PathVariable id:Long):ResponseEntity<LocaleResponse> {
+    fun updateLocale(
+        @RequestBody localeRequest: LocaleRequest,
+        @PathVariable id: Long
+    ): ResponseEntity<LocaleResponse> {
         with(localeRequest) {
-            return when(val locale = localeService.getLocale(id)) {
+            return when (val locale = localeService.getLocale(id)) {
                 is LocaleSuccess -> {
-                    localeService.updateLocale(id,name,type,logoUrl)
+                    localeService.updateLocale(id, name, type, logoUrl)
                     logger.info("Locale updated successfully")
                     ResponseEntity.ok().body(localeService.getLocale(id))
                 }
@@ -67,11 +74,12 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
             }
         }
     }
+
     //delete
     //Brishenje na sve entitetite pred brishenje na lokalot, da se naprae u when findById pa funkcie clear locale.
     @DeleteMapping("/delete/{id}")
-    fun deleteLocale(@PathVariable id:Long):ResponseEntity<String> {
-        return when(localeService.getLocale(id)) {
+    fun deleteLocale(@PathVariable id: Long): ResponseEntity<String> {
+        return when (localeService.getLocale(id)) {
             is LocaleSuccess -> {
                 localeService.clearLocale(id)
                 localeService.deleteById(id)
@@ -84,11 +92,12 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
             }
         }
     }
+
     //expects locale id
     //returns all the reviews in the given locale
     @GetMapping("/{id}/reviews")
-    fun getAllReviewsByLocaleId(@PathVariable id:Long):ResponseEntity<List<Review>> {
-        return when(val locale = localeService.getLocale(id)) {
+    fun getAllReviewsByLocaleId(@PathVariable id: Long): ResponseEntity<List<Review>> {
+        return when (val locale = localeService.getLocale(id)) {
             is LocaleSuccess -> {
                 logger.info("Locale was found by the id, attempting to get reviews..")
                 val reviews = locale.locale.reviewsList
@@ -100,12 +109,13 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
             }
         }
     }
+
     //get all tables given locale id
     //expects: locale id
     //returns: all tables from that locale
     @GetMapping("/{id}/tables")
-    fun getAllTables(@PathVariable id:Long):ResponseEntity<Any> {
-        return when(val locale = localeService.getLocale(id)) {
+    fun getAllTables(@PathVariable id: Long): ResponseEntity<Any> {
+        return when (val locale = localeService.getLocale(id)) {
             is LocaleSuccess -> {
                 ResponseEntity.ok().body(locale.locale.tablesList)
             }
@@ -114,16 +124,17 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
             }
         }
     }
+
     //expects Locale id, review
     //creates and adds review to the given locale
     @PostMapping("/{id}/reviews/add")
-    fun addReview(@PathVariable id:Long, @RequestBody reviewRequest: ReviewRequest): ResponseEntity<List<Review>> {
+    fun addReview(@PathVariable id: Long, @RequestBody reviewRequest: ReviewRequest): ResponseEntity<List<Review>> {
         with(reviewRequest) {
             return when (val locale = localeService.getLocale(id)) {
                 is LocaleSuccess -> {
                     logger.info("Locale was found, attempting to add review")
-                    locale.locale.reviewsList.add(Review(review=review,stars=stars,locale=locale.locale))
-                    reviewService.addReview(review,stars,locale.locale)
+                    locale.locale.reviewsList.add(Review(review = review, stars = stars, locale = locale.locale))
+                    reviewService.addReview(review, stars, locale.locale)
                     ResponseEntity.ok().body(locale.locale.reviewsList)
                 }
                 is LocaleError -> {
@@ -133,9 +144,10 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
             }
         }
     }
+
     @PostMapping("/{id}/clear")
-    fun clearLocale(@PathVariable id:Long):ResponseEntity<LocaleResponse> {
-        return when(val locale = localeService.clearLocale(id)) {
+    fun clearLocale(@PathVariable id: Long): ResponseEntity<LocaleResponse> {
+        return when (val locale = localeService.clearLocale(id)) {
             is LocaleSuccess -> {
                 logger.info("Locale $id cleared successfully")
                 ResponseEntity.ok().body(locale)
@@ -146,11 +158,16 @@ class LocaleController (val localeService: LocaleService,val reviewService:Revie
             }
         }
     }
+
     //method that allows reserving a table with given locale id
     @PostMapping("/{id}/reserve")
-    fun reserveTable(@PathVariable id:Long,@RequestBody reservationRequest:ReservationRequest):ResponseEntity<ReservationResponse> {
+    fun reserveTable(
+        @PathVariable id: Long,
+        @RequestBody reservationRequest: ReservationRequest
+    ): ResponseEntity<ReservationResponse> {
         with(reservationRequest) {
-            return when (val reservation = localeService.reserveTable(id,name,phoneNumber,dateTime,username,description)) {
+            return when (val reservation =
+                localeService.reserveTable(id, name, phoneNumber, dateTime, username, description)) {
                 is ReservationSuccess -> {
                     logger.info("Reservation successfull.")
                     ResponseEntity.ok().body(reservation)
