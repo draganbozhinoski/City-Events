@@ -11,11 +11,12 @@ import javax.persistence.Table
 data class Table(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id:Long,
+    val id:Long = -1,
     val reserved:Boolean,
-    @OneToOne
-    val reservation: Reservation,
+    @OneToOne(mappedBy = "table")
+    @JsonManagedReference
+    val reservation: Reservation?,
     @ManyToOne
     @JsonBackReference
-    val locale:Locale
+    val locale:Locale?
 )
