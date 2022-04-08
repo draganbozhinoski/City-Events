@@ -17,6 +17,7 @@ import javax.transaction.TransactionScoped
 import javax.transaction.Transactional
 
 @RestController
+@CrossOrigin(origins = ["http://localhost:4200"])
 @RequestMapping("/api/locales")
 class LocaleController (val localeService: LocaleService,val reviewService:ReviewService){
     val logger:Logger = LoggerFactory.getLogger("Locale controller")

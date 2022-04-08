@@ -1,0 +1,16 @@
+<div id="bg">
+    <app-navbar></app-navbar>
+  
+    <div class="container events">
+      <div *ngFor="let e of events" class="event row">
+        <div class="col-4" style="padding: 50px">
+          image
+      </div>
+        <div class="col-8">
+          {{ e.name }}
+        </div>
+      </div>
+    </div>
+    <app-footer></app-footer>
+    <!-- problem ako ima samo 2 lokala footerot ne sedi dole-->
+  </div>

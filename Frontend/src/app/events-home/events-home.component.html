@@ -3,8 +3,16 @@
 <div class="row text-center">
   <div *ngFor="let e of events" class="col-sm-4">
     <div class="card spaceAround">
-      <div class="card-body">
+      <div class="card-body relative">
         {{ e.name }}
+      <div class="tags">
+        <span *ngIf="e.adult===true">
+          <img src="../../assets/images/Icon-18+.png">
+        </span>
+        <span *ngIf="e.covidCertificate===true">
+          <img src="../../assets/images/Sertificate.png">
+        </span>
+      </div>
       </div>
     </div>
   </div>
