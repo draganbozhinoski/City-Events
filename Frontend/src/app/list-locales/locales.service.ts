@@ -13,7 +13,7 @@ export class LocalesService {
 
   getLocales(): Observable<CityLocale[]> {
     return this.http.get<CityLocale[]>(
-      "http://localhost:8082/api/locale"
+      "http://localhost:8082/api/locales"
     );
   }
 }

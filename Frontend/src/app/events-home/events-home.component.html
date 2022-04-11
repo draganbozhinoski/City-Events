@@ -1,15 +1,22 @@
 <br><br>
 
 <div class="row text-center">
-  <div *ngFor="let e of events" class="col-sm-4">
+  <div *ngFor="let e of events" class="col-sm-4 event" routerLink="/event/{{e.id}}">
     <div class="card spaceAround">
-      <div class="card-body relative">
-        {{ e.name }}
-      <div class="tags">
-        <span *ngIf="e.adult===true">
+      <img src="{{e.logoUrl}}" class="picture">
+      <div class="card-body centered">
+        <div class="title">
+          {{ e.name }}
+        </div>
+        <div >
+          City: {{ e.city }}
+        </div>
+      <div *ngIf="e.adult||e.covidCertificate" class="tags">
+        <span *ngIf="e.adult">
+
           <img src="../../assets/images/Icon-18+.png">
         </span>
-        <span *ngIf="e.covidCertificate===true">
+        <span *ngIf="e.covidCertificate">
           <img src="../../assets/images/Sertificate.png">
         </span>
       </div>

@@ -16,4 +16,10 @@ export class EventsService {
       "http://localhost:8082/api/events"
     );
   }
+
+  getEvent(id:Number): Observable<CityEvent> {
+    return this.http.get<CityEvent>(
+      `http://localhost:8082/api/events/${id}`
+    );
+  }
 }

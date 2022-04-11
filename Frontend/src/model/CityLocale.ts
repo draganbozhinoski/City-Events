@@ -5,5 +5,7 @@ export interface CityLocale{
     "tablesList":[],
     "reservationsList":[],
     "eventsList":[],
-    "reviewsList":[]
+    "reviewsList":[],
+    "logoUrl":String,
+    "numTables":Number,
 }
