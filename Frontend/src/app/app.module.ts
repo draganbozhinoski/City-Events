@@ -11,6 +11,7 @@ import { EventsHomeComponent } from './events-home/events-home.component';
 import { ListLocalesComponent } from './list-locales/list-locales.component';
 import { FooterComponent } from './footer/footer.component';
 import { ListEventsComponent } from './list-events/list-events.component';
+import { EventPageComponent } from './event-page/event-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ListEventsComponent } from './list-events/list-events.component';
     EventsHomeComponent,
     ListLocalesComponent,
     FooterComponent,
-    ListEventsComponent
+    ListEventsComponent,
+    EventPageComponent
   ],
   imports: [
     BrowserModule,

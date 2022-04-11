@@ -3,11 +3,16 @@
   
     <div class="container events">
       <div *ngFor="let e of events" class="event row">
-        <div class="col-4" style="padding: 50px">
-          image
+        <div class="col-4" id="picture">
+          <img src="{{e.logoUrl}}" style="width: 300px; padding: 10px;" >
       </div>
         <div class="col-8">
-          {{ e.name }}
+          <div class="row upper-des">
+            {{ e.name }}
+          </div>
+          <div class="row lower-des">
+            City: {{ e.city }}
+          </div>
         </div>
       </div>
     </div>

@@ -7,11 +7,35 @@
     display: inline-block;
   }
   .spaceAround{
-    padding: 20px;
+    padding: 10px;
     margin: 20px 10px;
   }
   .tags{
     position: absolute;
-    margin-top: -3.5vmax;
-    margin-left: -2vmax;
+    margin-top: -10vmax;
+    margin-left: -5.5vmax;
+    background-color: white;
+    /* border: 1px solid black; */
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    border-radius: 9px;
+    z-index: 10;
+    width: 5vmax;
+  }
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(252, 252, 252);
+    text-shadow: 0 0 3px rgb(0, 0, 0);
+  }
+  .picture{
+    height: 15vmax;
+  }
+  .title{
+    font-size: 3vmax;
+  }
+  .event:hover{
+    transition: transform 500ms;
+    transform: translateY(-10px);
   }

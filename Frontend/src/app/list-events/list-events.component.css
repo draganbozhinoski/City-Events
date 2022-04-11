@@ -2,10 +2,26 @@
     background-color:rgb(57, 56, 56);
 }
 .event{
-    height: 10vmax;
+    height: 20vmax;
     background-color: aliceblue;
-    margin: 1vmax 0;
+    margin: 1.5vmax 0;
+}
+.event:hover{
+    transform: scale(1.01);
 }
 .events{
     padding-top: 5.5vmax;
 }
+.upper-des{
+    height: 50%;
+    align-items: center;
+    justify-content: center;
+    font-size: 2vmax;
+}
+.lower-des{
+    height: 50%;
+    background-color: burlywood;
+}
+#picture{
+    background-color:yellow
+  }
