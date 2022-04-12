@@ -14,6 +14,6 @@ data class Review(
     val review:String,
     val stars:Int,
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     val locale:Locale
 )

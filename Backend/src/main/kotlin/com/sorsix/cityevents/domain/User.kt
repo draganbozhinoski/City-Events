@@ -20,6 +20,6 @@ data class User(
     @OneToOne
     val localeManages:Locale?,
     @OneToMany(mappedBy = "user")
-    @JsonManagedReference
+    @JsonBackReference
     val reservation:List<Reservation>?
 )

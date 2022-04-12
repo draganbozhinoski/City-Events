@@ -34,7 +34,8 @@ class EventServiceImpl(private val eventsRepository: EventsRepository) : EventSe
         covidCertificate: Boolean,
         date: LocalDateTime,
         locale: Locale,
-        logoUrl: String
+        logoUrl: String,
+        description:String
     ) {
         eventsRepository.save(
             Event(
@@ -45,7 +46,8 @@ class EventServiceImpl(private val eventsRepository: EventsRepository) : EventSe
                 covidCertificate = covidCertificate,
                 date = date,
                 locale = locale,
-            logoUrl = logoUrl
+                logoUrl = logoUrl,
+                description = description
             )
         )
     }
@@ -60,7 +62,8 @@ class EventServiceImpl(private val eventsRepository: EventsRepository) : EventSe
         covidCertificate: Boolean,
         date: LocalDateTime,
         locale: Locale,
-        logoUrl: String
+        logoUrl: String,
+        description:String
     )
             : EventResponse {
         eventsRepository.updateEvent(id, name, numReservations, city, adult, covidCertificate, date, locale, logoUrl)

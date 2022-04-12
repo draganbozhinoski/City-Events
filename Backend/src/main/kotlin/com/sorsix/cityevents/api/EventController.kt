@@ -34,7 +34,7 @@ class EventController(val eventService:EventService, val localeService:LocaleSer
                     ResponseEntity.badRequest().body(locale)
                 }
                 is LocaleSuccess -> {
-                    eventService.save(name,numReservations,city,adult,covidCertificate,date,locale.locale,logoUrl)
+                    eventService.save(name,numReservations,city,adult,covidCertificate,date,locale.locale,logoUrl,description)
                     logger.info("Event successfully saved.")
                     ResponseEntity.ok().body(locale)
                 }
@@ -49,7 +49,7 @@ class EventController(val eventService:EventService, val localeService:LocaleSer
                 is EventSuccess -> {
                     return when(val locale = localeService.getLocale(localeId)) {
                         is LocaleSuccess -> {
-                            eventService.update(id,name,numReservations,city,adult,covidCertificate,date,locale.locale,logoUrl)
+                            eventService.update(id,name,numReservations,city,adult,covidCertificate,date,locale.locale,logoUrl,description)
                             logger.info("Event successfully updated.")
                             ResponseEntity.ok().body(event)
                         }
@@ -94,6 +94,19 @@ class EventController(val eventService:EventService, val localeService:LocaleSer
             is LocaleError -> {
                 logger.error("Locale with id $id was not found in the database.")
                 ResponseEntity.badRequest().body(locale)
+            }
+        }
+    }
+
+    //return locale with given event id
+    @GetMapping("/{id}/locale")
+    fun getLocaleByEventId(@PathVariable id:Long):ResponseEntity<Any> {
+        return when(val event = eventService.findById(id)) {
+            is EventSuccess -> {
+                ResponseEntity.ok().body(event.event.locale)
+            }
+            is EventError -> {
+                ResponseEntity.badRequest().body(event)
             }
         }
     }

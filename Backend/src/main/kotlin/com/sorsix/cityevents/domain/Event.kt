@@ -20,10 +20,11 @@ data class Event(
     val city:String,
     val adult:Boolean,
     val logoUrl:String,
+    val description:String,
     val covidCertificate:Boolean,
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     val date:LocalDateTime,
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     val locale:Locale
 )
