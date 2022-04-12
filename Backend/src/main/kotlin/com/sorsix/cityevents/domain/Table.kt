@@ -14,9 +14,9 @@ data class Table(
     val id:Long = -1,
     val reserved:Boolean,
     @OneToOne(mappedBy = "table")
-    @JsonManagedReference
+    @JsonBackReference
     val reservation: Reservation?,
     @ManyToOne
-    @JsonBackReference
-    val locale:Locale?
+    @JsonManagedReference
+    val locale:Locale
 )

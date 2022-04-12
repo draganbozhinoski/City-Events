@@ -25,22 +25,22 @@ data class Locale(
     val numTables:Int,
 
     @OneToMany(mappedBy = "locale")
-    @JsonManagedReference
+    @JsonBackReference
     @OnDelete(action = OnDeleteAction.CASCADE)
     val tablesList:MutableList<com.sorsix.cityevents.domain.Table> = mutableListOf(),
 
     @OneToMany(mappedBy = "locale")
-    @JsonManagedReference
+    @JsonBackReference
     @OnDelete(action = OnDeleteAction.CASCADE)
     val reservationsList:MutableList<Reservation> = mutableListOf(),
 
     @OneToMany(mappedBy = "locale")
-    @JsonManagedReference
+    @JsonBackReference
     @OnDelete(action = OnDeleteAction.CASCADE)
     val eventsList:MutableList<Event> = mutableListOf(),
 
     @OneToMany(mappedBy = "locale")
-    @JsonManagedReference
+    @JsonBackReference
     @OnDelete(action = OnDeleteAction.CASCADE)
     val reviewsList:MutableList<Review> = mutableListOf()
 )

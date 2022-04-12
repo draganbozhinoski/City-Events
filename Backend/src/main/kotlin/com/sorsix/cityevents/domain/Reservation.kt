@@ -19,12 +19,12 @@ data class Reservation(
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     val dateTime:LocalDateTime,
     @OneToOne
-    @JsonBackReference
+    @JsonManagedReference
     val table:Table,
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     val locale:Locale,
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     val user:User? // TODO:ne smee da e null,samo za testing e null
 )

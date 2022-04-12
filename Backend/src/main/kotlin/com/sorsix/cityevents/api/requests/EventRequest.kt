@@ -15,5 +15,7 @@ data class EventRequest(
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     val date:LocalDateTime,
     val localeId: Long,
+    val description:String,
     val logoUrl:String
+    //eventImage - upload od frontend, TODO:
 )
