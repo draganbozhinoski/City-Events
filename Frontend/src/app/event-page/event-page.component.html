@@ -1,2 +1,12 @@
 <app-navbar></app-navbar>
-<p>event-page works! {{event?.name}}</p>
+<div *ngIf="event" class="bg">
+    <p>event-page works! {{event?.name}}</p>
+    <div class="container" id="upper">
+        upper
+    </div>
+    <div class="container" id="lower">
+        lower
+    </div>
+</div>
+<app-footer></app-footer>
+

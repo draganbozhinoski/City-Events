@@ -1,5 +1,6 @@
 #bg{
     background-color:rgb(57, 56, 56);
+    height: max-content;
 }
 .locale{
     height: 20vmax;
@@ -7,7 +8,7 @@
     margin: 1.5vmax 0;
 }
 .locale:hover{
-    scale: 1.5;
+    transform: scale(1.01);
 }
 .locales{
     padding-top: 5.5vmax;

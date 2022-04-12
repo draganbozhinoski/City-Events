@@ -18,12 +18,11 @@ export class EventPageComponent implements OnInit {
     this.route.paramMap.pipe(
       filter(params=>params.has("id")),
       map(params=>+params.get("id")!),
-      mergeMap(p=>this.service.getEvent(p))
+      mergeMap((p)=>this.service.getEvent(p))
       )
       .subscribe({
         next: data => {
-            this.event = data
-            console.log(this.event)
+            this.event = data.event
         },
         error: data => {
             
