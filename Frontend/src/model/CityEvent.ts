@@ -9,5 +9,6 @@ export interface CityEvent{
     "logoUrl":String,
     "covidCertificate":Boolean,
     "date":Number,
-    "locale":Number
+    "description":String,
+    "locale":CityLocale
 }

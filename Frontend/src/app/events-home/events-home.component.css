@@ -12,13 +12,13 @@
   }
   .tags{
     position: absolute;
-    margin-top: -10vmax;
-    margin-left: -5.5vmax;
+    margin-top: 1vmax;
+    margin-left: 1vmax;
     background-color: white;
     /* border: 1px solid black; */
     box-shadow: 0 0 10px rgb(0, 0, 0);
     border-radius: 9px;
-    z-index: 10;
+    z-index: 2;
     width: 5vmax;
   }
   .centered {
@@ -30,7 +30,7 @@
     text-shadow: 0 0 3px rgb(0, 0, 0);
   }
   .picture{
-    height: 15vmax;
+    height: 20vmax;
   }
   .title{
     font-size: 3vmax;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, mergeMap } from 'rxjs';
 import { CityEvent } from 'src/model/CityEvent';
-import { EventsService } from '../list-events/events.service';
+import { EventsService } from '../events.service';
 
 @Component({
   selector: 'app-event-page',
@@ -18,7 +18,7 @@ export class EventPageComponent implements OnInit {
     this.route.paramMap.pipe(
       filter(params=>params.has("id")),
       map(params=>+params.get("id")!),
-      mergeMap((p)=>this.service.getEvent(p))
+      mergeMap((p)=>this.service.getEventById(p))
       )
       .subscribe({
         next: data => {

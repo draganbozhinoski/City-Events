@@ -1,3 +1,5 @@
+import { CityLocale } from "./CityLocale"
+
 export interface SingleEvent{
     Prototype:{},
    
@@ -9,5 +11,7 @@ export interface SingleEvent{
     "logoUrl":String,
     "covidCertificate":Boolean,
     "date":Number,
-    "locale":Number}
+    "description":String,
+    "locale":CityLocale
+    }
 }

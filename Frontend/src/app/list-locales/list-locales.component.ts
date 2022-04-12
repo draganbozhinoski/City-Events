@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CityLocale } from 'src/model/CityLocale';
-import { LocalesService } from './locales.service';
+import { EventsService } from '../events.service';
 
 @Component({
   selector: 'app-list-locales',
@@ -12,7 +12,7 @@ export class ListLocalesComponent implements OnInit {
   locales: CityLocale[] = [];
   localesSub$: Observable<CityLocale[]> = this.service.getLocales();
 
-  constructor(private service: LocalesService) {}
+  constructor(private service: EventsService) {}
 
   ngOnInit(): void {
     this.localesSub$.subscribe({

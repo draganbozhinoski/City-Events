@@ -3,7 +3,8 @@ import { Quote } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CityEvent } from 'src/model/CityEvent';
-import { EventsService } from './events.service';
+import { CityLocale } from 'src/model/CityLocale';
+import { EventsService } from '../events.service';
 
 @Component({
   selector: 'app-events-home',
@@ -13,6 +14,7 @@ import { EventsService } from './events.service';
 export class EventsHomeComponent implements OnInit {
   events: CityEvent[] = [];
   eventsSub$: Observable<CityEvent[]> = this.service.getEvents();
+  eventLocaleMap: Map<Event,String> = new Map<Event,String>()
 
 
   constructor(private service: EventsService) { }
@@ -26,7 +28,6 @@ export class EventsHomeComponent implements OnInit {
           console.log('error', error);
       },
   });
-
   }
 
 }

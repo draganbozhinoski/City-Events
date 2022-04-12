@@ -1,19 +1,32 @@
 <br><br>
 
 <div class="row text-center">
-  <div *ngFor="let e of events" class="col-sm-4 event" routerLink="/events/{{e.id}}">
+  <div *ngFor="let e of events" class="col-sm-3 event" routerLink="/events/{{e.id}}">
+    <!-- <div class="card-group">
+      <div class="card">
+        <img class="card-img-top picture img-thumbnail" src="{{e.logoUrl}}" alt="{{e.name}}">
+        <div *ngIf="e.adult||e.covidCertificate" class="tags">
+          <span *ngIf="e.adult">
+            <img src="../../assets/images/Icon-18+.png">
+          </span>
+          <span *ngIf="e.covidCertificate">
+            <img src="../../assets/images/Sertificate.png">
+          </span>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{e.name}}</h5>
+          <p class="card-text"></p>
+          <div style="display:flex">  
+            <div><small class="text-muted">{{e.date}}</small></div>
+            <div style="margin-left:auto">{{e.city}}</div>
+          </div>
+        </div>
+      </div>
+    </div> -->
     <div class="card spaceAround">
       <img src="{{e.logoUrl}}" class="picture">
-      <div class="card-body centered">
-        <div class="title">
-          {{ e.name }}
-        </div>
-        <div >
-          City: {{ e.city }}
-        </div>
       <div *ngIf="e.adult||e.covidCertificate" class="tags">
         <span *ngIf="e.adult">
-
           <img src="../../assets/images/Icon-18+.png">
         </span>
         <span *ngIf="e.covidCertificate">
@@ -23,8 +36,6 @@
       </div>
     </div>
   </div>
-</div> 
-
  <br><br>
 
 <!-- <div class="testimonial-group">
