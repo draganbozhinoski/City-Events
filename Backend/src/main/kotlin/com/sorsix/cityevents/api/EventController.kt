@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@CrossOrigin(origins = ["http://localhost:4200"])
+//@CrossOrigin(origins = ["http://localhost:4200"])
 @RequestMapping("/api/events")
 class EventController(val eventService:EventService, val localeService:LocaleService) {
     val logger: Logger = LoggerFactory.getLogger("Event controller")

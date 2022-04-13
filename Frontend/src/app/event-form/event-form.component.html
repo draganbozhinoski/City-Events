@@ -1,0 +1,96 @@
+<app-navbar></app-navbar>
+<div class="bg">
+  <div id="header">CREATE NEW EVENT</div>
+  <form class="container" (ngSubmit)="submit()">
+    <div class="form-group">
+      <label for="eventName">Event Name</label>
+      <input
+        type="text"
+        name="name"
+        class="form-control"
+        id="eventName"
+        placeholder="Enter name"
+        [(ngModel)]="name"
+      />
+    </div><br/>
+    <div class="form-group">
+        <label for="numReservations">Number of reservations</label>
+        <input
+          type="number"
+          name="numReservations"
+          class="form-control"
+          id="numReservations"
+          placeholder="Enter number of reservations"
+          [(ngModel)]="numReservations"
+          ngModel
+        />
+      </div><br/>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input
+          type="text"
+          class="form-control"
+          name="city"
+          id="city"
+          placeholder="Enter city"
+          [(ngModel)]="city"
+        />
+      </div><br/>
+      <div class="form-group">
+        <label for="date">Date and time</label>
+        <input
+          type="datetime-local"
+          class="form-control"
+          name="date"
+          id="date"
+          placeholder="Enter date and time"
+          [(ngModel)]="date"
+        />
+      </div><br/>
+      <div class="form-group">
+        <label for="image">Choose file for image</label>
+        <input
+          type="file"
+          name="eventImage"
+          class="form-control"
+          id="image"
+          placeholder="Choose file"
+          [(ngModel)]="eventImage"
+        />
+      </div><br/>
+      <span class="form-group form-check">
+        <input type="checkbox" name="adult" class="form-check-input" id="adult" [(ngModel)]="adult">
+        <label class="form-check-label" for="adult">18+</label>
+      </span>
+      <span class="form-group form-check">
+        <input type="checkbox" name="covidCertificate" class="form-check-input" id="sertificate" [(ngModel)]="covidCertificate">
+        <label class="form-check-label" for="sertificate">Covid sertificate</label>
+      </span>
+      <br>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input
+          type="text"
+          class="form-control"
+          name="localeId"
+          id="city"
+          placeholder="Enter city"
+          [(ngModel)]="localeId"
+        />
+      </div><br/>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input
+          type="text"
+          class="form-control"
+          name="logoUrl"
+          id="city"
+          placeholder="Enter city"
+          [(ngModel)]="logoUrl"
+        />
+      </div><br/>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+<app-footer></app-footer>

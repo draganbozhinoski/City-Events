@@ -12,6 +12,8 @@ import { ListLocalesComponent } from './list-locales/list-locales.component';
 import { FooterComponent } from './footer/footer.component';
 import { ListEventsComponent } from './list-events/list-events.component';
 import { EventPageComponent } from './event-page/event-page.component';
+import { EventFormComponent } from './event-form/event-form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,14 @@ import { EventPageComponent } from './event-page/event-page.component';
     ListLocalesComponent,
     FooterComponent,
     ListEventsComponent,
-    EventPageComponent
+    EventPageComponent,
+    EventFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
