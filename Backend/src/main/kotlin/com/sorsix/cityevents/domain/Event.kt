@@ -26,5 +26,7 @@ data class Event(
     val date:LocalDateTime,
     @ManyToOne
     @JsonManagedReference
-    val locale:Locale
+    val locale:Locale,
+    @OneToOne
+    val image: Image? = null // TODO: da ne e null
 )
