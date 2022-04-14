@@ -13,7 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ListEventsComponent } from './list-events/list-events.component';
 import { EventPageComponent } from './event-page/event-page.component';
 import { EventFormComponent } from './event-form/event-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,8 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
