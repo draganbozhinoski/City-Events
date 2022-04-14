@@ -23,6 +23,9 @@
     height: 50%;
     background-color: burlywood;
 }
-#picture{
-    background-color:yellow
+.picture{
+    background-color:yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }

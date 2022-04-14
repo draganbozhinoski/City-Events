@@ -37,10 +37,10 @@
         />
       </div><br/>
       <div class="form-group">
-        <label for="date">Date and time</label>
+        <label for="date">Date and time</label><br>
         <input
           type="datetime-local"
-          class="form-control"
+          class="btn btn-primary"
           name="date"
           id="date"
           placeholder="Enter date and time"
@@ -48,13 +48,12 @@
         />
       </div><br/>
       <div class="form-group">
-        <label for="image">Choose file for image</label>
+        <label for="image">Choose file for image</label><br>
         <input
           type="file"
           name="eventImage"
-          class="form-control"
+          class="btn btn-primary"
           id="image"
-          placeholder="Choose file"
           [(ngModel)]="eventImage"
         />
       </div><br/>

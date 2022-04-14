@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { LocalesService } from '../list-locales/locales.service';
+import { EventsService } from '../events.service';
 
 @Component({
   selector: 'app-event-form',
@@ -18,7 +18,7 @@ export class EventFormComponent implements OnInit {
   localeId :Number |undefined
   logoUrl :String |undefined
 
-  constructor(private service: LocalesService) { }
+  constructor(private service: EventsService) { }
 
   ngOnInit(): void {
   }

@@ -1,5 +1,29 @@
-.bg{
+#bg{
     background-color: rgb(57, 56, 56);
-    height: 500px;
-    padding: 100px;
+    padding-top: 100px;
+    padding-bottom: 1vmax;
+}
+#upper{
+    margin-bottom: 1vmax;
+    padding: 1vmax 0;
+    height: 25vmax;
+}
+#lower{
+    height: auto;
+    padding: 10px 0;
+    background-color: rgb(182, 182, 182);
+}
+#image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#inside-img{
+    height: 17vmax;
+}
+.details{
+    margin: 2vmax 0;
+}
+.row{
+    background-color: rgb(182, 182, 182);
 }
