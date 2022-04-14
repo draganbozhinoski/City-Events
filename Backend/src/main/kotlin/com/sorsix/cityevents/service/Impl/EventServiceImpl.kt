@@ -4,6 +4,7 @@ import com.sorsix.cityevents.api.responses.EventError
 import com.sorsix.cityevents.api.responses.EventResponse
 import com.sorsix.cityevents.api.responses.EventSuccess
 import com.sorsix.cityevents.domain.Event
+import com.sorsix.cityevents.domain.Image
 import com.sorsix.cityevents.domain.Locale
 import com.sorsix.cityevents.repository.EventsRepository
 import com.sorsix.cityevents.service.EventService
@@ -35,7 +36,8 @@ class EventServiceImpl(private val eventsRepository: EventsRepository) : EventSe
         date: LocalDateTime,
         locale: Locale,
         logoUrl: String,
-        description:String
+        description:String,
+        image:Image
     ) {
         eventsRepository.save(
             Event(
@@ -47,7 +49,8 @@ class EventServiceImpl(private val eventsRepository: EventsRepository) : EventSe
                 date = date,
                 locale = locale,
                 logoUrl = logoUrl,
-                description = description
+                description = description,
+                image = image
             )
         )
     }
