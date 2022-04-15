@@ -17,4 +17,5 @@ interface LocaleService {
     fun deleteById(id:Long):LocaleResponse
     fun clearLocale(id:Long):LocaleResponse
     fun reserveTable(id: Long, name:String, phoneNumber:String, dateTime: LocalDateTime, username:String,description:String):ReservationResponse
+    fun getRating(id:Long):Double
 }

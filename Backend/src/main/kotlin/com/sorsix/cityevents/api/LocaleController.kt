@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import javax.transaction.TransactionScoped
 import javax.transaction.Transactional
+import kotlin.math.roundToInt
 
 @RestController
 @CrossOrigin(origins = ["http://localhost:4200"])
@@ -178,6 +179,15 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
                     ResponseEntity.badRequest().body(reservation)
                 }
             }
+        }
+    }
+    @GetMapping("/{id}/rating")
+    fun getRating(@PathVariable id:Long):ResponseEntity<Double>{
+        val num = localeService.getRating(id)
+        return if(num == (-1).toDouble() || num.isNaN()) {
+            ResponseEntity.badRequest().body((-1).toDouble())
+        } else {
+            ResponseEntity.ok().body(num)
         }
     }
 }
