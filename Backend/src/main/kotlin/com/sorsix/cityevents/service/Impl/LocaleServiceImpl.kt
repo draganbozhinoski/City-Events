@@ -113,4 +113,15 @@ class LocaleServiceImpl(
             }
         }
     }
+
+    override fun getRating(id: Long): Double {
+        return when(val locale=getLocale(id)) {
+            is LocaleSuccess -> {
+                locale.locale.reviewsList.map { m -> m.stars }.average()
+            }
+            is LocaleError -> {
+                (-1).toDouble()
+            }
+        }
+    }
 }
