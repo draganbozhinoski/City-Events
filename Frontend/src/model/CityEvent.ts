@@ -1,4 +1,5 @@
 import { CityLocale } from "./CityLocale";
+import { Image } from "./Image";
 
 export interface CityEvent{
     "id" : Number,
@@ -10,5 +11,6 @@ export interface CityEvent{
     "covidCertificate":Boolean,
     "date":Number,
     "description":String,
-    "locale":CityLocale
+    "locale":CityLocale,
+    "image":Image
 }

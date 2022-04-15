@@ -24,6 +24,7 @@
       </div>
     </div> -->
     <div class="card spaceAround">
+      <img [src]="createImage(e.image.bytes)">
       <img src="{{e.logoUrl}}" class="picture">
       <div *ngIf="e.adult||e.covidCertificate" class="tags">
         <span *ngIf="e.adult">
