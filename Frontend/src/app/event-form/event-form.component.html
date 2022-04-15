@@ -1,5 +1,6 @@
 <app-navbar></app-navbar>
 <div class="bg">
+  <div class="container border border-primary">
   <div id="header">CREATE NEW EVENT</div>
   <form [formGroup]="createEvent" class="container" (ngSubmit)="submit()" >
       <div class="form-group">
@@ -9,7 +10,7 @@
           name="name"
           class="form-control"
           id="eventName"
-          placeholder="Enter name"
+          placeholder="Enter event name"
           formControlName="eventName"
         />
       </div><br/>
@@ -46,30 +47,52 @@
             formControlName="date"
           />
         </div><br/>
+        <label for="image">Event image</label>
           <input
-            type="file"
-            formControlName="eventImage"
-            (change)="onFileChange($event)"
-          >
+          id="image"
+          name="image"
+          class="form-control"
+          type="file"
+          formControlName="eventImage"
+          (change)="onFileChange($event)"
+          />
         <span class="form-group form-check">
           <input type="checkbox" name="adult" class="form-check-input" id="adult" formControlName="adult">
-          <label class="form-check-label" for="adult">18+</label>
+          <label class="form-check-label" for="adult">18+ only</label>
         </span>
         <span class="form-group form-check">
           <input type="checkbox" name="covidCertificate" class="form-check-input" id="sertificate" formControlName="covidCertificate">
-          <label class="form-check-label" for="sertificate">Covid sertificate</label>
+          <label class="form-check-label" for="sertificate">Covid certificate only</label>
         </span>
         <br>
         <div class="form-group">
-          <label for="localeId">Locale Id</label>
-          <input
+          <!-- Example single danger button -->
+          <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Select locale
+            </button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item" *ngFor="let l of localesList">{{l.name}}</li>
+            </ul>
+            <!-- FALI USTE FUNKCIONALNOSTI ZA DROPDOWNOT ngprime da se implementira! TODO:-->
+            <!-- <div class="dropdown-menu">
+              
+              <a class="dropdown-item" href="#">Action</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Separated link</a>
+            </div> -->
+          </div>
+          <!--END -->
+          <!-- <input
             type="text"
             class="form-control"
             name="localeId"
             id="localeId"
             placeholder="Enter localeId"
             formControlName="localeId"
-          />
+          /> -->
         </div><br/>
         <div class="form-group">
           <label for="city">logo url</label>
@@ -92,9 +115,9 @@
             placeholder="Enter description"
             formControlName="description"
           />
-        </div><br/>
-      <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      <button type="submit" class="btn btn-primary my-4">Submit</button>
   </form>
 </div>
-
+</div>
 <app-footer></app-footer>
