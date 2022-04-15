@@ -14,6 +14,7 @@ import { ListEventsComponent } from './list-events/list-events.component';
 import { EventPageComponent } from './event-page/event-page.component';
 import { EventFormComponent } from './event-form/event-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LocalesFormComponent } from './locales-form/locales-form.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     ListEventsComponent,
     EventPageComponent,
-    EventFormComponent
+    EventFormComponent,
+    LocalesFormComponent
   ],
   imports: [
     BrowserModule,

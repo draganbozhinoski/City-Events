@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { map, switchMap, tap } from 'rxjs';
 import { Image } from 'src/model/Image';
+import { CityLocale } from 'src/model/CityLocale';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class EventFormComponent implements OnInit {
   // covidCertificate :Boolean |undefined
   // localeId :Number |undefined
   // logoUrl :String |undefined
+  localesList: CityLocale[] | null = null
   private file:File | null = null
   createEvent = new FormGroup({
     eventName: new FormControl(null,Validators.required),
@@ -43,6 +45,9 @@ export class EventFormComponent implements OnInit {
     // this.createEvent.valueChanges.subscribe(
     //   data => console.log(data.eventImage)
     // )
+    this.service.getLocales().subscribe(
+      data => this.localesList = data
+    );
   }
   onFileChange(event:Event) {
       this.file = ((event.target) as HTMLInputElement).files!![0]
