@@ -1,11 +1,28 @@
 <app-navbar></app-navbar>
-<div *ngIf="event" class="bg">
-    <p>event-page works! {{event?.name}}</p>
+<div *ngIf="event" id="bg">
     <div class="container" id="upper">
-        upper
+        <div class="row">
+            <div id="image" class="col-3">
+                <img src="{{event.logoUrl}}" id="inside-img">
+            </div>
+            <div id="info" class="col-9">
+                <div class="container row">
+                        <div class="col-3">{{event.name}}</div>
+                        <div class="col-3">{{event.date}}</div>
+                </div>
+                <div class="container">
+                    {{event.city}}
+                </div>
+                <div class="container">
+                    {{event.numReservations}}
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="container" id="lower">
-        lower
+    <div class="container " id="lower">
+        <div class="container">
+            {{event.description}}
+        </div>
     </div>
 </div>
 <app-footer></app-footer>

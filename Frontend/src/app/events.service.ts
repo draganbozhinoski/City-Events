@@ -48,8 +48,7 @@ export class EventsService {
       "eventImage":eventImage,
       "adult":adult,
       "covidCertificate":covidCertificate,
-      "localeId":localeId,
-      "logoUrl":logoUrl,
+      "localeId":localeId
     }
   );
 }

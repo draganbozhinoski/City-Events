@@ -22,7 +22,6 @@ export class EventFormComponent implements OnInit {
   // localeId :Number |undefined
   // logoUrl :String |undefined
   private file:File | null = null
-
   createEvent = new FormGroup({
     eventName: new FormControl(null,Validators.required),
     numReservations: new FormControl(null,Validators.required),
