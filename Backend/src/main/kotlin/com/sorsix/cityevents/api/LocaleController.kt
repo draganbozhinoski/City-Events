@@ -6,16 +6,12 @@ import com.sorsix.cityevents.api.requests.ReservationRequest
 import com.sorsix.cityevents.api.requests.ReviewRequest
 import com.sorsix.cityevents.api.responses.*
 import com.sorsix.cityevents.domain.Review
-import com.sorsix.cityevents.domain.Table
 import com.sorsix.cityevents.service.LocaleService
 import com.sorsix.cityevents.service.ReviewService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import javax.transaction.TransactionScoped
-import javax.transaction.Transactional
-import kotlin.math.roundToInt
 
 @RestController
 @CrossOrigin(origins = ["http://localhost:4200"])

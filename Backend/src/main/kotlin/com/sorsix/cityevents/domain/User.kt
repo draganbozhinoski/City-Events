@@ -1,7 +1,6 @@
 package com.sorsix.cityevents.domain
 
 import com.fasterxml.jackson.annotation.JsonBackReference
-import com.fasterxml.jackson.annotation.JsonManagedReference
 import com.sorsix.cityevents.domain.enums.UserType
 import javax.persistence.*
 import javax.persistence.Table
@@ -10,6 +9,8 @@ import javax.persistence.Table
 @Table(name = "city_users")
 data class User(
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    val id:Long = -1,
     val username:String,
     val name:String,
     val email:String,
