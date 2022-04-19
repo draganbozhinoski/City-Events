@@ -1,7 +1,7 @@
 package com.sorsix.cityevents.domain.enums
 
 enum class UserType {
-    USER_ADMIN,
-    USER_OWNER,
-    USER_GUEST
+    ROLE_ADMIN,
+    ROLE_OWNER,
+    ROLE_GUEST
 }

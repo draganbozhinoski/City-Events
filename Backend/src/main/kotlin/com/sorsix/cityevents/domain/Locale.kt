@@ -43,4 +43,5 @@ data class Locale(
     @JsonBackReference
     @OnDelete(action = OnDeleteAction.CASCADE)
     val reviewsList:MutableList<Review> = mutableListOf()
+
 )
