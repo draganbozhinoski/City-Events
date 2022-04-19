@@ -1,31 +1,8 @@
 <br><br>
-
 <div class="row text-center">
-  <div *ngFor="let e of events" class="col-sm-3 event" routerLink="/events/{{e.id}}">
-    <!-- <div class="card-group">
-      <div class="card">
-        <img class="card-img-top picture img-thumbnail" src="{{e.logoUrl}}" alt="{{e.name}}">
-        <div *ngIf="e.adult||e.covidCertificate" class="tags">
-          <span *ngIf="e.adult">
-            <img src="../../assets/images/Icon-18+.png">
-          </span>
-          <span *ngIf="e.covidCertificate">
-            <img src="../../assets/images/Sertificate.png">
-          </span>
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">{{e.name}}</h5>
-          <p class="card-text"></p>
-          <div style="display:flex">  
-            <div><small class="text-muted">{{e.date}}</small></div>
-            <div style="margin-left:auto">{{e.city}}</div>
-          </div>
-        </div>
-      </div>
-    </div> -->
+  <div *ngFor="let e of events" class="col-sm-3 event" routerLink="/events/{{e.eventId}}">
     <div class="card spaceAround">
-      <img [src]="createImage(e.image.bytes)">
-      <img src="{{e.logoUrl}}" class="picture">
+      <img [src]="e.image">
       <div *ngIf="e.adult||e.covidCertificate" class="tags">
         <span *ngIf="e.adult">
           <img src="../../assets/images/Icon-18+.png">
@@ -34,37 +11,7 @@
           <img src="../../assets/images/Sertificate.png">
         </span>
       </div>
-      </div>
     </div>
   </div>
  <br><br>
-
-<!-- <div class="testimonial-group">
-  <div class="row text-center">
-    <div *ngFor="let e of events" class="col-sm-4">
-      <div class="card spaceAround">
-        <div class="card-body">{{ e.name }}</div>
-      </div>
-    </div>
-  </div>
-</div>
-<br><br> -->
-<!-- 
-<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-      <div *ngFor="let e of events;first as isFirst" class="carousel-item " [class.active]="isFirst">
-        <div class="card spaceAround">
-          <div class="card-body">{{ e.name }}</div>
-        </div>
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div> --> 
     

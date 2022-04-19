@@ -6,6 +6,8 @@ import com.sorsix.cityevents.api.responses.EventSuccess
 import com.sorsix.cityevents.domain.Event
 import com.sorsix.cityevents.domain.Image
 import com.sorsix.cityevents.domain.Locale
+import com.sorsix.cityevents.domain.view.EventImage
+import com.sorsix.cityevents.repository.EventImagesRepository
 import com.sorsix.cityevents.repository.EventsRepository
 import com.sorsix.cityevents.service.EventService
 import org.springframework.data.repository.findByIdOrNull
@@ -14,9 +16,9 @@ import java.time.LocalDateTime
 import javax.transaction.Transactional
 
 @Service
-class EventServiceImpl(private val eventsRepository: EventsRepository) : EventService {
+class EventServiceImpl(private val eventsRepository: EventsRepository,val eventImagesRepository: EventImagesRepository) : EventService {
 
-    override fun findAll(): MutableList<Event> {
+    override fun findAll(): List<Event> {
         return eventsRepository.findAll()
     }
 

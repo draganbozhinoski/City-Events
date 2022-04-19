@@ -40,7 +40,7 @@ create table city_users
     name              text   not null,
     password          text   not null,
     phone_number      bigint not null,
-    type              text   not null,
+    type              text   not null default 'USER_GUEST',
     locale_manages_id bigserial references city_locales (id)
 );
 create table city_reservations
