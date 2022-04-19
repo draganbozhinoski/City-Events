@@ -9,12 +9,13 @@ spring:
       - classpath:db/migration-dev
   datasource:
     url: jdbc:postgresql://localhost:5432/cityEvents
-    username: postgres
-    password: jocofinki246
+    username: sorsix
+    password: sorsix
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+
 
 server:
   port: 8082

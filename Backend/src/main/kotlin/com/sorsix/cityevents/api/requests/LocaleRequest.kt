@@ -10,4 +10,5 @@ data class LocaleRequest(
     val name:String,
     val type: LocaleType,
     val numTables: Int,
-val logoUrl:String)
+    val logoUrl:String
+    )

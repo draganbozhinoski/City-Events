@@ -35,7 +35,8 @@ create table city_tables
 );
 create table city_users
 (
-    username          text primary key,
+    id                bigserial primary key,
+    username          text   not null,
     email             text   not null,
     name              text   not null,
     password          text   not null,
@@ -45,14 +46,14 @@ create table city_users
 );
 create table city_reservations
 (
-    id            bigserial primary key,
-    date_time     date   not null,
-    description   text,
-    name          text   not null,
-    phone_number  bigint not null,
-    locale_id     bigserial references city_locales (id),
-    table_id      bigserial references city_tables (id),
-    user_username text references city_users (username)
+    id           bigserial primary key,
+    date_time    date   not null,
+    description  text,
+    name         text   not null,
+    phone_number bigint not null,
+    locale_id    bigserial references city_locales (id),
+    table_id     bigserial references city_tables (id),
+    user_id      bigserial references city_users (id)
 );
 create table city_reviews
 (

@@ -17,6 +17,9 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
+### Application-dev.yml - database auth changes
+application-dev.yml
+
 ### IntelliJ IDEA ###
 .idea
 *.iws

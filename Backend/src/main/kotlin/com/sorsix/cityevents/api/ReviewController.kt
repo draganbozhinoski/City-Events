@@ -1,8 +1,6 @@
 package com.sorsix.cityevents.api
 
-import com.sorsix.cityevents.api.requests.ReviewRequest
 import com.sorsix.cityevents.api.responses.*
-import com.sorsix.cityevents.domain.Review
 import com.sorsix.cityevents.service.ReviewService
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -11,7 +9,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/reviews")
-class ReviewController(val reviewService:ReviewService) {
+class ReviewController(val reviewService: ReviewService) {
     val logger:Logger = LoggerFactory.getLogger("Reviews controller")
     //returns all reviews in the database
     @GetMapping
