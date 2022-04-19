@@ -1,11 +1,10 @@
 <div id="bg">
     <app-navbar></app-navbar>
-  
     <div class="container events">
       <div *ngFor="let e of events" class="event row">
         <div class="col-4" id="picture">
-          <img src="{{e.logoUrl}}" style="width: 300px; padding: 10px;" >
-      </div>
+          <img [src]="e.image" style="width: 300px; padding: 10px;" >
+        </div>
         <div class="col-8">
           <div class="row upper-des">
             {{ e.name }}
