@@ -6,6 +6,7 @@ import { EventPageComponent } from './event-page/event-page.component';
 import { HomeComponent } from './home/home.component';
 import { ListEventsComponent } from './list-events/list-events.component';
 import { ListLocalesComponent } from './list-locales/list-locales.component';
+import { LocalePageComponent } from './locale-page/locale-page.component';
 import { LocalesFormComponent } from './locales-form/locales-form.component';
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
     }
   },
   { path: 'events/:id', component: EventPageComponent},
+  { path: 'locales/:id', component: LocalePageComponent},
   { path: 'events', component: ListEventsComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];

@@ -1,29 +1,33 @@
 <app-navbar></app-navbar>
 <div *ngIf="event" id="bg">
-    <div class="container" id="upper">
+    <div class="container">
         <div class="row">
-            <div id="image" class="col-3">
-                <img src="{{event.logoUrl}}" id="inside-img">
+            <div class="col-8 m-2">
+                <div id="image">
+                    <img src="{{event.logoUrl}}" id="inside-img">
+                </div>
+                <div class="h1 m-5 text-center info" id="title">{{event.name}}</div>
+                <div class="m-3 text-center">{{event.description}}</div>
             </div>
-            <div id="info" class="col-9">
-                <div class="container row">
-                        <div class="col-3">{{event.name}}</div>
-                        <div class="col-3">{{event.date}}</div>
+    
+            <div class="col-3">
+                <div class="info mb-4 text-center">
+                    <i class="bi bi-building icon" style="color: blue;"></i>: {{event.city}}
                 </div>
-                <div class="container">
-                    {{event.city}}
+                <div class="info mb-4 text-center">
+                    <i class="bi bi-calendar icon" style="color: blue;"></i>: {{event.date}}
                 </div>
-                <div class="container">
-                    {{event.numReservations}}
+                <div class="info mb-4 text-center">
+                    Number of reservations: {{event.numReservations}}
+                </div>
+                <div id="butt">
+                    <input class="btn btn-success" type="button" value="Make reservation">
                 </div>
             </div>
+    
         </div>
     </div>
-    <div class="container " id="lower">
-        <div class="container">
-            {{event.description}}
-        </div>
-    </div>
+    
 </div>
 <app-footer></app-footer>
 

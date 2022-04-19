@@ -1,0 +1,28 @@
+<app-navbar></app-navbar>
+<div *ngIf="locale" id="bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 m-2">
+                <div id="image">
+                    <img src="{{locale.logoUrl}}" id="inside-img">
+                </div>
+                <div class="h1 m-5 text-center info" id="title">{{locale.name}}</div>
+            </div>
+    
+            <div class="col-3">
+                <div class="info mb-4 text-center">
+                    Type: {{locale.type}}
+                </div>
+                <div class="info mb-4 text-center">
+                    Number of tables: {{locale.numTables}}
+                </div>
+                <br><br>
+                <img src="https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg" style="height: 200px;width: 300px;">
+            </div>
+    
+        </div>
+    </div>
+    
+</div>
+<app-footer></app-footer>
+

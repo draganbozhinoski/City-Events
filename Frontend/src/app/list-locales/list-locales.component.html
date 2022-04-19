@@ -2,16 +2,17 @@
   <app-navbar></app-navbar>
 
   <div class="container locales">
-    <div *ngFor="let l of locales" class="locale row">
+    <div *ngFor="let l of locales" class="locale row" routerLink="/locales/{{l.id}}">
       <div class="col-4 picture" >
-        <img src="{{l.logoUrl}}" style="height: 300xp; width: 300px;" >
+        <img src="{{l.logoUrl}}" class="img">
     </div>
       <div class="col-8">
         <div class="row upper-des">
           {{ l.name }}
         </div>
         <div class="row lower-des">
-          Type: {{ l.type }}
+          <div class="col-6 picture">Type: {{ l.type }}</div>
+          <div class="col-6 picture">Rewives ★★★★★</div>
         </div>
       </div>
     </div>

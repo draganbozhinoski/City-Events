@@ -10,6 +10,7 @@
 }
 #inside-img{
     height: 33vmax;
+    max-width: 40vmax;
     border-radius: 0.5rem;
     box-shadow: 0.1rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
 }

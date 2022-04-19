@@ -15,6 +15,7 @@ import { EventPageComponent } from './event-page/event-page.component';
 import { EventFormComponent } from './event-form/event-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocalesFormComponent } from './locales-form/locales-form.component';
+import { LocalePageComponent } from './locale-page/locale-page.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LocalesFormComponent } from './locales-form/locales-form.component';
     ListEventsComponent,
     EventPageComponent,
     EventFormComponent,
-    LocalesFormComponent
+    LocalesFormComponent,
+    LocalePageComponent
   ],
   imports: [
     BrowserModule,

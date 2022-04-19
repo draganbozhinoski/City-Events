@@ -1,1 +1,74 @@
-<p>locales-form works!</p>
+<app-navbar></app-navbar>
+<div class="bg">
+  <div class="container border border-primary">
+  <div id="header">CREATE NEW EVENT</div>
+  <form [formGroup]="createEvent" class="container" (ngSubmit)="submit()" >
+      <div class="form-group">
+        <label for="eventName">Event Name</label>
+        <input
+          type="text"
+          name="name"
+          class="form-control"
+          id="localeName"
+          placeholder="Enter event name"
+          formControlName="localeName"
+        />
+      </div><br/>
+      <div class="form-group">
+          <label for="numTables">Num Tables</label>
+          <input
+            type="number"
+            name="numTables"
+            class="form-control"
+            id="numTables"
+            placeholder="Enter number of tables"
+            formControlName="numTables"
+          />
+        </div><br/>
+        <!-- <label for="image">Locale logo</label>
+          <input
+          id="logoUrl"
+          name="logoUrl"
+          class="form-control"
+          type="file"
+          formControlName="logoUrl"
+          (change)="onFileChange($event)"
+          />
+          <br> -->
+          <label for="image">Locale logo</label>
+          <input
+          id="logoUrl"
+          name="logoUrl"
+          class="form-control"
+          type="text"
+          formControlName="logoUrl"
+          />
+          <br>
+        <div class="form-group" >
+          <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Select type
+            </button>
+            <ul class="dropdown-menu" name="type" formControlName="type">
+                <li class="dropdown-item" value="COFFEE_SHOP">COFFEE_SHOP</li>
+                <li class="dropdown-item" value="LUNCH_BAR">LUNCH_BAR</li>
+                <li class="dropdown-item" value="NIGHT_CLUB">NIGHT_CLUB</li>
+                <li class="dropdown-item" value="RESTAURANT">RESTAURANT</li>
+            </ul>
+            <!-- <p-dropdown [options]="types" formControlName="type" placeholder="Select a type"></p-dropdown> -->
+          </div>
+        </div>
+        <!-- <mat-form-field appearance="fill">
+            <mat-label>Favorite food</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field> -->
+          <br/><br/>
+      <button type="submit" class="btn btn-primary my-4">Submit</button>
+  </form>
+</div>
+</div>
+<app-footer></app-footer>

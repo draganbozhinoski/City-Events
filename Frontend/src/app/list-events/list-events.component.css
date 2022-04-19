@@ -2,12 +2,12 @@
     background-color:rgb(57, 56, 56);
 }
 .event{
-    height: 20vmax;
+    height: 22vmax;
     background-color: aliceblue;
     margin: 1.5vmax 0;
 }
 .event:hover{
-    transform: scale(1.01);
+    transform: scale(1.005);
 }
 .events{
     padding-top: 5.5vmax;
@@ -16,12 +16,21 @@
     height: 50%;
     align-items: center;
     justify-content: center;
-    font-size: 2vmax;
+    font-size: 3vmax;
+    color: white;
+    background-color: rgba(49, 85, 71, 0.808);;
 }
 .lower-des{
     height: 50%;
-    background-color: burlywood;
+    
 }
-#picture{
-    background-color:yellow
+.picture{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .img{
+    height: 300px;
+    width: 250px;
+    box-shadow: 0.3rem 0.3rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
   }
