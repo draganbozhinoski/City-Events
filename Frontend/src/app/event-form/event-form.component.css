@@ -3,6 +3,8 @@
     color: white;
     padding-top:7%;
     padding-bottom: 2%;
+    background-repeat: no-repeat;
+    background-image: url('../../assets/images/yvette-de-wit-NYrVisodQ2M-unsplash.jpg');
 }
 .row{
     margin: 5px 0;
@@ -14,4 +16,8 @@
 }
 .container {
     width:60%;
+
+}
+.backgroundphoto {
+
 }

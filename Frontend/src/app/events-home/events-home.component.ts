@@ -1,10 +1,14 @@
 import { getLocaleTimeFormat } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Quote } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { CityEvent } from 'src/model/CityEvent';
 import { CityLocale } from 'src/model/CityLocale';
 import { EventsService } from '../events.service';
+import { Image } from 'src/model/Image';
+import { EventImage } from 'src/model/EventImage';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-events-home',
@@ -12,33 +16,35 @@ import { EventsService } from '../events.service';
   styleUrls: ['./events-home.component.css']
 })
 export class EventsHomeComponent implements OnInit {
-  events: CityEvent[] = [];
-  eventsSub$: Observable<CityEvent[]> = this.service.getEvents();
-  eventLocaleMap: Map<Event,String> = new Map<Event,String>()
-  imageToShow: any = null
+  events: EventImage[] = [];
+  eventsSub$: Observable<EventImage[]> = this.service.getEventImages();
 
-
-  constructor(private service: EventsService) { }
+  constructor(private service: EventsService,private http:HttpClient,private sanitizer:DomSanitizer) { }
 
   ngOnInit(): void {
-    this.eventsSub$.subscribe({
+    this.eventsSub$.pipe(
+      map(data => this.transformData(data))
+    )
+    .subscribe({
       next: (data) => {
-          this.events = data;
+        this.events = data
       },
       error: (error) => {
           console.log('error', error);
       },
-  });
+    });
   }
-  createImage(image:Blob) {
-    if(image && image.size > 0) {
-      let reader = new FileReader();
-      reader.addEventListener("load", () => {
-        this.imageToShow = reader.result;
-      },false);
-      reader.readAsDataURL(image);
-      return this.imageToShow;
-    }
+  transformData(data:EventImage[]):EventImage[] {
+    return data.map(t => {
+      let url = `data:image/png;base64,${t.image.bytes}`;
+      let image = this.sanitizer.bypassSecurityTrustUrl(url);
+      return {
+        eventId: t.eventId,
+        image: image,
+        adult: t.adult,
+        covidCertificate: t.covidCertificate,
+      } as EventImage
+    })
   }
 
 }

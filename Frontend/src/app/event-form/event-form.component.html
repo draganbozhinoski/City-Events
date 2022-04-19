@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 <div class="bg">
-  <div class="container border border-primary">
+  <div class="container border backgroundphoto">
   <div id="header">CREATE NEW EVENT</div>
   <form [formGroup]="createEvent" class="container" (ngSubmit)="submit()" >
       <div class="form-group">
@@ -66,33 +66,15 @@
         </span>
         <br>
         <div class="form-group">
-          <!-- Example single danger button -->
-          <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Select locale
-            </button>
-            <ul class="dropdown-menu">
-              <li class="dropdown-item" *ngFor="let l of localesList">{{l.name}}</li>
-            </ul>
-            <!-- FALI USTE FUNKCIONALNOSTI ZA DROPDOWNOT ngprime da se implementira! TODO:-->
-            <!-- <div class="dropdown-menu">
-              
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Separated link</a>
-            </div> -->
-          </div>
-          <!--END -->
-          <!-- <input
+          <label for="localeId">Locale id:</label>
+          <input
             type="text"
             class="form-control"
             name="localeId"
             id="localeId"
             placeholder="Enter localeId"
             formControlName="localeId"
-          /> -->
+          />
         </div><br/>
         <div class="form-group">
           <label for="city">logo url</label>
