@@ -3,27 +3,37 @@ package com.sorsix.cityevents.api
 import com.sorsix.cityevents.api.requests.EventRequest
 import com.sorsix.cityevents.api.responses.*
 import com.sorsix.cityevents.domain.Event
+import com.sorsix.cityevents.domain.Image
+import com.sorsix.cityevents.domain.view.EventImage
+import com.sorsix.cityevents.repository.EventImagesRepository
 import com.sorsix.cityevents.repository.ImagesRepository
 import com.sorsix.cityevents.service.EventService
 import com.sorsix.cityevents.service.LocaleService
+import org.aspectj.util.FileUtil
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
+import java.nio.file.Path
 
 @RestController
 //@CrossOrigin(origins = ["http://localhost:4200"])
 @RequestMapping("/api/events")
-class EventController(val eventService:EventService, val localeService:LocaleService,val imagesRepository: ImagesRepository) {
+class EventController(val eventService:EventService, val localeService:LocaleService,val imagesRepository: ImagesRepository,val eventImagesRepository: EventImagesRepository) {
     val logger: Logger = LoggerFactory.getLogger("Event controller")
-    //read all
-    @GetMapping
-    fun getEvents():MutableList<Event> = eventService.findAll()
+    //=========================================================================
+    //read all events
     //find by id
+    @GetMapping
+    fun getEvents():List<Event> = eventService.findAll()
+    //read all eventImages
+    @GetMapping("/eventImages")
+    fun getEventImages():List<EventImage> = eventImagesRepository.findAll()
+
     @GetMapping("/{id}")
-    fun getEventById(@PathVariable id:Long): ResponseEntity<EventResponse> = when (val event = eventService.findById(id)) {
-            is EventSuccess -> ResponseEntity.ok().body(event)
+    fun getEventById(@PathVariable id:Long): ResponseEntity<Any> = when (val event = eventService.findById(id)) {
+            is EventSuccess -> ResponseEntity.ok().body(event.event)
             is EventError -> ResponseEntity.badRequest().body(event)
         }
     //create
@@ -109,6 +119,22 @@ class EventController(val eventService:EventService, val localeService:LocaleSer
             }
             is EventError -> {
                 ResponseEntity.badRequest().body(event)
+            }
+        }
+    }
+    @GetMapping("{id}/image")
+    fun getImageByEventId(@PathVariable id:Long):ResponseEntity<Any> {
+        return when(val event = eventService.findById(id)) {
+            is EventSuccess -> {
+                logger.info("Event found, retrieving image..")
+                when (val image = event.event.image) {
+                    null -> ResponseEntity.badRequest().body("Image was not found")
+                    else -> ResponseEntity.ok().body(image)
+                }
+            }
+            is EventError -> {
+                logger.error("Event not found")
+                ResponseEntity.badRequest().body("Event was not found")
             }
         }
     }

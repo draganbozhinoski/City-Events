@@ -31,9 +31,9 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
     //getbyid
     //read
     @GetMapping("/{id}")
-    fun getById(@PathVariable id: Long): ResponseEntity<LocaleResponse> {
+    fun getById(@PathVariable id: Long): ResponseEntity<Any> {
         return when (val locale = localeService.getLocale(id)) {
-            is LocaleSuccess -> ResponseEntity.ok().body(locale)
+            is LocaleSuccess -> ResponseEntity.ok().body(locale.locale)
             is LocaleError -> ResponseEntity.badRequest().body(locale)
         }
     }

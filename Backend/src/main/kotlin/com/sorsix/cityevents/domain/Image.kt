@@ -1,9 +1,6 @@
 package com.sorsix.cityevents.domain
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 @javax.persistence.Table(name="city_images")
@@ -13,6 +10,7 @@ data class Image(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id:Long = -1L,
     val name:String?,
+    @Column(length=1000)
     val bytes:ByteArray,
     val type:String?
 )
