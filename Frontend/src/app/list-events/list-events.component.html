@@ -1,16 +1,18 @@
 <div id="bg">
     <app-navbar></app-navbar>
     <div class="container events">
-      <div *ngFor="let e of events" class="event row">
-        <div class="col-4" id="picture">
-          <img [src]="e.image" style="width: 300px; padding: 10px;" >
-        </div>
+
+      <div *ngFor="let e of events" class="event row" routerLink="/events/{{e.id}}">
+        <div class="col-4 picture">
+          <img src="{{e.logoUrl}}" class="img" >
+      </div>
         <div class="col-8">
           <div class="row upper-des">
             {{ e.name }}
           </div>
           <div class="row lower-des">
-            City: {{ e.city }}
+            <div class="col-6 picture">City: {{ e.city }}</div>
+            <div class="col-6 picture">Rewives ★★★★★</div>
           </div>
         </div>
       </div>

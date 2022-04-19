@@ -3,7 +3,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CityEvent } from 'src/model/CityEvent';
 import { CityLocale } from 'src/model/CityLocale';
+
+import { SingleEvent } from 'src/model/SigleEvent';
+import { SingleLocale } from 'src/model/SingleLocale';
 import { EventImage } from 'src/model/EventImage';
+
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +28,11 @@ export class EventsService {
   getEventById(id:Number): Observable<CityEvent> {
     return this.http.get<CityEvent>(
       `http://localhost:8082/api/events/${id}`
+    );
+  }
+  getLocaleById(id:Number): Observable<SingleLocale> {
+    return this.http.get<SingleLocale>(
+      `http://localhost:8082/api/locales/${id}`
     );
   }
   getLocales(): Observable<CityLocale[]> {
