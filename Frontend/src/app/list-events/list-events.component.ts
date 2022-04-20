@@ -17,8 +17,7 @@ export class ListEventsComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventsSub$.pipe(
-      map(data => this.transformData(data)),
-      tap(data => console.log(data)))
+      map(data => this.transformData(data)))
     .subscribe({
       next: (data) => {
         this.events = data;

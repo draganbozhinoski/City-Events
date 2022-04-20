@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { CityEvent } from 'src/model/CityEvent';
 import { CityLocale } from 'src/model/CityLocale';
 
-import { SingleEvent } from 'src/model/SigleEvent';
 import { SingleLocale } from 'src/model/SingleLocale';
 import { EventImage } from 'src/model/EventImage';
 
@@ -23,15 +22,15 @@ export class EventsService {
     );
   }
   getEvents(): Observable<CityEvent[]> {
-    return this.http.get<CityEvent[]>("http://localhost:8082/api/events/eventImages");
+    return this.http.get<CityEvent[]>("http://localhost:8082/api/events");
   }
   getEventById(id:Number): Observable<CityEvent> {
     return this.http.get<CityEvent>(
       `http://localhost:8082/api/events/${id}`
     );
   }
-  getLocaleById(id:Number): Observable<SingleLocale> {
-    return this.http.get<SingleLocale>(
+  getLocaleById(id:Number): Observable<CityLocale> {
+    return this.http.get<CityLocale>(
       `http://localhost:8082/api/locales/${id}`
     );
   }

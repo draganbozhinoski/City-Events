@@ -4,7 +4,7 @@
 
       <div *ngFor="let e of events" class="event row" routerLink="/events/{{e.id}}">
         <div class="col-4 picture">
-          <img src="{{e.logoUrl}}" class="img" >
+          <img [src]="e.image" class="img" >
       </div>
         <div class="col-8">
           <div class="row upper-des">

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { filter, map, mergeMap } from 'rxjs';
+import { filter, map, mergeMap, tap } from 'rxjs';
 import { CityLocale } from 'src/model/CityLocale';
 import { EventsService } from '../events.service';
 
@@ -22,8 +22,7 @@ export class LocalePageComponent implements OnInit {
       )
       .subscribe({
         next: data => {
-            this.locale = data.locale
-            console.log(data)
+            this.locale = data
         },
         error: data => {
             

@@ -22,7 +22,8 @@ export class EventPageComponent implements OnInit {
       filter(params=>params.has("id")),
       map(params=>+params.get("id")!),
       mergeMap(p=>this.service.getEventById(p)),
-      map(data => this.transformData(data))
+      map(data => this.transformData(data)),
+      tap(data => console.log(data))
       )
       .subscribe({
         next: data => {
