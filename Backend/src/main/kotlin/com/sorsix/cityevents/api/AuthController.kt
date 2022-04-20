@@ -4,6 +4,7 @@ import com.sorsix.cityevents.api.requests.AuthRequest
 import com.sorsix.cityevents.api.requests.UserRequest
 import com.sorsix.cityevents.domain.User
 import com.sorsix.cityevents.domain.enums.UserType
+import com.sorsix.cityevents.domain.view.UserJwt
 import com.sorsix.cityevents.jwt.JwtUtil
 import com.sorsix.cityevents.repository.UsersRepository
 import com.sorsix.cityevents.service.MyUsersService
@@ -27,12 +28,20 @@ class AuthController(
     val myUsersService: MyUsersService
 ) {
     @PostMapping("/register")
-    fun register(@RequestBody userRequest: UserRequest) {
-        userRepository.save(User(username = "test",name="test",email="test", password = encoder.encode("test"), phoneNumber = "071",roles="ROLE_ADMIN", localeManages = null, reservation = null, type = UserType.ROLE_ADMIN))
+    fun register(@RequestBody userRequest: UserRequest):ResponseEntity<Any> {
+        return when(userRepository.findByUsername(userRequest.username).isPresent) {
+            true -> {
+                ResponseEntity.badRequest().body("User already in the database")
+            }
+            else -> {
+                userRepository.save(User(username = userRequest.username,name=userRequest.name,email=userRequest.email, password = encoder.encode(userRequest.password), phoneNumber = userRequest.phoneNumber, localeManages = null, reservation = null, type = UserType.ROLE_GUEST))
+                ResponseEntity.ok().body("User saved")
+            }
+        }
     }
 
     @PostMapping("/login")
-    fun login(@RequestBody authRequest:AuthRequest):ResponseEntity<String> {
+    fun login(@RequestBody authRequest:AuthRequest):ResponseEntity<UserJwt> {
         try{
             this.authenticationManager.authenticate(
                 UsernamePasswordAuthenticationToken(authRequest.username,authRequest.password)
@@ -41,8 +50,8 @@ class AuthController(
             throw Exception("Incorrect username or password",e)
         }
         val userDetails: UserDetails = this.myUsersService.loadUserByUsername(authRequest.username)
+        val user:User = userRepository.findByUsername(userDetails.username).get()
         val jwt:String = this.jwtUtils.generateToken(userDetails)
-        return ResponseEntity.ok().body(jwt)
-
+        return ResponseEntity.ok().body(UserJwt(user,jwt))
     }
 }

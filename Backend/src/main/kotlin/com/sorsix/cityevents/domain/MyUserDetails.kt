@@ -1,12 +1,14 @@
 package com.sorsix.cityevents.domain
 
+import com.sorsix.cityevents.domain.enums.UserType
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 
 class MyUserDetails(val user:User):UserDetails {
     override fun getAuthorities(): MutableCollection<out GrantedAuthority> {
-        return user.roles.split(",").map { SimpleGrantedAuthority(it) }.toMutableList()
+        return mutableListOf<GrantedAuthority>(SimpleGrantedAuthority(user.type.toString()))
+//        return user.roles.split(",").map { SimpleGrantedAuthority(it) }.toMutableList()
     }
 
     override fun getPassword(): String {
