@@ -1,9 +1,15 @@
-insert into city_locales(logo_url, name, num_tables, type) values
-('https://drdrew.com/wp-content/uploads/2018/01/opium-2018-1.jpg','Opium',50,'NIGHT_CLUB'),
-('http://m.grish.co.kr/web/product/medium/202104/62eab208de67e6cb9a9e5c2d6ce00e76.jpg','Grish',15,'COFFEE_SHOP'),
-('https://yt3.ggpht.com/ytc/AKedOLSMlpEwhaHspHB8xQmkFbSSWpa5c8mY8BtXtHL1Rg=s900-c-k-c0x00ffffff-no-rj','Simple',25,'COFFEE_SHOP'),
-('https://play-lh.googleusercontent.com/k5eHiOSJKPOYoHITJdF9reVhEQoMKBwk0EYknLlP6WtX40VtRi5nEaONVt5EGJOx9CQ','Vibe bar & food',30,'LUNCH_BAR'),
-('https://assets.entrepreneur.com/content/3x2/2000/20161024211709-GettyImages-138412921.jpeg','Boss',20,'RESTAURANT');
+insert into city_users(username,email,name,password,phone_number,type) values
+('dbozhinoski','dragan@sorsix.com','Dragan','123',071519218,'ROLE_ADMIN'),
+('dbjov','dragan@sorsix.com','Jovan','123',071519218,'ROLE_ADMIN'),
+('jovdb','urda@sorsix.com','Stojan','123',071519218,'ROLE_GUEST'),
+('jovie','jovan@sorsix.com','Bojan','123',071519218,'ROLE_GUEST'),
+('dboie','mevlar@sorsix.com','Xhemil','123',071519218,'ROLE_GUEST');
+insert into city_locales(logo_url, name, num_tables, type,owner_id) values
+('https://drdrew.com/wp-content/uploads/2018/01/opium-2018-1.jpg','Opium',50,'NIGHT_CLUB',1),
+('http://m.grish.co.kr/web/product/medium/202104/62eab208de67e6cb9a9e5c2d6ce00e76.jpg','Grish',15,'COFFEE_SHOP',2),
+('https://yt3.ggpht.com/ytc/AKedOLSMlpEwhaHspHB8xQmkFbSSWpa5c8mY8BtXtHL1Rg=s900-c-k-c0x00ffffff-no-rj','Simple',25,'COFFEE_SHOP',3),
+('https://play-lh.googleusercontent.com/k5eHiOSJKPOYoHITJdF9reVhEQoMKBwk0EYknLlP6WtX40VtRi5nEaONVt5EGJOx9CQ','Vibe bar & food',30,'LUNCH_BAR',4),
+('https://assets.entrepreneur.com/content/3x2/2000/20161024211709-GettyImages-138412921.jpeg','Boss',20,'RESTAURANT',5);
 insert into city_images(name,type) values
 ('Test-photo','jpeg');
 insert into city_events(adult, city, covid_certificate, date, description, logo_url, name, num_reservations,locale_id,image_id) values

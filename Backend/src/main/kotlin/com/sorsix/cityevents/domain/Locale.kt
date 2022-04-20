@@ -23,6 +23,9 @@ data class Locale(
     val type:LocaleType,
 
     val numTables:Int,
+    @OneToOne
+    @JsonManagedReference
+    val owner:User?, // sredi go prasalnikot TODO:
 
     @OneToMany(mappedBy = "locale")
     @JsonBackReference

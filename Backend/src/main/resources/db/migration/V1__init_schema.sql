@@ -1,10 +1,21 @@
+create table city_users
+(
+    id                bigserial primary key,
+    username          text   not null,
+    email             text   not null,
+    name              text   not null,
+    password          text   not null,
+    phone_number      text   not null,
+    type              text   not null default 'USER_GUEST'
+);
 create table city_locales
 (
     id         bigserial primary key,
     logo_url   text,
     name       text   not null,
     num_tables bigint not null,
-    type       text
+    type       text,
+    owner_id    bigserial references city_users(id)
 );
 create table city_images
 (
@@ -32,17 +43,6 @@ create table city_tables
     id        bigserial primary key,
     reserved  boolean not null,
     locale_id bigserial references city_locales (id)
-);
-create table city_users
-(
-    id                bigserial primary key,
-    username          text   not null,
-    email             text   not null,
-    name              text   not null,
-    password          text   not null,
-    phone_number      bigint not null,
-    type              text   not null default 'USER_GUEST',
-    locale_manages_id bigserial references city_locales (id)
 );
 create table city_reservations
 (
