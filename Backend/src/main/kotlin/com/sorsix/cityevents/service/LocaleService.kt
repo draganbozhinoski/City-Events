@@ -35,7 +35,7 @@ class LocaleService(
         logoUrl: String
     ): LocaleResponse {
         if (type in LocaleType.values()) {
-            val locale = localesRepository.save(Locale(name = name, type = type, numTables = numTables, logoUrl = logoUrl))
+            val locale = localesRepository.save(Locale(name = name, type = type, numTables = numTables, logoUrl = logoUrl,owner = null))//TODO: sredi go userot ovde
             for (i in 0 until numTables) {
                 tablesRepository.save(Table(reserved = false, reservation = null, locale = locale))
             }

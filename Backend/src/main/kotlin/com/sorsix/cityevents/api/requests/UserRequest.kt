@@ -12,6 +12,4 @@ data class UserRequest(
     val password:String,
     val email:String,
     val phoneNumber:String,
-    val type: UserType,
-    val localeId: Long
-    )
+    val type: UserType)
