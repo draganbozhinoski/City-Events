@@ -11,8 +11,9 @@
             {{ e.name }}
           </div>
           <div class="row lower-des">
-            <div class="col-6 picture">City: {{ e.city }}</div>
-            <div class="col-6 picture">Rewives ★★★★★</div>
+            <div class="col-4 picture">City: {{ e.city }}</div>
+            <div class="col-4 picture"><i class="bi bi-calendar icon"></i> {{e.date}}</div>
+            <div class="col-4 picture">Locale: {{e.locale.name}}</div>
           </div>
         </div>
       </div>

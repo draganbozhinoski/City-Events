@@ -7,7 +7,7 @@
     margin: 1.5vmax 0;
 }
 .event:hover{
-    transform: scale(1.005);
+    transform: scale(1.01);
 }
 .events{
     padding-top: 5.5vmax;
