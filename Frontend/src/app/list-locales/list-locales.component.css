@@ -8,7 +8,7 @@
     margin: 1.5vmax 0;
 }
 .locale:hover{
-    transform: scale(1.005);
+    transform: scale(1.01);
 }
 .locales{
     padding-top: 5.5vmax;
