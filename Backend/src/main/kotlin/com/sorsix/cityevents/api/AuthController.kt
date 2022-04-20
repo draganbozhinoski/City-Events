@@ -52,6 +52,6 @@ class AuthController(
         val userDetails: UserDetails = this.myUsersService.loadUserByUsername(authRequest.username)
         val user:User = userRepository.findByUsername(userDetails.username).get()
         val jwt:String = this.jwtUtils.generateToken(userDetails)
-        return ResponseEntity.ok().body(UserJwt(user,jwt))
+        return ResponseEntity.ok().body(UserJwt(user.username,user.name,user.email,user.phoneNumber,user.type,jwt))
     }
 }
