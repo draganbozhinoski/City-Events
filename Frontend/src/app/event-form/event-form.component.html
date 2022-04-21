@@ -1,105 +1,110 @@
 <app-navbar></app-navbar>
-<div class="bg">
-  <div class="container border backgroundphoto">
-  <div id="header">CREATE NEW EVENT</div>
-  <form [formGroup]="createEvent" class="container" (ngSubmit)="submit()" >
-      <div class="form-group">
-        <label for="eventName">Event Name</label>
-        <input
-          type="text"
-          name="name"
-          class="form-control"
-          id="eventName"
-          placeholder="Enter event name"
-          formControlName="eventName"
-        />
-      </div><br/>
-      <div class="form-group">
-          <label for="numReservations">Number of reservations</label>
-          <input
-            type="number"
-            name="numReservations"
-            class="form-control"
-            id="numReservations"
-            placeholder="Enter number of reservations"
-            formControlName="numReservations"
-          />
-        </div><br/>
-        <div class="form-group">
-          <label for="city">City</label>
-          <input
-            type="text"
-            class="form-control"
-            name="city"
-            id="city"
-            placeholder="Enter city"
-            formControlName="city"
-          />
-        </div><br/>
-        <div class="form-group">
-          <label for="date">Date and time</label>
-          <input
-            type="datetime-local"
-            class="form-control"
-            name="date"
-            id="date"
-            placeholder="Enter date and time"
-            formControlName="date"
-          />
-        </div><br/>
-        <label for="image">Event image</label>
-          <input
-          id="image"
-          name="image"
-          class="form-control"
-          type="file"
-          formControlName="eventImage"
-          (change)="onFileChange($event)"
-          />
-        <span class="form-group form-check">
-          <input type="checkbox" name="adult" class="form-check-input" id="adult" formControlName="adult">
-          <label class="form-check-label" for="adult">18+ only</label>
-        </span>
-        <span class="form-group form-check">
-          <input type="checkbox" name="covidCertificate" class="form-check-input" id="sertificate" formControlName="covidCertificate">
-          <label class="form-check-label" for="sertificate">Covid certificate only</label>
-        </span>
-        <br>
-        <div class="form-group">
-          <label for="localeId">Locale id:</label>
-          <input
-            type="text"
-            class="form-control"
-            name="localeId"
-            id="localeId"
-            placeholder="Enter localeId"
-            formControlName="localeId"
-          />
-        </div><br/>
-        <div class="form-group">
-          <label for="city">logo url</label>
-          <input
-            type="text"
-            class="form-control"
-            name="logoUrl"
-            id="logoUrl"
-            placeholder="Enter logo url"
-            formControlName="logoUrl"
-          />
-        </div><br/>
-        <div class="form-group">
-          <label for="city">Description</label>
-          <input
-            type="text"
-            class="form-control"
-            name="description"
-            id="description"
-            placeholder="Enter description"
-            formControlName="description"
-          />
-        </div>
-      <button type="submit" class="btn btn-primary my-4">Submit</button>
-  </form>
+<div *ngIf="localesList">
+  <div class="bg">
+      <div class="container border backgroundphoto">
+      <div id="header">CREATE NEW EVENT</div>
+      <form [formGroup]="createEvent" class="container" (ngSubmit)="submit()" >
+          <div class="form-group">
+            <label for="eventName">Event Name</label>
+            <input
+              type="text"
+              name="name"
+              class="form-control"
+              id="eventName"
+              placeholder="Enter event name"
+              formControlName="eventName"
+            />
+          </div><br/>
+          <div class="form-group">
+              <label for="numReservations">Number of reservations</label>
+              <input
+                type="number"
+                name="numReservations"
+                class="form-control"
+                id="numReservations"
+                placeholder="Enter number of reservations"
+                formControlName="numReservations"
+              />
+            </div><br/>
+            <div class="form-group">
+              <label for="city">City</label>
+              <input
+                type="text"
+                class="form-control"
+                name="city"
+                id="city"
+                placeholder="Enter city"
+                formControlName="city"
+              />
+            </div><br/>
+            <div class="form-group">
+              <label for="date">Date and time</label>
+              <input
+                type="datetime-local"
+                class="form-control"
+                name="date"
+                id="date"
+                placeholder="Enter date and time"
+                formControlName="date"
+              />
+            </div><br/>
+            <label for="image">Event image</label>
+              <input
+              id="image"
+              name="image"
+              class="form-control"
+              type="file"
+              formControlName="eventImage"
+              (change)="onFileChange($event)"
+              />
+            <span class="form-group form-check">
+              <input type="checkbox" name="adult" class="form-check-input" id="adult" formControlName="adult">
+              <label class="form-check-label" for="adult">18+ only</label>
+            </span>
+            <span class="form-group form-check">
+              <input type="checkbox" name="covidCertificate" class="form-check-input" id="sertificate" formControlName="covidCertificate">
+              <label class="form-check-label" for="sertificate">Covid certificate only</label>
+            </span>
+            <br>
+            <div class="form-group">
+              <label for="localeId">Locale id:</label>
+              <input
+                type="text"
+                class="form-control"
+                name="localeId"
+                id="localeId"
+                placeholder="Enter localeId"
+                formControlName="localeId"
+              />
+            </div><br/>
+            <div class="form-group">
+              <label for="city">logo url</label>
+              <input
+                type="text"
+                class="form-control"
+                name="logoUrl"
+                id="logoUrl"
+                placeholder="Enter logo url"
+                formControlName="logoUrl"
+              />
+            </div><br/>
+            <div class="form-group">
+              <label for="city">Description</label>
+              <input
+                type="text"
+                class="form-control"
+                name="description"
+                id="description"
+                placeholder="Enter description"
+                formControlName="description"
+              />
+            </div>
+          <button type="submit" class="btn btn-primary my-4">Submit</button>
+      </form>
+    </div>
+  </div>
 </div>
+<div *ngIf="!localesList" class="text-white bg-danger">
+  <p>Add locales first, then attempt to create event!</p>
 </div>
 <app-footer></app-footer>

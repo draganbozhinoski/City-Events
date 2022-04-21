@@ -16,6 +16,11 @@ import { EventFormComponent } from './event-form/event-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocalesFormComponent } from './locales-form/locales-form.component';
 import { LocalePageComponent } from './locale-page/locale-page.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminEventsComponent } from './admin-events/admin-events.component';
+import { AdminLocalesComponent } from './admin-locales/admin-locales.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminReservationsComponent } from './admin-reservations/admin-reservations.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,12 @@ import { LocalePageComponent } from './locale-page/locale-page.component';
     EventPageComponent,
     EventFormComponent,
     LocalesFormComponent,
-    LocalePageComponent
+    LocalePageComponent,
+    AdminPanelComponent,
+    AdminEventsComponent,
+    AdminLocalesComponent,
+    AdminUsersComponent,
+    AdminReservationsComponent
   ],
   imports: [
     BrowserModule,
