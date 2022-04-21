@@ -2,7 +2,7 @@
 <div class="row text-center">
   <div *ngFor="let e of events" class="col-sm-3 event" routerLink="/events/{{e.eventId}}">
     <div class="card spaceAround">
-      <img [src]="e.image">
+      <img [src]="e.image" class="picture img">
       <div *ngIf="e.adult||e.covidCertificate" class="tags">
         <span *ngIf="e.adult">
           <img src="../../assets/images/Icon-18+.png">
