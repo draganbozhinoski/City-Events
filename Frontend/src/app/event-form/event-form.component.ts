@@ -32,7 +32,7 @@ export class EventFormComponent implements OnInit {
   })
 
   constructor(private service: EventsService,private http:HttpClient,private router:Router) { }
-
+  
   ngOnInit(): void {
     this.service.getLocales().subscribe(
       data => this.localesList = data

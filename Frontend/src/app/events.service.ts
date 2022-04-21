@@ -39,6 +39,12 @@ export class EventsService {
       "http://localhost:8082/api/locales"
     );
   }
+  deleteEvent(eventId:Number):Observable<CityEvent[]> {
+    return this.http.delete<CityEvent[]>(`api/events/delete/${eventId}`);
+  }
+  deleteLocale(localeId:Number):Observable<CityLocale[]> {
+    return this.http.delete<CityLocale[]>(`api/locales/delete/${localeId}`);
+  }
   SaveEvent(
     name: String | undefined,
     numReservations: Number | undefined,

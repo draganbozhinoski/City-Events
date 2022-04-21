@@ -1,5 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminEventsComponent } from './admin-events/admin-events.component';
+import { AdminLocalesComponent } from './admin-locales/admin-locales.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AuthGuard } from './auth.guard';
 import { EventFormComponent } from './event-form/event-form.component';
 import { EventPageComponent } from './event-page/event-page.component';
@@ -19,7 +22,7 @@ const routes: Routes = [
       role: 'ADMIN'
     }
   },
-  { path: 'locales', component: ListLocalesComponent},
+  { path: 'locales/:id', component: LocalePageComponent},
   { 
     path: 'events/create', component: EventFormComponent,
     canActivate: [AuthGuard],
@@ -28,8 +31,12 @@ const routes: Routes = [
     }
   },
   { path: 'events/:id', component: EventPageComponent},
-  { path: 'locales/:id', component: LocalePageComponent},
   { path: 'events', component: ListEventsComponent},
+  { path: 'locales', component: ListLocalesComponent},
+  { path: 'locales', component: ListLocalesComponent},
+  { path: 'admin/events', component: AdminEventsComponent},
+  { path: 'admin/locales', component: AdminLocalesComponent},
+  { path: 'admin', component: AdminPanelComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 

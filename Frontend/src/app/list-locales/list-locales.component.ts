@@ -18,7 +18,6 @@ export class ListLocalesComponent implements OnInit {
     this.localesSub$.subscribe({
       next: (data) => {
         this.locales = data;
-        console.log(data);
       },
       error: (error) => {
         console.log('error', error);
