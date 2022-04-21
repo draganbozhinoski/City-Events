@@ -6,6 +6,8 @@ import { CityLocale } from 'src/model/CityLocale';
 
 import { SingleLocale } from 'src/model/SingleLocale';
 import { EventImage } from 'src/model/EventImage';
+import { CityUser } from 'src/model/CityUser';
+import { CityReservation } from 'src/model/CityReservation';
 
 
 @Injectable({
@@ -18,26 +20,36 @@ export class EventsService {
 
   getEventImages(): Observable<EventImage[]> {
     return this.http.get<EventImage[]>(
-      "http://localhost:8082/api/events/eventImages"
+      "/api/events/eventImages"
     );
   }
   getEvents(): Observable<CityEvent[]> {
-    return this.http.get<CityEvent[]>("http://localhost:8082/api/events");
+    return this.http.get<CityEvent[]>("/api/events");
   }
   getEventById(id:Number): Observable<CityEvent> {
     return this.http.get<CityEvent>(
-      `http://localhost:8082/api/events/${id}`
+      `/api/events/${id}`
     );
   }
   getLocaleById(id:Number): Observable<CityLocale> {
     return this.http.get<CityLocale>(
-      `http://localhost:8082/api/locales/${id}`
+      `/api/locales/${id}`
     );
   }
   getLocales(): Observable<CityLocale[]> {
     return this.http.get<CityLocale[]>(
-      "http://localhost:8082/api/locales"
+      "/api/locales"
     );
+  }
+  getUsers(): Observable<CityUser[]> {
+    return this.http.get<CityUser[]>(
+      "/api/users"
+    )
+  }
+  getReservations(): Observable<CityReservation[]> {
+    return this.http.get<CityReservation[]>(
+      "/api/reservations"
+    )
   }
   deleteEvent(eventId:Number):Observable<CityEvent[]> {
     return this.http.delete<CityEvent[]>(`api/events/delete/${eventId}`);
