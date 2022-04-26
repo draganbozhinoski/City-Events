@@ -26,6 +26,7 @@ import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminReservationsComponent } from './admin-reservations/admin-reservations.component';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { AdminReviewsComponent } from './admin-reviews/admin-reviews.component';
+import { ReserveFormComponent } from './reserve-form/reserve-form.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { AdminReviewsComponent } from './admin-reviews/admin-reviews.component';
     AdminUsersComponent,
     AdminReservationsComponent,
     CreateUserComponent,
-    AdminReviewsComponent
+    AdminReviewsComponent,
+    ReserveFormComponent
   ],
   imports: [
     BrowserModule,

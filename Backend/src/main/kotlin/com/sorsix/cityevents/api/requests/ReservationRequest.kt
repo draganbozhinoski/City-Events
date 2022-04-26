@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 
 data class ReservationRequest(
     val name:String,
-    val phoneNumber:String,
+    val phoneNumber:Long,
     val dateTime:LocalDateTime,
     // sega za sega kje ostane na prvata slobodna masa vo ciklusot od lokalot.
     val username:String,
