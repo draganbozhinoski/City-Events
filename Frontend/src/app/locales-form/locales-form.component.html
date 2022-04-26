@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div class="bg">
   <div class="container border border-primary">
-  <div id="header">CREATE NEW EVENT</div>
+  <div id="header">CREATE NEW LOCALE</div>
   <form [formGroup]="createEvent" class="container" (ngSubmit)="submit()" >
       <div class="form-group">
         <label for="eventName">Event Name</label>
@@ -25,16 +25,6 @@
             formControlName="numTables"
           />
         </div><br/>
-        <!-- <label for="image">Locale logo</label>
-          <input
-          id="logoUrl"
-          name="logoUrl"
-          class="form-control"
-          type="file"
-          formControlName="logoUrl"
-          (change)="onFileChange($event)"
-          />
-          <br> -->
           <label for="image">Locale logo</label>
           <input
           id="logoUrl"
@@ -44,28 +34,14 @@
           formControlName="logoUrl"
           />
           <br>
-        <div class="form-group" >
-          <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Select type
-            </button>
-            <ul class="dropdown-menu" name="type" formControlName="type">
-                <li class="dropdown-item" value="COFFEE_SHOP">COFFEE_SHOP</li>
-                <li class="dropdown-item" value="LUNCH_BAR">LUNCH_BAR</li>
-                <li class="dropdown-item" value="NIGHT_CLUB">NIGHT_CLUB</li>
-                <li class="dropdown-item" value="RESTAURANT">RESTAURANT</li>
-            </ul>
-            <!-- <p-dropdown [options]="types" formControlName="type" placeholder="Select a type"></p-dropdown> -->
+          <div class="form-group">
+            <select class="form-control">
+              <option value="COFFEE_SHOP">Coffee Shop</option>
+              <option value="LUNCH_BAR">Lunch Bar</option>
+              <option value="NIGHT_CLUB">Night Club</option>
+              <option value="RESTAURANT">Restaurant</option>
+            </select>
           </div>
-        </div>
-        <!-- <mat-form-field appearance="fill">
-            <mat-label>Favorite food</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let food of foods" [value]="food.value">
-                {{food.viewValue}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field> -->
           <br/><br/>
       <button type="submit" class="btn btn-primary my-4">Submit</button>
   </form>

@@ -9,6 +9,7 @@ import { EventImage } from 'src/model/EventImage';
 import { User } from 'src/model/User';
 import { CityUser } from 'src/model/CityUser';
 import { CityReservation } from 'src/model/CityReservation';
+import { CityReview } from 'src/model/CityReview';
 
 
 @Injectable({
@@ -52,6 +53,11 @@ export class EventsService {
       "/api/reservations"
     )
   }
+  getReviews(): Observable<CityReview[]> {
+    return this.http.get<CityReview[]>(
+      "/api/reviews"
+    )
+  }
   deleteEvent(eventId:Number):Observable<CityEvent[]> {
     return this.http.delete<CityEvent[]>(`api/events/delete/${eventId}`);
   }
@@ -80,6 +86,24 @@ export class EventsService {
       "localeId":localeId
     }
   );
+  }
+  saveUser(
+    name: String,
+    username: String,
+    email: String,
+    password: String,
+    phoneNumber: String,
+    role:String
+  ) {
+    return this.http.post<any>("/api/auth/register", {
+      "name":name,
+      "username":username,
+      "email":email,
+      "password":password,
+      "phoneNumber":phoneNumber,
+      "role":role
+    })
+  }
 }
 
 reserve(id:Number): Observable<Boolean> {
