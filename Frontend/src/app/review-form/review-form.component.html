@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="bg">
+  <div class="container border border-primary">
+  <div id="header">ADD NEW REVIEW FOR LOCALE </div>
+  <form [formGroup]="createReview" class="container" (ngSubmit)="submit()" >
+      <div class="form-group">
+        <label for="review">Review Description:</label>
+        <input
+          type="text"
+          name="review"
+          class="form-control"
+          id="review"
+          placeholder="Enter review"
+          formControlName="review"
+        />
+      </div><br/>
+      <div class="form-group">
+          <label for="numTables">Stars</label>
+          <p-rating formControlName="stars"></p-rating>
+        </div>
+      <button type="submit" class="btn btn-primary my-4">Save</button>
+  </form>
+</div>
+</div>
+<app-footer></app-footer>
