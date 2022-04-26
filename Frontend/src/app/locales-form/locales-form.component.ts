@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CityLocale } from 'src/model/CityLocale';
 import { EventsService } from '../events.service';
 import { Image } from 'src/model/Image';
+import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-locales-form',
@@ -21,7 +23,7 @@ export class LocalesFormComponent implements OnInit {
     type: new FormControl(null,Validators.required)
   })
 
-  constructor(private service: EventsService,private http:HttpClient) { }
+  constructor(private service: EventsService,private http:HttpClient,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -46,7 +48,7 @@ submit(){
       "localeName":this.createEvent.controls['localeName'].value,
       "type":this.createEvent.controls['type'].value,
       "numTables":this.createEvent.controls['numTables'].value,
-      "imageId":this.createEvent.controls['imageId'].value
-    }).subscribe()
+      "imageId":this.createEvent.controls['imageId'].value,
+    }).subscribe()//finalize TODO redirect do home
 }
 }

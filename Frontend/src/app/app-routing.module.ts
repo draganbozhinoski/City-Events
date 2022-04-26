@@ -1,6 +1,12 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminEventsComponent } from './admin-events/admin-events.component';
+import { AdminLocalesComponent } from './admin-locales/admin-locales.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminReservationsComponent } from './admin-reservations/admin-reservations.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AuthGuard } from './auth.guard';
+import { CreateUserComponent } from './create-user/create-user.component';
 import { EventFormComponent } from './event-form/event-form.component';
 import { EventPageComponent } from './event-page/event-page.component';
 import { HomeComponent } from './home/home.component';
@@ -22,7 +28,7 @@ const routes: Routes = [
       role: 'ADMIN'
     }
   },
-  { path: 'locales', component: ListLocalesComponent},
+  { path: 'locales/:id', component: LocalePageComponent},
   { 
     path: 'events/create', component: EventFormComponent,
     canActivate: [AuthGuard],
@@ -30,12 +36,19 @@ const routes: Routes = [
       role: 'ADMIN'
     }
   },
-  { path: 'events/:id', component: EventPageComponent},
   { path: 'login', component: LoginFormComponent},
   { path: 'profile/:id', component: ProfilePageComponent},
   { path: 'register', component: RegisterFormComponent},
-  { path: 'locales/:id', component: LocalePageComponent},
+  { path: 'events/:id', component: EventPageComponent},
   { path: 'events', component: ListEventsComponent},
+  { path: 'users/create', component: CreateUserComponent},
+  { path: 'locales/:id', component: LocalePageComponent},
+  { path: 'locales', component: ListLocalesComponent},
+  { path: 'admin/events', component: AdminEventsComponent},
+  { path: 'admin/locales', component: AdminLocalesComponent},
+  { path: 'admin/users', component: AdminUsersComponent},
+  { path: 'admin/reservations', component: AdminReservationsComponent},
+  { path: 'admin', component: AdminPanelComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 

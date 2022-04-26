@@ -3,9 +3,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventsService } from '../events.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { map, switchMap, tap } from 'rxjs';
+import { finalize, map, switchMap, tap } from 'rxjs';
 import { Image } from 'src/model/Image';
 import { CityLocale } from 'src/model/CityLocale';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -14,15 +15,6 @@ import { CityLocale } from 'src/model/CityLocale';
   styleUrls: ['./event-form.component.css']
 })
 export class EventFormComponent implements OnInit {
-  // name :String |undefined
-  // numReservations :Number |undefined
-  // city :String |undefined
-  // date :Date |undefined
-  // eventImage :File |undefined
-  // adult :Boolean |undefined
-  // covidCertificate :Boolean |undefined
-  // localeId :Number |undefined
-  // logoUrl :String |undefined
   localesList: CityLocale[] | null = null
   private file:File | null = null
   createEvent = new FormGroup({
@@ -39,12 +31,9 @@ export class EventFormComponent implements OnInit {
     description: new FormControl(null,Validators.required)
   })
 
-  constructor(private service: EventsService,private http:HttpClient) { }
-
+  constructor(private service: EventsService,private http:HttpClient,private router:Router) { }
+  
   ngOnInit(): void {
-    // this.createEvent.valueChanges.subscribe(
-    //   data => console.log(data.eventImage)
-    // )
     this.service.getLocales().subscribe(
       data => this.localesList = data
     );
@@ -69,20 +58,9 @@ export class EventFormComponent implements OnInit {
         "localeId":this.createEvent.controls['localeId'].value,
         "description":this.createEvent.controls['description'].value,
         "logoUrl":this.createEvent.controls['logoUrl'].value,
-        "imageId":data
-      }))
-    ).subscribe()
-      // this.service.SaveEvent(
-      //   this.name,
-      //   this.numReservations,
-      //   this.city,
-      //   this.date,
-      //   this.eventImage,
-      //   this.adult,
-      //   this.covidCertificate,
-      //   this.localeId,
-      //   this.logoUrl,
-      // ).subscribe()
+        "imageId":data})),
+      finalize(() => this.router.navigate(['/home']))
+      ).subscribe()
   }
 
 }

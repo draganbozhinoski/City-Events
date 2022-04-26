@@ -19,6 +19,12 @@ import { LocalePageComponent } from './locale-page/locale-page.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { AdminPanelComponent } from './admin-panel/admin-panel.component';
+import { AdminEventsComponent } from './admin-events/admin-events.component';
+import { AdminLocalesComponent } from './admin-locales/admin-locales.component';
+import { AdminUsersComponent } from './admin-users/admin-users.component';
+import { AdminReservationsComponent } from './admin-reservations/admin-reservations.component';
+import { CreateUserComponent } from './create-user/create-user.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +41,13 @@ import { ProfilePageComponent } from './profile-page/profile-page.component';
     LocalePageComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    AdminPanelComponent,
+    AdminEventsComponent,
+    AdminLocalesComponent,
+    AdminUsersComponent,
+    AdminReservationsComponent,
+    CreateUserComponent
   ],
   imports: [
     BrowserModule,

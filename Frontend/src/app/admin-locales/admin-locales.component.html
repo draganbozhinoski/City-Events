@@ -1,0 +1,24 @@
+<a routerLink="/locales/create">Add new locale</a>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Number of Tables</th>
+        <th scope="col">Edit / Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let l of locales">
+        <th scope="row" style="width:5%">{{l.id}}</th>
+        <td>{{l.name}}</td>
+        <td>{{l.type}}</td>
+        <td>{{l.numTables}}</td>
+        <td style="width:12%;">
+            <a class="btn btn-sm btn-primary">Edit</a> | 
+            <a (click)="delete(l)" class="btn btn-danger btn-sm">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>

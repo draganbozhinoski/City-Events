@@ -76,17 +76,17 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
     //delete
     //Brishenje na sve entitetite pred brishenje na lokalot, da se naprae u when findById pa funkcie clear locale.
     @DeleteMapping("/delete/{id}")
-    fun deleteLocale(@PathVariable id: Long): ResponseEntity<String> {
+    fun deleteLocale(@PathVariable id: Long): ResponseEntity<List<Locale>> {
         return when (localeService.getLocale(id)) {
             is LocaleSuccess -> {
                 localeService.clearLocale(id)
                 localeService.deleteById(id)
                 logger.info("Locale deleted successfully")
-                ResponseEntity.ok().body("locale with id $id was successfully deleted.")
+                ResponseEntity.ok().body(localeService.getAll())
             }
             is LocaleError -> {
                 logger.error("locale with that id was not found or something else occured")
-                ResponseEntity.badRequest().body("Locale with that id was not found")
+                ResponseEntity.badRequest().body(localeService.getAll())
             }
         }
     }
