@@ -14,5 +14,8 @@ export class AdminReviewsComponent implements OnInit {
   ngOnInit(): void {
       this.service.getReviews().subscribe(data => this.reviews=data)
   }
+  onDelete(id:Number) {
+    this.service.deleteReview(id).subscribe(data => this.reviews=data)
+  }
 
 }
