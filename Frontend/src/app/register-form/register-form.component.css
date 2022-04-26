@@ -1,0 +1,17 @@
+.bg{
+    background-color: rgb(57, 56, 56);
+    color: white;
+    padding-top:7%;
+    padding-bottom: 2%;
+}
+.row{
+    margin: 5px 0;
+}
+#header{
+    text-align: center;
+    font-size: 5vmax;
+    text-shadow: 0 0 10px rgb(0, 0, 0);
+}
+.container {
+    width:60%;
+}

@@ -16,4 +16,7 @@ class MyUsersService(val userRepository:UsersRepository):UserDetailsService {
             UsernameNotFoundException("User not found")
         })
     }
+    fun findAllUsers():List<User> {
+        return userRepository.findAll()
+    }
 }

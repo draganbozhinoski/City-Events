@@ -16,7 +16,6 @@ data class User(
     val email:String,
     val password:String,
     val phoneNumber:String,
-    val roles:String,
     @Enumerated(EnumType.STRING)
     val type:UserType,
     @OneToOne(mappedBy = "owner")

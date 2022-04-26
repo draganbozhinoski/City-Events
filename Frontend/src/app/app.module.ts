@@ -16,6 +16,9 @@ import { EventFormComponent } from './event-form/event-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocalesFormComponent } from './locales-form/locales-form.component';
 import { LocalePageComponent } from './locale-page/locale-page.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminEventsComponent } from './admin-events/admin-events.component';
 import { AdminLocalesComponent } from './admin-locales/admin-locales.component';
@@ -37,6 +40,9 @@ import { AdminReviewsComponent } from './admin-reviews/admin-reviews.component';
     EventFormComponent,
     LocalesFormComponent,
     LocalePageComponent,
+    LoginFormComponent,
+    RegisterFormComponent,
+    ProfilePageComponent,
     AdminPanelComponent,
     AdminEventsComponent,
     AdminLocalesComponent,

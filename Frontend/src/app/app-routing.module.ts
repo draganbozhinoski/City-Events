@@ -15,6 +15,9 @@ import { ListEventsComponent } from './list-events/list-events.component';
 import { ListLocalesComponent } from './list-locales/list-locales.component';
 import { LocalePageComponent } from './locale-page/locale-page.component';
 import { LocalesFormComponent } from './locales-form/locales-form.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,9 +25,13 @@ const routes: Routes = [
   { path: 'locales/create', component: LocalesFormComponent },
   { path: 'locales/:id', component: LocalePageComponent},
   { path: 'events/create', component: EventFormComponent},
+  { path: 'login', component: LoginFormComponent},
+  { path: 'profile/:id', component: ProfilePageComponent},
+  { path: 'register', component: RegisterFormComponent},
   { path: 'events/:id', component: EventPageComponent},
   { path: 'events', component: ListEventsComponent},
   { path: 'users/create', component: CreateUserComponent},
+  { path: 'locales/:id', component: LocalePageComponent},
   { path: 'locales', component: ListLocalesComponent},
   { path: 'admin/events', component: AdminEventsComponent},
   { path: 'admin/locales', component: AdminLocalesComponent},

@@ -1,0 +1,76 @@
+<app-navbar></app-navbar>
+<div class="bg">
+  <div class="container border border-primary">
+  <div id="header">Login</div>
+  <form [formGroup]="login" class="container" (ngSubmit)="submit()" >
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          class="form-control"
+          id="username"
+          placeholder="Enter username"
+          formControlName="username"
+        />
+      </div><br/>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          name="name"
+          class="form-control"
+          id="name"
+          placeholder="Enter name"
+          formControlName="name"
+        />
+      </div><br/>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          class="form-control"
+          id="password"
+          placeholder="Enter password"
+          formControlName="password"
+        />
+      </div><br/>  
+      <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            name="confirmPassword"
+            class="form-control"
+            id="confirmPassword"
+            placeholder="Enter password"
+            formControlName="confirmPassword"
+          />
+        </div><br/>      
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              id="email"
+              placeholder="Enter email"
+              formControlName="email"
+            />
+          </div><br/>
+          <div class="form-group">
+            <label for="phoneNumber">Phone number</label>
+            <input
+              type="number"
+              name="phoneNumber"
+              class="form-control"
+              id="phoneNumber"
+              placeholder="Enter phone number"
+              formControlName="phoneNumber"
+            />
+          </div><br/>
+      <button type="submit" class="btn btn-primary my-4">Login</button>
+  </form>
+</div>
+</div>
+<app-footer></app-footer>
