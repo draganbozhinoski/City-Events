@@ -59,7 +59,7 @@ export class EventFormComponent implements OnInit {
         "description":this.createEvent.controls['description'].value,
         "logoUrl":this.createEvent.controls['logoUrl'].value,
         "imageId":data})),
-      finalize(() => this.router.navigate(['/home']))
+      finalize(() => window.parent.location.href = "http://localhost:4200/home")
       ).subscribe()
   }
 
