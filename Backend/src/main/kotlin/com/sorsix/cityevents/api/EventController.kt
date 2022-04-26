@@ -77,7 +77,7 @@ class EventController(val eventService: EventService, val localeService: LocaleS
     }
     //delete event by given id
     @DeleteMapping("/delete/{id}")
-    fun deleteById(@PathVariable id:Long):ResponseEntity<List<Event>> {
+    fun deleteById(@PathVariable id:Long) :ResponseEntity<List<Event>> {
         return when(val event = eventService.findById(id)) {
             is EventSuccess -> {
                 logger.info("Event was deleted successfully.")
