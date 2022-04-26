@@ -18,6 +18,7 @@ import { LocalesFormComponent } from './locales-form/locales-form.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
+import { ReserveFormComponent } from './reserve-form/reserve-form.component';
 import { ReviewFormComponent } from './review-form/review-form.component';
 
 const routes: Routes = [
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'users/create', component: CreateUserComponent},
   { path: 'locales/:id', component: LocalePageComponent},
   { path: 'locales', component: ListLocalesComponent},
+  { path: 'reservation/:id', component: ReserveFormComponent },
   { path: 'reviews/create', component: ReviewFormComponent},
   { path: 'admin/events', component: AdminEventsComponent},
   { path: 'admin/locales', component: AdminLocalesComponent},

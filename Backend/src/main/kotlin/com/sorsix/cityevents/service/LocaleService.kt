@@ -15,7 +15,8 @@ class LocaleService(
     val reviewsRepository: ReviewsRepository,
     val eventsRepository: EventsRepository,
     val tablesRepository: TablesRepository,
-    val reservationsRepository: ReservationsRepository
+    val reservationsRepository: ReservationsRepository,
+    val usersRepository: UsersRepository
 ) {
     fun getLocale(id: Long): LocaleResponse {
         return when (val result = localesRepository.findByIdOrNull(id)) {
@@ -88,7 +89,7 @@ class LocaleService(
     fun reserveTable(
         id: Long,
         name: String,
-        phoneNumber: String,
+        phoneNumber: Long,
         dateTime: LocalDateTime,
         username: String,
         description: String
@@ -98,6 +99,7 @@ class LocaleService(
                 when(val table = locale.locale.tablesList.find { t -> !t.reserved }) {
                     null -> ReservationError("All tables are reserved.")
                     else -> {
+                        val us=usersRepository.findByUsername(username).get();
                         val reservation:Reservation = reservationsRepository.save(
                             Reservation(
                                 name = name,
@@ -106,7 +108,7 @@ class LocaleService(
                                 dateTime = dateTime,
                                 table = table,
                                 locale = locale.locale,
-                                user = null
+                                user = us
                             )
                         )
                         tablesRepository.updateTable(table.id,true)

@@ -15,7 +15,7 @@ data class Reservation(
     val id:Long = -1L,
     val name:String,
     val description:String, // separe, gore levo, dole desno, do sank ..
-    val phoneNumber:String,
+    val phoneNumber:Long,
     @JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     val dateTime:LocalDateTime,
     @OneToOne

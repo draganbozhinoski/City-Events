@@ -54,10 +54,6 @@ export class EventPageComponent implements OnInit {
       } as CityEvent
     }
 
-    reserve(){
-      console.log("test")
-      this.service.reserve(1).subscribe(data=>this.success=data)
-
-    }
+    
 
 }

@@ -107,10 +107,29 @@ export class EventsService {
       "role":role
     })
   }
-  reserve(id:Number): Observable<Boolean> {
-    return this.http.get<Boolean>(
-      `http://localhost:8082/api/locales/${id}/reserve`
+  reserve(
+      id:Number,
+      name:String,
+      dateTime:Date,
+      username:String,
+      phoneNumber:Number,
+      description:String
+      ): Observable<Boolean> {
+        console.log(id,
+          name,
+          dateTime,
+          username,
+          phoneNumber,
+          description)
+    return this.http.post<Boolean>(`http://localhost:8082/api/locales/${id}/reserve`,{
+      "name":name,
+      "dateTime":dateTime,
+      "username":username,
+      "phoneNumber":phoneNumber,
+      "description":description
+      }
     );
+    
   }
 
   getReview(id:Number): Observable<Number> {
