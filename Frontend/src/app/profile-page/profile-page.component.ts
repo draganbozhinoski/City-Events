@@ -27,6 +27,22 @@ export class ProfilePageComponent implements OnInit {
             
         }
     })
+
+    this.route.paramMap.pipe(
+      filter(params=>params.has("id")),
+      map(params=>+params.get("id")!),
+      mergeMap((p)=>this.service.getLocaleByOwnerId(p))
+      )
+      .subscribe({
+        next: data => {
+          
+            this.user!.locale = data.name
+            console.log(this.user)
+        },
+        error: data => {
+            
+        }
+    })
   }
 
 }
