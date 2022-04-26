@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -27,6 +25,8 @@ import { AdminReservationsComponent } from './admin-reservations/admin-reservati
 import { CreateUserComponent } from './create-user/create-user.component';
 import { AdminReviewsComponent } from './admin-reviews/admin-reviews.component';
 import { ReserveFormComponent } from './reserve-form/reserve-form.component';
+import { ReviewFormComponent } from './review-form/review-form.component';
+import {RatingModule} from 'primeng/rating';
 
 @NgModule({
   declarations: [
@@ -52,13 +52,15 @@ import { ReserveFormComponent } from './reserve-form/reserve-form.component';
     CreateUserComponent,
     AdminReviewsComponent,
     ReserveFormComponent
+    ReviewFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

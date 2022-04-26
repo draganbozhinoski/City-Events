@@ -19,6 +19,7 @@ import { LoginFormComponent } from './login-form/login-form.component';
 import { ProfilePageComponent } from './profile-page/profile-page.component';
 import { RegisterFormComponent } from './register-form/register-form.component';
 import { ReserveFormComponent } from './reserve-form/reserve-form.component';
+import { ReviewFormComponent } from './review-form/review-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'locales/:id', component: LocalePageComponent},
   { path: 'locales', component: ListLocalesComponent},
   { path: 'reservation/:id', component: ReserveFormComponent },
+  { path: 'reviews/create', component: ReviewFormComponent},
   { path: 'admin/events', component: AdminEventsComponent},
   { path: 'admin/locales', component: AdminLocalesComponent},
   { path: 'admin/users', component: AdminUsersComponent},

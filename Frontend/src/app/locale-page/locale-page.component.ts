@@ -28,6 +28,5 @@ export class LocalePageComponent implements OnInit {
             
         }
     })
-
-}
+  }
 }
