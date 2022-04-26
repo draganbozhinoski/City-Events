@@ -6,6 +6,7 @@ import { CityLocale } from 'src/model/CityLocale';
 
 import { SingleLocale } from 'src/model/SingleLocale';
 import { EventImage } from 'src/model/EventImage';
+import { User } from 'src/model/User';
 
 
 @Injectable({
@@ -60,6 +61,24 @@ export class EventsService {
       "covidCertificate":covidCertificate,
       "localeId":localeId
     }
+  );
+}
+
+reserve(id:Number): Observable<Boolean> {
+  return this.http.get<Boolean>(
+    `http://localhost:8082/api/locales/${id}/reserve`
+  );
+}
+
+getReview(id:Number): Observable<Number> {
+  return this.http.get<Number>(
+    `http://localhost:8082/api/locales/${id}/ratings`
+  );
+}
+
+getUserById(id:Number): Observable<User> {
+  return this.http.get<User>(
+    `http://localhost:8082/api/users/${id}`
   );
 }
 }

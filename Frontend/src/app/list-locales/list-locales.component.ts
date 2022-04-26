@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { mergeMap, Observable } from 'rxjs';
 import { CityLocale } from 'src/model/CityLocale';
 import { EventsService } from '../events.service';
 
@@ -10,6 +10,7 @@ import { EventsService } from '../events.service';
 })
 export class ListLocalesComponent implements OnInit {
   locales: CityLocale[] = [];
+  review:Number|undefined
   localesSub$: Observable<CityLocale[]> = this.service.getLocales();
 
   constructor(private service: EventsService) {}

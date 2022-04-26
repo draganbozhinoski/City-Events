@@ -8,4 +8,5 @@ export interface CityLocale{
     "reviewsList":[],
     "logoUrl":String,
     "numTables":Number,
+    "review":Number
 }

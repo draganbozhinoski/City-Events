@@ -16,6 +16,9 @@ import { EventFormComponent } from './event-form/event-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LocalesFormComponent } from './locales-form/locales-form.component';
 import { LocalePageComponent } from './locale-page/locale-page.component';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { LocalePageComponent } from './locale-page/locale-page.component';
     EventPageComponent,
     EventFormComponent,
     LocalesFormComponent,
-    LocalePageComponent
+    LocalePageComponent,
+    LoginFormComponent,
+    RegisterFormComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

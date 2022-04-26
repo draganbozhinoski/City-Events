@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<div class="bg">
+  <div class="container border border-primary">
+  <div id="header">Login</div>
+  <form [formGroup]="login" class="container" (ngSubmit)="submit()" >
+      <div class="form-group">
+        <label for="eventName">Username</label>
+        <input
+          type="text"
+          name="username"
+          class="form-control"
+          id="username"
+          placeholder="Enter username"
+          formControlName="username"
+        />
+      </div><br/>
+      <div class="form-group">
+          <label for="numTables">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            id="password"
+            placeholder="Enter number of tables"
+            formControlName="password"
+          />
+        </div><br/>
+      <button type="submit" class="btn btn-primary my-4">Login</button>
+  </form>
+</div>
+</div>
+<app-footer></app-footer>

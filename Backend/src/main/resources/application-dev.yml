@@ -9,8 +9,8 @@ spring:
       - classpath:db/migration-dev
   datasource:
     url: jdbc:postgresql://localhost:5432/cityEvents
-    username: sorsix
-    password: sorsix
+    username: postgres
+    password: jocofinki246
   jpa:
     hibernate:
       ddl-auto: update

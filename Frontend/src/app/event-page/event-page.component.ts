@@ -13,6 +13,7 @@ import { EventsService } from '../events.service';
 export class EventPageComponent implements OnInit {
   event :CityEvent | undefined;
   id:Number = -1
+  success:Boolean=false
   
   constructor(private route: ActivatedRoute,private service: EventsService,private sanitizer:DomSanitizer) {}
 
@@ -51,6 +52,12 @@ export class EventPageComponent implements OnInit {
         locale:data.locale,
         image:image
       } as CityEvent
+    }
+
+    reserve(){
+      console.log("test")
+      this.service.reserve(1).subscribe(data=>this.success=data)
+
     }
 
 }
