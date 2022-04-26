@@ -25,6 +25,7 @@ import { AdminLocalesComponent } from './admin-locales/admin-locales.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AdminReservationsComponent } from './admin-reservations/admin-reservations.component';
 import { CreateUserComponent } from './create-user/create-user.component';
+import { AdminReviewsComponent } from './admin-reviews/admin-reviews.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CreateUserComponent } from './create-user/create-user.component';
     AdminLocalesComponent,
     AdminUsersComponent,
     AdminReservationsComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    AdminReviewsComponent
   ],
   imports: [
     BrowserModule,

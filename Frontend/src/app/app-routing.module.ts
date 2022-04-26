@@ -4,6 +4,7 @@ import { AdminEventsComponent } from './admin-events/admin-events.component';
 import { AdminLocalesComponent } from './admin-locales/admin-locales.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminReservationsComponent } from './admin-reservations/admin-reservations.component';
+import { AdminReviewsComponent } from './admin-reviews/admin-reviews.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
 import { AuthGuard } from './auth.guard';
 import { CreateUserComponent } from './create-user/create-user.component';
@@ -21,21 +22,9 @@ import { RegisterFormComponent } from './register-form/register-form.component';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent},
-  { 
-    path: 'locales/create', component: LocalesFormComponent,
-    canActivate: [AuthGuard],
-    data: {
-      role: 'ADMIN'
-    }
-  },
+  { path: 'locales/create', component: LocalesFormComponent },
   { path: 'locales/:id', component: LocalePageComponent},
-  { 
-    path: 'events/create', component: EventFormComponent,
-    canActivate: [AuthGuard],
-    data: {
-      role: 'ADMIN'
-    }
-  },
+  { path: 'events/create', component: EventFormComponent},
   { path: 'login', component: LoginFormComponent},
   { path: 'profile/:id', component: ProfilePageComponent},
   { path: 'register', component: RegisterFormComponent},
@@ -48,6 +37,7 @@ const routes: Routes = [
   { path: 'admin/locales', component: AdminLocalesComponent},
   { path: 'admin/users', component: AdminUsersComponent},
   { path: 'admin/reservations', component: AdminReservationsComponent},
+  { path: 'admin/reviews', component: AdminReviewsComponent},
   { path: 'admin', component: AdminPanelComponent},
   { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
