@@ -34,6 +34,14 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
         }
     }
 
+    @GetMapping("/owner/{id}")
+    fun getByOwnerId(@PathVariable id: Long): ResponseEntity<Any> {
+        return when (val locale = localeService.getLocaleByOwnerId(id)) {
+            is LocaleSuccess -> ResponseEntity.ok().body(locale.locale)
+            is LocaleError -> ResponseEntity.badRequest().body(locale)
+        }
+    }
+
     //create
     @PostMapping("/save")
     fun saveLocale(@RequestBody localeRequest: LocaleRequest): ResponseEntity<LocaleResponse> {

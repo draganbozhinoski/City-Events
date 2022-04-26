@@ -11,13 +11,13 @@
                         <h4 class="text-right">Profile Info</h4>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" placeholder="{{user?.name}}Marko" disabled></div>
-                        <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" placeholder="{{user?.username}}mark" disabled></div>
+                        <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" [placeholder]="user?.name" disabled></div>
+                        <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" [placeholder]="user?.username" disabled></div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" placeholder="{{user?.phoneNumber}}95394543" disabled></div>
-                        <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" placeholder="{{user?.email}}jovan@gmail.com" disabled></div>
-                        <div class="col-md-12"><label class="labels">Locale</label><input type="text" class="form-control" placeholder="{{user?.localeManages?.name}}Casa" disabled></div>
+                        <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" [placeholder]="user?.phoneNumber" disabled></div>
+                        <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" [placeholder]="user?.email" disabled></div>
+                        <div class="col-md-12"><label class="labels">Locale</label><input type="text" class="form-control" [placeholder]="user?.locale" disabled></div>
                     </div>
                     
                 </div>

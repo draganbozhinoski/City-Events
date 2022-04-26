@@ -7,5 +7,5 @@ export interface User{
     email:String,
     password:String,
     phoneNumber:String,
-    localeManages:CityLocale
+    locale:String
 }

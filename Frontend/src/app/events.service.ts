@@ -99,4 +99,10 @@ getUserById(id:Number): Observable<User> {
     `http://localhost:8082/api/users/${id}`
   );
 }
+
+getLocaleByOwnerId(id:Number): Observable<CityLocale> {
+  return this.http.get<CityLocale>(
+    `http://localhost:8082/api/locales/owner/${id}`
+  );
+}
 }
