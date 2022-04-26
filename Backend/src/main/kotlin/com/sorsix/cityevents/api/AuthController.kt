@@ -2,6 +2,9 @@ package com.sorsix.cityevents.api
 
 import com.sorsix.cityevents.api.requests.AuthRequest
 import com.sorsix.cityevents.api.requests.UserRequest
+import com.sorsix.cityevents.api.responses.UserError
+import com.sorsix.cityevents.api.responses.UserResponse
+import com.sorsix.cityevents.api.responses.UserSuccess
 import com.sorsix.cityevents.domain.User
 import com.sorsix.cityevents.domain.enums.UserType
 import com.sorsix.cityevents.domain.view.UserJwt
@@ -28,14 +31,13 @@ class AuthController(
     val myUsersService: MyUsersService
 ) {
     @PostMapping("/register")
-    fun register(@RequestBody userRequest: UserRequest):ResponseEntity<Any> {
+    fun register(@RequestBody userRequest: UserRequest):ResponseEntity<UserResponse> {
         return when(userRepository.findByUsername(userRequest.username).isPresent) {
             true -> {
-                ResponseEntity.badRequest().body("User already in the database")
+                ResponseEntity.badRequest().body(UserError("User already in the database"))
             }
             else -> {
-                userRepository.save(User(username = userRequest.username,name=userRequest.name,email=userRequest.email, password = encoder.encode(userRequest.password), phoneNumber = userRequest.phoneNumber, localeManages = null, reservation = null, type = UserType.ROLE_GUEST))
-                ResponseEntity.ok().body("User saved")
+                ResponseEntity.ok().body(UserSuccess(userRepository.save(User(username = userRequest.username,name=userRequest.name,email=userRequest.email, password = encoder.encode(userRequest.password), phoneNumber = userRequest.phoneNumber, localeManages = null, reservation = null, type = UserType.ROLE_GUEST))))
             }
         }
     }

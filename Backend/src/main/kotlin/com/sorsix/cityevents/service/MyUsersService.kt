@@ -11,6 +11,9 @@ import java.util.*
 
 @Service
 class MyUsersService(val userRepository:UsersRepository):UserDetailsService {
+    fun findAll():List<User> {
+        return userRepository.findAll()
+    }
     override fun loadUserByUsername(username: String): UserDetails {
         return MyUserDetails(userRepository.findByUsername(username).map { it }.orElseThrow{
             UsernameNotFoundException("User not found")
