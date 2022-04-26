@@ -22,8 +22,9 @@
                     Number of reservations: {{event.numReservations}}
                 </div>
                 <div id="butt">
-                    <input class="btn btn-success" type="button" value="Make reservation">
+                    <input class="btn btn-success" type="button" (click)="reserve()" value="Make reservation">
                 </div>
+                <div *ngIf="success">Reservation success</div>
             </div>
     
         </div>

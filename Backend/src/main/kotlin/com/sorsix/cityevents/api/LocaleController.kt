@@ -34,6 +34,14 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
         }
     }
 
+    @GetMapping("/owner/{id}")
+    fun getByOwnerId(@PathVariable id: Long): ResponseEntity<Any> {
+        return when (val locale = localeService.getLocaleByOwnerId(id)) {
+            is LocaleSuccess -> ResponseEntity.ok().body(locale.locale)
+            is LocaleError -> ResponseEntity.badRequest().body(locale)
+        }
+    }
+
     //create
     @PostMapping("/save")
     fun saveLocale(@RequestBody localeRequest: LocaleRequest): ResponseEntity<LocaleResponse> {
@@ -162,17 +170,17 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
     fun reserveTable(
         @PathVariable id: Long,
         @RequestBody reservationRequest: ReservationRequest
-    ): ResponseEntity<ReservationResponse> {
+    ): ResponseEntity<Boolean> {
         with(reservationRequest) {
             return when (val reservation =
                 localeService.reserveTable(id, name, phoneNumber, dateTime, username, description)) {
                 is ReservationSuccess -> {
                     logger.info("Reservation successfull.")
-                    ResponseEntity.ok().body(reservation)
+                    ResponseEntity.ok().body(true)
                 }
                 is ReservationError -> {
                     logger.error(reservation.errorMessage)
-                    ResponseEntity.badRequest().body(reservation)
+                    ResponseEntity.badRequest().body(false)
                 }
             }
         }

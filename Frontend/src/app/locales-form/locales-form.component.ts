@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CityLocale } from 'src/model/CityLocale';
 import { EventsService } from '../events.service';
 import { Image } from 'src/model/Image';
+import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-locales-form',
@@ -21,7 +23,7 @@ export class LocalesFormComponent implements OnInit {
     type: new FormControl(null,Validators.required)
   })
 
-  constructor(private service: EventsService,private http:HttpClient) { }
+  constructor(private service: EventsService,private http:HttpClient,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -32,21 +34,11 @@ export class LocalesFormComponent implements OnInit {
 }
 submit(){
   const formData = new FormData();
-  // formData.append('file',this.createEvent.get('fileSource')!!.value)
-  // this.http.post<Image>('http://localhost:8082/api/images/save',formData).pipe(
-  //   map(data => data.id),
-  //   switchMap(data => this.http.post('http://localhost:8082/api/events/save',{
-  //     "localeName":this.createEvent.controls['localeName'].value,
-  //     "numTables":this.createEvent.controls['numTables'].value,
-  //     "type":this.createEvent.controls['type'].value,
-  //     "imageId":data
-  //   }))
-  // ).subscribe()
   this.http.post('http://localhost:8082/api/locales/save',{
       "localeName":this.createEvent.controls['localeName'].value,
       "type":this.createEvent.controls['type'].value,
       "numTables":this.createEvent.controls['numTables'].value,
-      "imageId":this.createEvent.controls['imageId'].value
-    }).subscribe()
+      "imageId":this.createEvent.controls['imageId'].value,
+    }).subscribe(data => window.parent.location.href = "http://localhost:4200/home");
 }
 }
