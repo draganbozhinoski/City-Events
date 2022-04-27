@@ -52,7 +52,7 @@ import { authInterceptorProviders} from './_helpers/auth.interceptor'
     AdminReservationsComponent,
     CreateUserComponent,
     AdminReviewsComponent,
-    ReserveFormComponent
+    ReserveFormComponent,
     ReviewFormComponent
   ],
   imports: [

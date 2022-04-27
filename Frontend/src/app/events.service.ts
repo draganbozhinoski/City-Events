@@ -110,6 +110,18 @@ export class EventsService {
       "role":role
     })
   }
+
+  addReview(
+    id:Number,
+    review:String,
+    stars:Number
+  ) {
+    return this.http.post<any>(`http://localhost:8082/api/locales/${id}/reviews/add`, {
+      "review":review,
+      "stars":stars
+    })
+  }
+
   reserve(
       id:Number,
       name:String,
@@ -138,6 +150,12 @@ export class EventsService {
   getReview(id:Number): Observable<Number> {
     return this.http.get<Number>(
       `http://localhost:8082/api/locales/${id}/ratings`
+    );
+  }
+
+  getReviewsById(id:Number): Observable<CityReview[]> {
+    return this.http.get<CityReview[]>(
+      `http://localhost:8082/api/locales/${id}/reviews`
     );
   }
 
