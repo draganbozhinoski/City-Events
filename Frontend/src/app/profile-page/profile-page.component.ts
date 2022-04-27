@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { filter, map, mergeMap } from 'rxjs';
 import { User } from 'src/model/User';
 import { EventsService } from '../events.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-profile-page',
@@ -11,9 +12,11 @@ import { EventsService } from '../events.service';
 })
 export class ProfilePageComponent implements OnInit {
   user:User|undefined
-  constructor(private route: ActivatedRoute,private service: EventsService) { }
-
+  constructor(private route: ActivatedRoute,private service: EventsService,private token:TokenStorageService) { }
+  currentUser:any;
   ngOnInit(): void {
+    this.currentUser = this.token.getUser();
+
     this.route.paramMap.pipe(
       filter(params=>params.has("id")),
       map(params=>+params.get("id")!),

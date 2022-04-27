@@ -67,6 +67,9 @@ export class EventsService {
   deleteReview(reviewId:Number):Observable<CityReview[]> {
     return this.http.delete<CityReview[]>(`api/locales/delete/${reviewId}`);
   }
+  deleteUser(userId:Number):Observable<CityUser[]> {
+    return this.http.delete<CityUser[]>(`/api/users/delete/${userId}`);
+  }
   SaveEvent(
     name: String | undefined,
     numReservations: Number | undefined,
