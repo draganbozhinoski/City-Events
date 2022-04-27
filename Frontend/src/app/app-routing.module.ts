@@ -6,7 +6,7 @@ import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AdminReservationsComponent } from './admin-reservations/admin-reservations.component';
 import { AdminReviewsComponent } from './admin-reviews/admin-reviews.component';
 import { AdminUsersComponent } from './admin-users/admin-users.component';
-import { AuthGuard } from './auth.guard';
+// import { AuthGuard } from './auth.guard';
 import { CreateUserComponent } from './create-user/create-user.component';
 import { EventFormComponent } from './event-form/event-form.component';
 import { EventPageComponent } from './event-page/event-page.component';

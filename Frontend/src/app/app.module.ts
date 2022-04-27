@@ -26,6 +26,7 @@ import { CreateUserComponent } from './create-user/create-user.component';
 import { AdminReviewsComponent } from './admin-reviews/admin-reviews.component';
 import { ReviewFormComponent } from './review-form/review-form.component';
 import {RatingModule} from 'primeng/rating';
+import { authInterceptorProviders} from './_helpers/auth.interceptor'
 
 @NgModule({
   declarations: [
@@ -60,7 +61,7 @@ import {RatingModule} from 'primeng/rating';
     ReactiveFormsModule,
     RatingModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
