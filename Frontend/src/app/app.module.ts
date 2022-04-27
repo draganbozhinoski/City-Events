@@ -51,7 +51,7 @@ import {RatingModule} from 'primeng/rating';
     AdminReservationsComponent,
     CreateUserComponent,
     AdminReviewsComponent,
-    ReserveFormComponent
+    ReserveFormComponent,
     ReviewFormComponent
   ],
   imports: [

@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'locales/:id', component: LocalePageComponent},
   { path: 'locales', component: ListLocalesComponent},
   { path: 'reservation/:id', component: ReserveFormComponent },
-  { path: 'reviews/create', component: ReviewFormComponent},
+  { path: 'reviews/create/:id', component: ReviewFormComponent},
   { path: 'admin/events', component: AdminEventsComponent},
   { path: 'admin/locales', component: AdminLocalesComponent},
   { path: 'admin/users', component: AdminUsersComponent},

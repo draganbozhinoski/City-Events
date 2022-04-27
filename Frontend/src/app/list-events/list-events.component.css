@@ -30,7 +30,7 @@
     align-items: center;
   }
   .img{
-    height: 300px;
-    width: 250px;
+    height: 15vmax;
+    width: 17vmax;
     box-shadow: 0.3rem 0.3rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
   }

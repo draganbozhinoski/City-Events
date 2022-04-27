@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <div *ngIf="locale" id="bg">
     <div class="container">
-        <div class="row">
+        <div class="row" id="info">
             <div class="col-8 m-2">
                 <div id="image">
                     <img src="{{locale.logoUrl}}" id="inside-img">
@@ -18,12 +18,28 @@
                 </div>
                 <br><br>
                 <img src="https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg" style="height: 200px;width: 300px;">
-                <button class="mt-5 btn btn-secondary w-100 py-4" routerLink="/reviews/create">Add Review</button>
+                <button class="mt-5 btn btn-secondary w-100 py-4" routerLink="/reviews/create/{{locale.id}}">Add Review</button>
             </div>
     
         </div>
+        
+    </div> 
+    <div id="reviews" class="row">
+        
+            <div *ngFor="let r of reviews" class="col-3 card">
+                    <div class="card-body">
+                        <p class="card-text">{{r.review}}</p>
+                        Stars:
+                        <span *ngIf="r.stars > 0">★</span>
+                        <span *ngIf="r.stars > 1">★</span>
+                        <span *ngIf="r.stars > 2">★</span>
+                        <span *ngIf="r.stars > 3">★</span>
+                        <span *ngIf="r.stars > 4">★</span>                    
+                    </div>
+                
+            </div>
+        
     </div>
-    
 </div>
 <app-footer></app-footer>
 

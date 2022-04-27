@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { filter, map, tap } from 'rxjs';
 import { EventsService } from '../events.service';
 
@@ -18,7 +18,7 @@ export class ReserveFormComponent implements OnInit {
   })
   
 
-  constructor(private route: ActivatedRoute,private service: EventsService,private http:HttpClient) { }
+  constructor(private route: ActivatedRoute,private router: Router,private service: EventsService,private http:HttpClient) { }
 
   ngOnInit(): void {
     this.route.paramMap.pipe(
@@ -36,6 +36,7 @@ export class ReserveFormComponent implements OnInit {
       435345,
       this.reservation.controls["description"].value
     ).subscribe()
+    this.router.navigateByUrl(`events/${this.eventId}`)
   }
 
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, mergeMap, tap } from 'rxjs';
 import { CityLocale } from 'src/model/CityLocale';
+import { CityReview } from 'src/model/CityReview';
 import { EventsService } from '../events.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { EventsService } from '../events.service';
 })
 export class LocalePageComponent implements OnInit {
   locale :CityLocale | undefined ;
+  reviews:CityReview[]=[]
 
   constructor(private route: ActivatedRoute,private service: EventsService) {}
 
@@ -25,7 +27,19 @@ export class LocalePageComponent implements OnInit {
             this.locale = data
         },
         error: data => {
-            
+        }
+    })
+
+    this.route.paramMap.pipe(
+      filter(params=>params.has("id")),
+      map(params=>+params.get("id")!),
+      mergeMap((p)=>this.service.getReviewsById(p))
+      )
+      .subscribe({
+        next: data => {
+            this.reviews = data
+        },
+        error: data => {
         }
     })
   }

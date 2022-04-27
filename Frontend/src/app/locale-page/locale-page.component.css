@@ -14,7 +14,7 @@
     border-radius: 0.5rem;
     box-shadow: 0.1rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
 }
-.row{
+#info{
     background-color: rgb(182, 182, 182);
     padding: 2vmax 1vmax;
 }
@@ -39,4 +39,11 @@
 #butt{
     display: flex;
     justify-content: flex-end;
+}
+#reviews{
+    padding: 1vmax;
+}
+.card{
+    width: 15vmax;
+    margin: 0 0.5vmax;
 }
