@@ -1,21 +1,16 @@
 package com.sorsix.cityevents.api
 
-import com.sorsix.cityevents.api.responses.LocaleError
-import com.sorsix.cityevents.api.responses.LocaleSuccess
 import com.sorsix.cityevents.api.responses.UserError
 import com.sorsix.cityevents.api.responses.UserSuccess
 import com.sorsix.cityevents.domain.User
 import com.sorsix.cityevents.domain.view.UserFront
-import com.sorsix.cityevents.service.MyUsersService
+import com.sorsix.cityevents.service.UserDetailsServiceImpl
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/users")
-class UserController(val usersService:MyUsersService) {
+class UserController(val usersService:UserDetailsServiceImpl) {
     @GetMapping
     fun findAllUsers():ResponseEntity<List<UserFront>> {
         return ResponseEntity.ok().body(usersService.findAllUsers().map { user -> UserFront(user.id,user.username,user.name,user.email,user.phoneNumber,user.type) })
@@ -27,5 +22,10 @@ class UserController(val usersService:MyUsersService) {
             is UserSuccess -> ResponseEntity.ok().body(user.user)
             is UserError -> ResponseEntity.badRequest().body(user)
         }
+    }
+    @DeleteMapping("/delete/{id}")
+    fun deleteById(@PathVariable id:Long):ResponseEntity<List<UserFront>> {
+        usersService.deleteById(id)
+    return ResponseEntity.ok().body(usersService.findAll().map { it -> UserFront(it.id,it.username,it.name,it.email,it.phoneNumber,it.type) })
     }
 }

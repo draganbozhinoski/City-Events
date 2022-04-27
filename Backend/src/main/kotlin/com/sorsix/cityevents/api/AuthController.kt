@@ -6,17 +6,14 @@ import com.sorsix.cityevents.api.responses.UserError
 import com.sorsix.cityevents.api.responses.UserResponse
 import com.sorsix.cityevents.api.responses.UserSuccess
 import com.sorsix.cityevents.domain.User
-import com.sorsix.cityevents.domain.enums.UserType
 import com.sorsix.cityevents.domain.view.UserJwt
-import com.sorsix.cityevents.jwt.JwtUtil
+import com.sorsix.cityevents.jwt.JwtUtils
 import com.sorsix.cityevents.repository.UsersRepository
-import com.sorsix.cityevents.service.MyUsersService
+import com.sorsix.cityevents.service.UserDetailsServiceImpl
 import org.springframework.http.ResponseEntity
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.BadCredentialsException
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken
-import org.springframework.security.core.Authentication
-import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.web.bind.annotation.*
@@ -27,33 +24,44 @@ class AuthController(
     val authenticationManager: AuthenticationManager,
     val userRepository: UsersRepository,
     val encoder: PasswordEncoder,
-    val jwtUtils: JwtUtil,
-    val myUsersService: MyUsersService
+    val jwtUtils: JwtUtils,
+    val myUsersService: UserDetailsServiceImpl
 ) {
     @PostMapping("/register")
-    fun register(@RequestBody userRequest: UserRequest):ResponseEntity<UserResponse> {
-        return when(userRepository.findByUsername(userRequest.username).isPresent) {
+    fun register(@RequestBody userRequest: UserRequest): ResponseEntity<UserResponse> {
+        return when (userRepository.findByUsername(userRequest.username).isPresent) {
             true -> {
                 ResponseEntity.badRequest().body(UserError("User already in the database"))
             }
             else -> {
-                ResponseEntity.ok().body(UserSuccess(userRepository.save(User(username = userRequest.username,name=userRequest.name,email=userRequest.email, password = encoder.encode(userRequest.password), phoneNumber = userRequest.phoneNumber, localeManages = null, reservation = null, type = UserType.ROLE_GUEST))))
+                ResponseEntity.ok().body(
+                    UserSuccess(
+                        userRepository.save(
+                            User(
+                                username = userRequest.username,
+                                name = userRequest.name,
+                                email = userRequest.email,
+                                password = encoder.encode(userRequest.password),
+                                phoneNumber = userRequest.phoneNumber,
+                                localeManages = null,
+                                reservation = null,
+                                type = userRequest.role
+                            )
+                        )
+                    )
+                )
             }
         }
     }
 
     @PostMapping("/login")
-    fun login(@RequestBody authRequest:AuthRequest):ResponseEntity<UserJwt> {
-        try{
-            this.authenticationManager.authenticate(
-                UsernamePasswordAuthenticationToken(authRequest.username,authRequest.password)
-            )
-        }catch (e: BadCredentialsException){
-            throw Exception("Incorrect username or password",e)
-        }
+    fun login(@RequestBody authRequest: AuthRequest): ResponseEntity<UserJwt> {
+        val authentication = this.authenticationManager.authenticate(
+            UsernamePasswordAuthenticationToken(authRequest.username, authRequest.password)
+        )
         val userDetails: UserDetails = this.myUsersService.loadUserByUsername(authRequest.username)
-        val user:User = userRepository.findByUsername(userDetails.username).get()
-        val jwt:String = this.jwtUtils.generateToken(userDetails)
-        return ResponseEntity.ok().body(UserJwt(user.username,user.name,user.email,user.phoneNumber,user.type,jwt))
+        val user: User = userRepository.findByUsername(userDetails.username).get()
+        val jwt: String = this.jwtUtils.generateJwtToken(authentication)
+        return ResponseEntity.ok().body(UserJwt(user.username, user.name, user.email, user.phoneNumber, user.type, jwt))
     }
 }
