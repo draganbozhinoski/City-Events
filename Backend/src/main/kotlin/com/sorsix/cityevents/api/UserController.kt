@@ -2,13 +2,11 @@ package com.sorsix.cityevents.api
 
 import com.sorsix.cityevents.api.responses.UserError
 import com.sorsix.cityevents.api.responses.UserSuccess
+import com.sorsix.cityevents.domain.User
 import com.sorsix.cityevents.domain.view.UserFront
 import com.sorsix.cityevents.service.UserDetailsServiceImpl
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/users")
@@ -24,5 +22,10 @@ class UserController(val usersService:UserDetailsServiceImpl) {
             is UserSuccess -> ResponseEntity.ok().body(user.user)
             is UserError -> ResponseEntity.badRequest().body(user)
         }
+    }
+    @DeleteMapping("/delete/{id}")
+    fun deleteById(@PathVariable id:Long):ResponseEntity<List<UserFront>> {
+        usersService.deleteById(id)
+    return ResponseEntity.ok().body(usersService.findAll().map { it -> UserFront(it.id,it.username,it.name,it.email,it.phoneNumber,it.type) })
     }
 }

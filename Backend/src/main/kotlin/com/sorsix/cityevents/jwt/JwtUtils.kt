@@ -14,7 +14,7 @@ import java.util.*
 class JwtUtils {
     val logger:Logger = LoggerFactory.getLogger("JWTUtils")
     val jwtSecret:String = "taenKod"
-    val jwtExpirationMs:Int = 900000
+    val jwtExpirationMs:Int = 90000
 
 
     fun generateJwtToken(authentication:Authentication):String {
@@ -23,7 +23,7 @@ class JwtUtils {
             .setSubject(userPrincipal.username)
             .setIssuedAt(Date())
             .setExpiration(Date(Date().time + jwtExpirationMs))
-            .signWith(SignatureAlgorithm.ES512,jwtSecret)
+            .signWith(SignatureAlgorithm.HS512,jwtSecret)
             .compact()
     }
     fun getUsernameFromJwtToken(token:String):String {
