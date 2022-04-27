@@ -1,7 +1,7 @@
 package com.sorsix.cityevents.service
 
 import com.sorsix.cityevents.api.responses.*
-import com.sorsix.cityevents.domain.MyUserDetails
+import com.sorsix.cityevents.domain.UserDetailsImpl
 import com.sorsix.cityevents.domain.User
 import com.sorsix.cityevents.repository.UsersRepository
 import org.springframework.data.repository.findByIdOrNull
@@ -9,15 +9,14 @@ import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.security.core.userdetails.UsernameNotFoundException
 import org.springframework.stereotype.Service
-import java.util.*
 
 @Service
-class MyUsersService(val userRepository:UsersRepository):UserDetailsService {
+class UserDetailsServiceImpl(val userRepository:UsersRepository):UserDetailsService {
     fun findAll():List<User> {
         return userRepository.findAll()
     }
     override fun loadUserByUsername(username: String): UserDetails {
-        return MyUserDetails(userRepository.findByUsername(username).map { it }.orElseThrow{
+        return UserDetailsImpl(userRepository.findByUsername(username).map { it }.orElseThrow{
             UsernameNotFoundException("User not found")
         })
     }
@@ -29,5 +28,8 @@ class MyUsersService(val userRepository:UsersRepository):UserDetailsService {
             null -> UserError("Can't find user with that id!")
             else -> UserSuccess(result)
         }
+    }
+    fun deleteById(id:Long) {
+        userRepository.deleteById(id)
     }
 }

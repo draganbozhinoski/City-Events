@@ -18,5 +18,8 @@ export class AdminUsersComponent implements OnInit {
   // delete(user:CityUser) {
   //   this.service.deleteUser(user.id).subscribe(data => this.users = data);
   // }
+  onDelete(id:Number) {
+    this.service.deleteUser(id).subscribe(data => this.users = data);
+  }
 
 }
