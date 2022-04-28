@@ -18,7 +18,8 @@
                 </div>
                 <br><br>
                 <img src="https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg" style="height: 200px;width: 300px;">
-                <button class="mt-5 btn btn-secondary w-100 py-4" routerLink="/reviews/create/{{locale.id}}">Add Review</button>
+                <button class="mt-5 btn btn-secondary w-100 py-4" routerLink="/reviews/create/{{locale.id}}" *ngIf="user">Add Review</button>
+                <div *ngIf="!user">U need to be logged in to leave a review</div>
             </div>
     
         </div>

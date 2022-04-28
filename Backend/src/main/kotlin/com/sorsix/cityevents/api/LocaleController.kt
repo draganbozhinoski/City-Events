@@ -22,11 +22,11 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
     //findall
     @GetMapping
     fun getLocales(): List<Locale> {
-        val locales=localeService.getAll()
+//        val locales=localeService.getAll()
 //        for (i in locales){
 //            i.reviewAverage=localeService.getRating(i.id)
 //        }
-        return locales
+        return localeService.getAll()
     }
     //getbyid
     //read

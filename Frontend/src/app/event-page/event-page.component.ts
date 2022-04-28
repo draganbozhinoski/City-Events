@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { filter, map, mergeMap, switchMap, tap } from 'rxjs';
 import { CityEvent } from 'src/model/CityEvent';
 import { EventsService } from '../events.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-event-page',
@@ -13,11 +14,12 @@ import { EventsService } from '../events.service';
 export class EventPageComponent implements OnInit {
   event :CityEvent | undefined;
   id:Number = -1
-  success:Boolean=false
+  user:any
   
-  constructor(private route: ActivatedRoute,private service: EventsService,private sanitizer:DomSanitizer) {}
+  constructor(private storage:TokenStorageService,private route: ActivatedRoute,private service: EventsService,private sanitizer:DomSanitizer) {}
 
   ngOnInit(): void {
+    this.user=this.storage.getUser()
     //Dali vaka treba da se napravi
     this.route.paramMap.pipe(
       filter(params=>params.has("id")),

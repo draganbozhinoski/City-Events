@@ -4,6 +4,7 @@ import { filter, map, mergeMap, tap } from 'rxjs';
 import { CityLocale } from 'src/model/CityLocale';
 import { CityReview } from 'src/model/CityReview';
 import { EventsService } from '../events.service';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-locale-page',
@@ -11,12 +12,14 @@ import { EventsService } from '../events.service';
   styleUrls: ['./locale-page.component.css']
 })
 export class LocalePageComponent implements OnInit {
-  locale :CityLocale | undefined ;
+  locale :CityLocale | undefined
   reviews:CityReview[]=[]
+  user:any
 
-  constructor(private route: ActivatedRoute,private service: EventsService) {}
+  constructor(private route: ActivatedRoute,private service: EventsService,private storage:TokenStorageService) {}
 
   ngOnInit(): void {
+    this.user = this.storage.getUser()
     this.route.paramMap.pipe(
       filter(params=>params.has("id")),
       map(params=>+params.get("id")!),
