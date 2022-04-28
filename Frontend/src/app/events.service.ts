@@ -171,4 +171,10 @@ getLocaleByOwnerId(id:Number): Observable<CityLocale> {
     `http://localhost:8082/api/locales/owner/${id}`
   );
 }
+
+getLocaleByOwnerUsername(username:String): Observable<CityLocale> {
+  return this.http.get<CityLocale>(
+    `http://localhost:8082/api/locales/ownerUsername/${username}`
+  );
+}
 }

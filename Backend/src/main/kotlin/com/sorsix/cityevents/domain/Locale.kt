@@ -45,6 +45,8 @@ data class Locale(
     @OneToMany(mappedBy = "locale")
     @JsonBackReference
     @OnDelete(action = OnDeleteAction.CASCADE)
-    val reviewsList:MutableList<Review> = mutableListOf()
+    val reviewsList:MutableList<Review> = mutableListOf(),
+
+//    val reviewAverage:Double
 
 )

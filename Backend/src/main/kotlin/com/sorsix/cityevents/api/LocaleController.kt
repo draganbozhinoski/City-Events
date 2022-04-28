@@ -22,7 +22,11 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
     //findall
     @GetMapping
     fun getLocales(): List<Locale> {
-        return localeService.getAll()
+        val locales=localeService.getAll()
+//        for (i in locales){
+//            i.reviewAverage=localeService.getRating(i.id)
+//        }
+        return locales
     }
     //getbyid
     //read
@@ -37,6 +41,13 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
     @GetMapping("/owner/{id}")
     fun getByOwnerId(@PathVariable id: Long): ResponseEntity<Any> {
         return when (val locale = localeService.getLocaleByOwnerId(id)) {
+            is LocaleSuccess -> ResponseEntity.ok().body(locale.locale)
+            is LocaleError -> ResponseEntity.badRequest().body(locale)
+        }
+    }
+    @GetMapping("/ownerUsername/{username}")
+    fun getByOwnerUsername(@PathVariable username:String): ResponseEntity<Any> {
+        return when (val locale = localeService.getLocaleByOwnerUsername(username)) {
             is LocaleSuccess -> ResponseEntity.ok().body(locale.locale)
             is LocaleError -> ResponseEntity.badRequest().body(locale)
         }

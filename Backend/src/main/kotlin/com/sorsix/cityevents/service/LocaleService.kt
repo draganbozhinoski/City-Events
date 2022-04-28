@@ -32,6 +32,13 @@ class LocaleService(
         }
     }
 
+    fun getLocaleByOwnerUsername(username: String): LocaleResponse {
+        return when (val result = localesRepository.findByOwnerUsername(username).isPresent) {
+            false -> LocaleError("Can't find locale with that id!")
+            else -> LocaleSuccess(localesRepository.findByOwnerUsername(username).get())
+        }
+    }
+
     fun getAll(): List<Locale> {
         return localesRepository.findAll()
     }

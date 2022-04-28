@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'locales/:id', component: LocalePageComponent},
   { path: 'events/create', component: EventFormComponent},
   { path: 'login', component: LoginFormComponent},
-  { path: 'profile/:id', component: ProfilePageComponent},
+  { path: 'profile', component: ProfilePageComponent},
   { path: 'register', component: RegisterFormComponent},
   { path: 'events/:id', component: EventPageComponent},
   { path: 'events', component: ListEventsComponent},
