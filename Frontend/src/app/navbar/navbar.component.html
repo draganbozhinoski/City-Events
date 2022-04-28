@@ -22,14 +22,14 @@
             <li class="nav-item" *ngIf="showAdminBoard">
                 <a class="nav-link" routerLink="/admin">Administration</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" *ngIf="!user">
                 <a class="nav-link" routerLink="/login">Login</a>
             </li>
         </ul>
-        <ul class="nav navbar-nav flex-row justify-content-center flex-nowrap">
-            <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-facebook mr-1"></i></a> </li>
-            <li class="nav-item"><a class="nav-link" href=""><i class="fa fa-twitter"></i></a> </li>
-        </ul>
+        <button class="btn btn-danger" (click)="logOut()" *ngIf="user">Log out</button>
+        <a class="navbar-brand mr-0" routerLink="/profile" *ngIf="user">
+            <img src="../../assets/images/profile.png" id="logo">
+        </a>
     </div>
 </nav>
  

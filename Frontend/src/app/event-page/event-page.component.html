@@ -22,9 +22,9 @@
                     Number of reservations: {{event.numReservations}}
                 </div>
                 <div id="butt">
-                    <input class="btn btn-success" type="button" routerLink="/reservation/{{event.id}}" value="Make reservation">
+                    <input class="btn btn-success" type="button" routerLink="/reservation/{{event.id}}" value="Make reservation" *ngIf="user">
+                    <div *ngIf="!user">U need to be logged in to leave a review</div>
                 </div>
-                <div *ngIf="success">Reservation success</div>
             </div>
     
         </div>

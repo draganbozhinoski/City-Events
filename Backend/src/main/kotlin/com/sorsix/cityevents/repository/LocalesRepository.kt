@@ -14,4 +14,5 @@ interface LocalesRepository : JpaRepository<Locale,Long> {
     @Query("update Locale l set l.name=:name,l.type=:type,l.logoUrl=:logoUrl where l.id=:id")
     fun update(id:Long,name:String,type:LocaleType,logoUrl:String)
     fun findByOwnerId(id: Long):Optional<Locale>
+    fun findByOwnerUsername(username:String):Optional<Locale>
 }

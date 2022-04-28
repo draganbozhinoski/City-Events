@@ -9,22 +9,22 @@
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-right">Profile Info</h4>
-                        {{currentUser.username}}
+                        <!-- {{currentUser.username}}
                         {{currentUser.accessToken.substring(0,20)}}
                         {{currentUser.email}}
                         <div *ngFor="let role of currentUser.roles">
                             {{role}}
 
-                        </div>
+                        </div> -->
                     </div>
                     <div class="row mt-2">
-                        <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" [placeholder]="user?.name" disabled></div>
-                        <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" [placeholder]="user?.username" disabled></div>
+                        <div class="col-md-12"><label class="labels">Name</label><input type="text" class="form-control" [placeholder]="currentUser.name" disabled></div>
+                        <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" [placeholder]="currentUser.username" disabled></div>
                     </div>
                     <div class="row mt-3">
-                        <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" [placeholder]="user?.phoneNumber" disabled></div>
-                        <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" [placeholder]="user?.email" disabled></div>
-                        <div class="col-md-12"><label class="labels">Locale</label><input type="text" class="form-control" [placeholder]="user?.locale" disabled></div>
+                        <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" [placeholder]="currentUser.phoneNumber" disabled></div>
+                        <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" [placeholder]="currentUser.email" disabled></div>
+                        <div class="col-md-12"><label class="labels">Locale</label><input type="text" class="form-control" [placeholder]="locale?.name" disabled></div>
                     </div>
                     
                 </div>

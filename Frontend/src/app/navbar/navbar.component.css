@@ -21,6 +21,7 @@ a{
     border: 1px black solid ;
     border-radius: 10px;
     width: 90%;
+    background-color: white;
 }
 .navbar-nav > li{
     margin-left:30px;

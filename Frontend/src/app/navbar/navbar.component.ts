@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 import { TokenStorageService } from '../_services/token-storage.service';
 
@@ -8,14 +9,20 @@ import { TokenStorageService } from '../_services/token-storage.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor(private storage:TokenStorageService) { }
+  user:any
+  constructor(private storage:TokenStorageService,private router:Router) { }
   showAdminBoard = false;
 
   ngOnInit(): void {
-    const user = this.storage.getUser()
-    console.log(user.type)
-    this.showAdminBoard = user.type == 'ROLE_ADMIN' || user.type == 'ROLE_OWNER'
+    this.user = this.storage.getUser()
+    if(this.user){
+    this.showAdminBoard = this.user.type == 'ROLE_ADMIN' || this.user.type == 'ROLE_OWNER'
+    }
   }
 
+  logOut(){
+    this.storage.signOut()
+    this.user=undefined
+    this.router.navigate([""])
+  }
 }
