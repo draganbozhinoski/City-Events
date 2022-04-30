@@ -9,7 +9,7 @@ export interface CityEvent{
     adult:Boolean,
     logoUrl:String,
     covidCertificate:Boolean,
-    date:Number,
+    date:Date,
     description:String,
     locale:CityLocale,
     image:Image

@@ -6,31 +6,30 @@
                 <div id="image">
                     <img src="{{locale.logoUrl}}" id="inside-img">
                 </div>
-                <div class="h1 m-5 text-center info" id="title">{{locale.name}}</div>
+                <div class="h1 m-5 text-center" id="title">{{locale.name}}</div>
             </div>
     
             <div class="col-3">
                 <div class="info mb-4 text-center">
-                    Type: {{locale.type}}
+                    Type {{locale.type}}
                 </div>
                 <div class="info mb-4 text-center">
-                    Number of tables: {{locale.numTables}}
+                    Number of tables {{locale.numTables}}
                 </div>
-                <br><br>
+                <br>
                 <img src="https://www.zyrgon.com/wp-content/uploads/2019/06/googlemaps-Zyrgon.jpg" style="height: 200px;width: 300px;">
                 <button class="mt-5 btn btn-secondary w-100 py-4" routerLink="/reviews/create/{{locale.id}}" *ngIf="user">Add Review</button>
-                <div *ngIf="!user">U need to be logged in to leave a review</div>
+                <div *ngIf="!user" id="rew">U need to be logged in to leave a review</div>
             </div>
     
         </div>
         
     </div> 
-    <div id="reviews" class="row">
-        
+    <div id="reviews" class="">
             <div *ngFor="let r of reviews" class="col-3 card">
                     <div class="card-body">
                         <p class="card-text">{{r.review}}</p>
-                        Stars:
+                        Review:
                         <span *ngIf="r.stars > 0">★</span>
                         <span *ngIf="r.stars > 1">★</span>
                         <span *ngIf="r.stars > 2">★</span>
