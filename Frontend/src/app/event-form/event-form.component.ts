@@ -17,7 +17,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EventFormComponent implements OnInit {
   id:Number|undefined
   isAddMode:boolean=true
-  localesList: CityLocale[] | null = null
+  localesList: CityLocale[] =[]
   private file:File | null = null
   createEvent = new FormGroup({
     eventName: new FormControl(null,Validators.required),
@@ -66,6 +66,7 @@ export class EventFormComponent implements OnInit {
   }
 
   submit(){
+    this.createEvent.controls["logoUrl"].setValue("tmp")
     const formData = new FormData();
     formData.append('file',this.createEvent.get('fileSource')!!.value)
     this.http.post<Image>('http://localhost:8082/api/images/save',formData).pipe(

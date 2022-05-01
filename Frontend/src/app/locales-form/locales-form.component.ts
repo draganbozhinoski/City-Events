@@ -7,6 +7,7 @@ import { Image } from 'src/model/Image';
 import { Router } from '@angular/router';
 import { finalize } from 'rxjs';
 import { TokenStorageService } from '../_services/token-storage.service';
+import { CityUser } from 'src/model/CityUser';
 
 @Component({
   selector: 'app-locales-form',
@@ -16,9 +17,11 @@ import { TokenStorageService } from '../_services/token-storage.service';
 export class LocalesFormComponent implements OnInit {
   localesList: CityLocale[] =[]
   userId:Number|undefined
+  usersList:CityUser[]=[]
   private file:File | undefined
   types=["COFFEE_SHOP","LUNCH_BAR","RESTAURANT","NIGHT_CLUB"]
   createEvent = new FormGroup({
+    // owner: new FormControl(null,Validators.required),
     name: new FormControl(null,Validators.required),
     numTables: new FormControl(null,Validators.required),
     logoUrl: new FormControl(null,Validators.required),
@@ -30,6 +33,9 @@ export class LocalesFormComponent implements OnInit {
   ngOnInit(): void {
     this.service.getUserByUsername(this.token.getUser().username).subscribe({
       next:(data)=>this.userId=data.id
+    })
+    this.service.getUsers().subscribe({
+      next:(data)=>{this.usersList=data}
     })
   }
 

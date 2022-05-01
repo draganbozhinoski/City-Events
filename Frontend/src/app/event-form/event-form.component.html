@@ -57,16 +57,16 @@
               formControlName="eventImage"
               (change)="onFileChange($event)"
               />
+              <br/>
             <span class="form-group form-check">
               <input type="checkbox" name="adult" class="form-check-input" id="adult" formControlName="adult">
               <label class="form-check-label" for="adult">18+ only</label>
             </span>
             <span class="form-group form-check">
               <input type="checkbox" name="covidCertificate" class="form-check-input" id="sertificate" formControlName="covidCertificate">
-              <label class="form-check-label" for="sertificate">Covid certificate only</label>
+              <label class="form-check-label" for="sertificate">Covid certificate</label>
             </span>
-            <br>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="localeId">Locale id:</label>
               <input
                 type="text"
@@ -76,8 +76,16 @@
                 placeholder="Enter localeId"
                 formControlName="localeId"
               />
-            </div><br/>
+            </div><br/> -->
+            <!--  -->
             <div class="form-group">
+              <label for="localeId">Choose locale</label>
+              <select class="form-select" formControlName="localeId" id="localeId" >
+                <option *ngFor="let t of localesList" [value]="t.id">{{t.name}}</option>
+              </select>
+            </div>
+            <!--  -->
+            <!-- <div class="form-group">
               <label for="city">logo url</label>
               <input
                 type="text"
@@ -87,7 +95,7 @@
                 placeholder="Enter logo url"
                 formControlName="logoUrl"
               />
-            </div><br/>
+            </div><br/> -->
             <div class="form-group">
               <label for="city">Description</label>
               <input

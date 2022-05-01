@@ -24,7 +24,11 @@
                     <div class="row mt-3">
                         <div class="col-md-12"><label class="labels">Phone Number</label><input type="text" class="form-control" [placeholder]="currentUser.phoneNumber" disabled></div>
                         <div class="col-md-12"><label class="labels">Email</label><input type="text" class="form-control" [placeholder]="currentUser.email" disabled></div>
-                        <div class="col-md-12"><label class="labels">Locale</label><input type="text" class="form-control" [placeholder]="locale?.name" disabled></div>
+                        <div class="col-md-12" *ngIf="locale"><label class="labels">Locale</label><input type="text" class="form-control" [placeholder]="locale?.name" disabled></div>
+                        <div class="col-md-12">
+                            <br>
+                            <input type="button" *ngIf="!locale" class="btn btn-success" value="Create locale" routerLink="/locales/create">
+                        </div>
                     </div>
                     
                 </div>

@@ -1,3 +1,4 @@
+<app-navbar></app-navbar>
 <div class="bg">
   <div class="container border border-primary">
   <div id="header">CREATE NEW LOCALE</div>
@@ -24,6 +25,12 @@
             formControlName="numTables"
           />
         </div><br/>
+        <!-- <div class="form-group">
+          <label for="owner">Choose owner</label>
+          <select class="form-select" formControlName="owner" id="owner" >
+            <option *ngFor="let t of usersList" [value]="t.id">{{t.name}}</option>
+          </select>
+        </div><br> -->
           <label for="logoUrl">Locale logo</label>
           <input
           id="logoUrl"
