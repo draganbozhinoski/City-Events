@@ -15,9 +15,6 @@ export class AdminUsersComponent implements OnInit {
   ngOnInit(): void {
       this.service.getUsers().subscribe(data => this.users = data);
   }
-  // delete(user:CityUser) {
-  //   this.service.deleteUser(user.id).subscribe(data => this.users = data);
-  // }
   onDelete(id:Number) {
     this.service.deleteUser(id).subscribe(data => this.users = data);
   }

@@ -1,21 +1,20 @@
-<app-navbar></app-navbar>
 <div class="bg">
   <div class="container border border-primary">
   <div id="header">CREATE NEW LOCALE</div>
   <form [formGroup]="createEvent" class="container" (ngSubmit)="submit()" >
       <div class="form-group">
-        <label for="eventName">Event Name</label>
+        <label for="name">Locale Name</label>
         <input
           type="text"
           name="name"
           class="form-control"
-          id="localeName"
+          id="name"
           placeholder="Enter event name"
-          formControlName="localeName"
+          formControlName="name"
         />
       </div><br/>
       <div class="form-group">
-          <label for="numTables">Num Tables</label>
+          <label for="numTables">Number of Tables</label>
           <input
             type="number"
             name="numTables"
@@ -25,7 +24,7 @@
             formControlName="numTables"
           />
         </div><br/>
-          <label for="image">Locale logo</label>
+          <label for="logoUrl">Locale logo</label>
           <input
           id="logoUrl"
           name="logoUrl"
@@ -34,8 +33,9 @@
           formControlName="logoUrl"
           />
           <br>
-          <div class="form-group">
-            <select class="form-control">
+          <div class="form-group" >
+            <label for="type">Locale type</label>
+            <select class="form-select" formControlName="type" id="type">
               <option value="COFFEE_SHOP">Coffee Shop</option>
               <option value="LUNCH_BAR">Lunch Bar</option>
               <option value="NIGHT_CLUB">Night Club</option>
@@ -47,4 +47,3 @@
   </form>
 </div>
 </div>
-<app-footer></app-footer>

@@ -7,6 +7,7 @@ import com.sorsix.cityevents.domain.Table
 import com.sorsix.cityevents.domain.enums.LocaleType
 
 data class LocaleRequest(
+    val userId:Long,
     val name:String,
     val type: LocaleType,
     val numTables: Int,

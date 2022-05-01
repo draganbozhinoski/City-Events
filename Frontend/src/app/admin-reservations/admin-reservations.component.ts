@@ -14,4 +14,7 @@ export class AdminReservationsComponent implements OnInit {
   ngOnInit(): void {
     this.service.getReservations().subscribe(data => this.reservations = data);
   }
+  delete(id:Number){
+    this.service.deleteReservation(id).subscribe(data => this.reservations = data)
+  }
 }

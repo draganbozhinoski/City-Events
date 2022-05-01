@@ -44,13 +44,15 @@ class LocaleService(
     }
 
     fun saveLocale(
+        userId:Long,
         name: String,
         type: LocaleType,
         numTables: Int,
         logoUrl: String
     ): LocaleResponse {
+        val owner=usersRepository.findById(userId).get();
         if (type in LocaleType.values()) {
-            val locale = localesRepository.save(Locale(name = name, type = type, numTables = numTables, logoUrl = logoUrl,owner = null))//TODO: sredi go userot ovde
+            val locale = localesRepository.save(Locale(name = name, type = type, numTables = numTables, logoUrl = logoUrl,owner = owner))
             for (i in 0 until numTables) {
                 tablesRepository.save(Table(reserved = false, reservation = null, locale = locale))
             }

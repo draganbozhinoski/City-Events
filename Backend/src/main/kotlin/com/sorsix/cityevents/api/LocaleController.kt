@@ -58,7 +58,7 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
     fun saveLocale(@RequestBody localeRequest: LocaleRequest): ResponseEntity<LocaleResponse> {
         with(localeRequest) {
             return when (val locale =
-                localeService.saveLocale(name = name, type = type, numTables = numTables, logoUrl)) {
+                localeService.saveLocale(userId,name, type, numTables, logoUrl)) {
                 is LocaleError -> {
                     logger.error(locale.errorMessage)
                     ResponseEntity.badRequest().body(locale)

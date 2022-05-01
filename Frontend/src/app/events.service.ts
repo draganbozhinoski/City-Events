@@ -61,11 +61,14 @@ export class EventsService {
   deleteEvent(eventId:Number):Observable<CityEvent[]> {
     return this.http.delete<CityEvent[]>(`api/events/delete/${eventId}`);
   }
+  deleteReservation(eventId:Number):Observable<CityReservation[]> {
+    return this.http.delete<CityReservation[]>(`http://localhost:8082/api/reservations/delete/${eventId}`);
+  }
   deleteLocale(localeId:Number):Observable<CityLocale[]> {
     return this.http.delete<CityLocale[]>(`api/locales/delete/${localeId}`);
   }
   deleteReview(reviewId:Number):Observable<CityReview[]> {
-    return this.http.delete<CityReview[]>(`api/locales/delete/${reviewId}`);
+    return this.http.delete<CityReview[]>(`api/reviews/delete/${reviewId}`);
   }
   deleteUser(userId:Number):Observable<CityUser[]> {
     return this.http.delete<CityUser[]>(`/api/users/delete/${userId}`);
@@ -81,6 +84,7 @@ export class EventsService {
     localeId: Number | undefined,
     logoUrl: String | undefined
   ): Observable<CityEvent> {
+    console.log(date)
     return this.http.post<CityEvent>("http://localhost:8082/api/events/save", {
       "name":name,
       "numReservations":numReservations,
@@ -89,7 +93,33 @@ export class EventsService {
       "eventImage":eventImage,
       "adult":adult,
       "covidCertificate":covidCertificate,
-      "localeId":localeId
+      "localeId":localeId,
+      "logoUrl":logoUrl
+    }
+  );
+  }
+  editEvent(
+    id:Number,
+    name: String | undefined,
+    numReservations: Number | undefined,
+    city: String | undefined,
+    date: Date | undefined,
+    eventImage: File | undefined,
+    adult: Boolean | undefined,
+    covidCertificate: Boolean | undefined,
+    localeId: Number | undefined,
+    logoUrl: String | undefined
+  ): Observable<CityEvent> {
+    return this.http.post<CityEvent>(`http://localhost:8082/api/events/update/${id}`, {
+      "name":name,
+      "numReservations":numReservations,
+      "city":city,
+      "date":date,
+      "eventImage":eventImage,
+      "adult":adult,
+      "covidCertificate":covidCertificate,
+      "localeId":localeId,
+      "logoUrl":logoUrl
     }
   );
   }
@@ -163,6 +193,12 @@ export class EventsService {
 getUserById(id:Number): Observable<User> {
   return this.http.get<User>(
     `http://localhost:8082/api/users/${id}`
+  );
+}
+
+getUserByUsername(username:String): Observable<User> {
+  return this.http.get<User>(
+    `http://localhost:8082/api/users/username/${username}`
   );
 }
 
