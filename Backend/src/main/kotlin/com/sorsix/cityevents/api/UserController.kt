@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api/users")
 class UserController(val usersService:UserDetailsServiceImpl) {
     @GetMapping
-    fun findAllUsers():ResponseEntity<List<UserFront>> {
-        return ResponseEntity.ok().body(usersService.findAllUsers().map { user -> UserFront(user.id,user.username,user.name,user.email,user.phoneNumber,user.type) })
+    fun findAllUsers():List<UserFront> {
+        return usersService.findAllUsers().map { user -> UserFront(user.id,user.username,user.name,user.email,user.phoneNumber,user.type) }
     }
 
     @GetMapping("/{id}")
@@ -23,6 +23,12 @@ class UserController(val usersService:UserDetailsServiceImpl) {
             is UserError -> ResponseEntity.badRequest().body(user)
         }
     }
+
+    @GetMapping("/username/{username}")
+    fun findById(@PathVariable username:String):ResponseEntity<Any>{
+        return ResponseEntity.ok().body(usersService.findByUsername(username))
+    }
+
     @DeleteMapping("/delete/{id}")
     fun deleteById(@PathVariable id:Long):ResponseEntity<List<UserFront>> {
         usersService.deleteById(id)

@@ -7,23 +7,32 @@
                 <div id="image">
                     <img [src]="event.image" id="inside-img">
                 </div>
-                <div class="h1 m-5 text-center info" id="title">{{event.name}}</div>
-                <div class="m-3 text-center">{{event.description}}</div>
+                <div class="h1 m-5 text-center" id="title">{{event.name}}</div>
+                <div class="m-3 text-center" id="desc">{{event.description}}</div>
             </div>
     
             <div class="col-3">
                 <div class="info mb-4 text-center">
-                    <i class="bi bi-building icon" style="color: blue;"></i>: {{event.city}}
+                    <i class="bi bi-building icon" ></i>&nbsp;&nbsp;{{event.city}}
                 </div>
                 <div class="info mb-4 text-center">
-                    <i class="bi bi-calendar icon" style="color: blue;"></i>: {{event.date}}
+                    <i class="bi bi-calendar icon" ></i>&nbsp;&nbsp;{{event.date}}
                 </div>
                 <div class="info mb-4 text-center">
-                    Number of reservations: {{event.numReservations}}
+                    Locale {{event.locale.name}}
+                </div>
+                <div class="info mb-4 text-center">
+                    Capacity {{event.numReservations}} tables
+                </div>
+                <div class="info mb-4 text-center">
+                    Covid sertificate&nbsp;&nbsp;<i *ngIf="event.covidCertificate" class="pi pi-check"></i><i *ngIf="!event.covidCertificate" class="pi pi-times"></i>
+                </div>
+                <div class="info mb-4 text-center">
+                    18+&nbsp;&nbsp;<i *ngIf="event.adult" class="pi pi-check"></i><i *ngIf="!event.adult" class="pi pi-times"></i>
                 </div>
                 <div id="butt">
-                    <input class="btn btn-success" type="button" routerLink="/reservation/{{event.id}}" value="Make reservation" *ngIf="user">
-                    <div *ngIf="!user">U need to be logged in to leave a review</div>
+                    <input class="btn btn-lg btn-success" type="button" routerLink="/reservation/{{event.id}}" value="Make reservation" *ngIf="user">
+                    <div *ngIf="!user" id="rew">U need to be logged in make a reservation</div>
                 </div>
             </div>
     

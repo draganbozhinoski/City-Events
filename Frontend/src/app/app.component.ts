@@ -8,7 +8,7 @@ import { TokenStorageService } from './_services/token-storage.service';
 })
 export class AppComponent {
   title = 'city-events';
-  private role:string[] = [];
+  private role:string|undefined;
   isLoggedIn = false;
   showAdminBoard = false;
   username:String = ""
@@ -18,7 +18,7 @@ export class AppComponent {
     if(this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
       this.role = user.role;
-      this.showAdminBoard = this.role.includes('ROLE_ADMIN');
+      this.showAdminBoard = this.role=='ROLE_ADMIN';
       this.username = user.username
     }
   }

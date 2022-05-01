@@ -11,8 +11,8 @@
           {{ l.name }}
         </div>
         <div class="row lower-des">
-          <div class="col-6 picture">Type: {{ l.type }}</div>
-          <div class="col-6 picture">Num of tables: {{l.numTables}}
+          <div class="col-6 picture">{{ l.type }}</div>
+          <div class="col-6 picture">Num of tables {{l.numTables}}
                         <span *ngIf="l.review > 0">★</span>
                         <span *ngIf="l.review > 1">★</span>
                         <span *ngIf="l.review > 2">★</span>

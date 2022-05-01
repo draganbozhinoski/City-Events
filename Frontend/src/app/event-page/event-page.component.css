@@ -10,6 +10,7 @@
 }
 #inside-img{
     height: 33vmax;
+    max-width: 40vmax;
     border-radius: 0.5rem;
     box-shadow: 0.1rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
 }
@@ -19,21 +20,40 @@
 }
 .info{
     height: 100px;
-    text-decoration: underline;
     font-size: 1.5vmax;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #fff;
+    background-color: rgb(57,56,56);
+    color:white;
     border-radius: 0.5rem;
     box-shadow: 0.05rem 0.1rem 0.3rem -0.03rem rgba(0, 0, 0, 0.45);
 }
 #title{
-    border-radius: 2rem;
+    border-radius: 1.5rem;
     font-size: 2vmax;
     text-decoration: none;
+    font-family: Trebuchet, sans-serif;
+    background-color: rgb(57,56,56);
+    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
 }
 #butt{
     display: flex;
     justify-content: flex-end;
+}
+#desc{
+    background-color: rgba(0, 0, 0, 0.123);
+    padding: 2vmax ;
+    border-radius: 0.3rem;
+    font-family: Andale Mono, monospace;
+}
+#rew{
+    background-color: rgb(78, 151, 78);
+    padding: 0.5vmax;
+    text-align: center;
+    border-radius: 0.5rem;
 }

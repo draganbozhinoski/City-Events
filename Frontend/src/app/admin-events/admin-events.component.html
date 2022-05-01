@@ -1,4 +1,4 @@
-<a routerLink="/events/create">Add new event</a>
+<a routerLink="/events/create" class="btn btn-info">Add new event</a>
 <table class="table">
     <thead>
       <tr>
@@ -26,7 +26,7 @@
         <td>{{e.description}}</td>
         <td>{{e.locale.name}}</td>
         <td style="width:12%">
-          <a href="#" class="btn btn-primary btn-sm">Edit</a> | 
+          <!-- <a href="/events/create/{{e.id}}" class="btn btn-primary btn-sm">Edit</a> |  -->
           <a (click)="delete(e)" class="btn btn-danger btn-sm">Delete</a>
         </td>
       </tr>

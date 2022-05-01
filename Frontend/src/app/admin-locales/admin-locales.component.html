@@ -1,4 +1,4 @@
-<a routerLink="/locales/create">Add new locale</a>
+<a routerLink="/locales/create" class="btn btn-info">Add new locale</a>
 <table class="table">
     <thead>
       <tr>
@@ -16,7 +16,7 @@
         <td>{{l.type}}</td>
         <td>{{l.numTables}}</td>
         <td style="width:12%;">
-            <a class="btn btn-sm btn-primary">Edit</a> | 
+            <!-- <a class="btn btn-sm btn-primary">Edit</a> |  -->
             <a (click)="delete(l)" class="btn btn-danger btn-sm">Delete</a>
         </td>
       </tr>

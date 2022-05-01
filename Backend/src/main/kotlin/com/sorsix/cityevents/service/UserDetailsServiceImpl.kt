@@ -29,6 +29,11 @@ class UserDetailsServiceImpl(val userRepository:UsersRepository):UserDetailsServ
             else -> UserSuccess(result)
         }
     }
+
+    fun findByUsername(username: String): User {
+        return userRepository.findByUsername(username).get()
+    }
+
     fun deleteById(id:Long) {
         userRepository.deleteById(id)
     }
