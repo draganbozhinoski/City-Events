@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <div class="bg">
   <div class="container border border-primary">
-  <div id="header">Reservation</div>
-  <form [formGroup]="reservation" class="container" (ngSubmit)="submit()" >
+    <div id="header">Reservation</div>
+    <form [formGroup]="reservation" class="container" (ngSubmit)="submit()">
       <div class="form-group">
         <label for="eventName">Date and time</label>
         <input
@@ -13,20 +13,22 @@
           placeholder="Enter date and time"
           formControlName="date"
         />
-      </div><br/>
+      </div>
+      <br />
       <div class="form-group">
-          <label for="numTables">Description</label>
-          <input
-            type="text"
-            name="description"
-            class="form-control"
-            id="description"
-            placeholder="Enter description"
-            formControlName="description"
-          />
-        </div><br/>
+        <label for="numTables">Description</label>
+        <input
+          type="text"
+          name="description"
+          class="form-control"
+          id="description"
+          placeholder="Enter description"
+          formControlName="description"
+        />
+      </div>
+      <br />
       <button type="submit" class="btn btn-primary my-4">Reserve</button>
-  </form>
-</div>
+    </form>
+  </div>
 </div>
 <app-footer></app-footer>

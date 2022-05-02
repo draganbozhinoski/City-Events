@@ -11,66 +11,51 @@ import { CityUser } from 'src/model/CityUser';
 import { CityReservation } from 'src/model/CityReservation';
 import { CityReview } from 'src/model/CityReview';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EventsService {
-
-  constructor(private http: HttpClient) { 
-  }
+  constructor(private http: HttpClient) {}
 
   getEventImages(): Observable<EventImage[]> {
-    return this.http.get<EventImage[]>(
-      "/api/events/eventImages"
-    );
+    return this.http.get<EventImage[]>('/api/events/eventImages');
   }
   getEvents(): Observable<CityEvent[]> {
-    return this.http.get<CityEvent[]>("/api/events");
+    return this.http.get<CityEvent[]>('/api/events');
   }
-  getEventById(id:Number): Observable<CityEvent> {
-    return this.http.get<CityEvent>(
-      `/api/events/${id}`
-    );
+  getEventById(id: Number): Observable<CityEvent> {
+    return this.http.get<CityEvent>(`/api/events/${id}`);
   }
-  getLocaleById(id:Number): Observable<CityLocale> {
-    return this.http.get<CityLocale>(
-      `/api/locales/${id}`
-    );
+  getLocaleById(id: Number): Observable<CityLocale> {
+    return this.http.get<CityLocale>(`/api/locales/${id}`);
   }
   getLocales(): Observable<CityLocale[]> {
-    return this.http.get<CityLocale[]>(
-      "/api/locales"
-    );
+    return this.http.get<CityLocale[]>('/api/locales');
   }
   getUsers(): Observable<CityUser[]> {
-    return this.http.get<CityUser[]>(
-      "/api/users"
-    )
+    return this.http.get<CityUser[]>('/api/users');
   }
   getReservations(): Observable<CityReservation[]> {
-    return this.http.get<CityReservation[]>(
-      "/api/reservations"
-    )
+    return this.http.get<CityReservation[]>('/api/reservations');
   }
   getReviews(): Observable<CityReview[]> {
-    return this.http.get<CityReview[]>(
-      "/api/reviews"
-    )
+    return this.http.get<CityReview[]>('/api/reviews');
   }
-  deleteEvent(eventId:Number):Observable<CityEvent[]> {
+  deleteEvent(eventId: Number): Observable<CityEvent[]> {
     return this.http.delete<CityEvent[]>(`api/events/delete/${eventId}`);
   }
-  deleteReservation(eventId:Number):Observable<CityReservation[]> {
-    return this.http.delete<CityReservation[]>(`http://localhost:8082/api/reservations/delete/${eventId}`);
+  deleteReservation(eventId: Number): Observable<CityReservation[]> {
+    return this.http.delete<CityReservation[]>(
+      `http://localhost:8082/api/reservations/delete/${eventId}`
+    );
   }
-  deleteLocale(localeId:Number):Observable<CityLocale[]> {
+  deleteLocale(localeId: Number): Observable<CityLocale[]> {
     return this.http.delete<CityLocale[]>(`api/locales/delete/${localeId}`);
   }
-  deleteReview(reviewId:Number):Observable<CityReview[]> {
+  deleteReview(reviewId: Number): Observable<CityReview[]> {
     return this.http.delete<CityReview[]>(`api/reviews/delete/${reviewId}`);
   }
-  deleteUser(userId:Number):Observable<CityUser[]> {
+  deleteUser(userId: Number): Observable<CityUser[]> {
     return this.http.delete<CityUser[]>(`/api/users/delete/${userId}`);
   }
   SaveEvent(
@@ -84,22 +69,21 @@ export class EventsService {
     localeId: Number | undefined,
     logoUrl: String | undefined
   ): Observable<CityEvent> {
-    console.log(date)
-    return this.http.post<CityEvent>("http://localhost:8082/api/events/save", {
-      "name":name,
-      "numReservations":numReservations,
-      "city":city,
-      "date":date,
-      "eventImage":eventImage,
-      "adult":adult,
-      "covidCertificate":covidCertificate,
-      "localeId":localeId,
-      "logoUrl":logoUrl
-    }
-  );
+    console.log(date);
+    return this.http.post<CityEvent>('http://localhost:8082/api/events/save', {
+      name: name,
+      numReservations: numReservations,
+      city: city,
+      date: date,
+      eventImage: eventImage,
+      adult: adult,
+      covidCertificate: covidCertificate,
+      localeId: localeId,
+      logoUrl: logoUrl,
+    });
   }
   editEvent(
-    id:Number,
+    id: Number,
     name: String | undefined,
     numReservations: Number | undefined,
     city: String | undefined,
@@ -110,18 +94,20 @@ export class EventsService {
     localeId: Number | undefined,
     logoUrl: String | undefined
   ): Observable<CityEvent> {
-    return this.http.post<CityEvent>(`http://localhost:8082/api/events/update/${id}`, {
-      "name":name,
-      "numReservations":numReservations,
-      "city":city,
-      "date":date,
-      "eventImage":eventImage,
-      "adult":adult,
-      "covidCertificate":covidCertificate,
-      "localeId":localeId,
-      "logoUrl":logoUrl
-    }
-  );
+    return this.http.post<CityEvent>(
+      `http://localhost:8082/api/events/update/${id}`,
+      {
+        name: name,
+        numReservations: numReservations,
+        city: city,
+        date: date,
+        eventImage: eventImage,
+        adult: adult,
+        covidCertificate: covidCertificate,
+        localeId: localeId,
+        logoUrl: logoUrl,
+      }
+    );
   }
   saveUser(
     name: String,
@@ -129,88 +115,80 @@ export class EventsService {
     email: String,
     password: String,
     phoneNumber: String,
-    role:String
+    role: String
   ) {
-    return this.http.post<any>("/api/auth/register", {
-      "name":name,
-      "username":username,
-      "email":email,
-      "password":password,
-      "phoneNumber":phoneNumber,
-      "role":role
-    })
+    return this.http.post<any>('/api/auth/register', {
+      name: name,
+      username: username,
+      email: email,
+      password: password,
+      phoneNumber: phoneNumber,
+      role: role,
+    });
   }
 
-  addReview(
-    id:Number,
-    review:String,
-    stars:Number
-  ) {
-    return this.http.post<any>(`http://localhost:8082/api/locales/${id}/reviews/add`, {
-      "review":review,
-      "stars":stars
-    })
+  addReview(id: Number, review: String, stars: Number) {
+    return this.http.post<any>(
+      `http://localhost:8082/api/locales/${id}/reviews/add`,
+      {
+        review: review,
+        stars: stars,
+      }
+    );
   }
 
   reserve(
-      id:Number,
-      name:String,
-      dateTime:Date,
-      username:String,
-      phoneNumber:Number,
-      description:String
-      ): Observable<Boolean> {
-        console.log(id,
-          name,
-          dateTime,
-          username,
-          phoneNumber,
-          description)
-    return this.http.post<Boolean>(`http://localhost:8082/api/locales/${id}/reserve`,{
-      "name":name,
-      "dateTime":dateTime,
-      "username":username,
-      "phoneNumber":phoneNumber,
-      "description":description
+    id: Number,
+    name: String,
+    dateTime: Date,
+    username: String,
+    phoneNumber: Number,
+    description: String
+  ): Observable<Boolean> {
+    console.log(id, name, dateTime, username, phoneNumber, description);
+    return this.http.post<Boolean>(
+      `http://localhost:8082/api/locales/${id}/reserve`,
+      {
+        name: name,
+        dateTime: dateTime,
+        username: username,
+        phoneNumber: phoneNumber,
+        description: description,
       }
     );
-    
   }
 
-  getReview(id:Number): Observable<Number> {
+  getReview(id: Number): Observable<Number> {
     return this.http.get<Number>(
       `http://localhost:8082/api/locales/${id}/ratings`
     );
   }
 
-  getReviewsById(id:Number): Observable<CityReview[]> {
+  getReviewsById(id: Number): Observable<CityReview[]> {
     return this.http.get<CityReview[]>(
       `http://localhost:8082/api/locales/${id}/reviews`
     );
   }
 
+  getUserById(id: Number): Observable<User> {
+    return this.http.get<User>(`http://localhost:8082/api/users/${id}`);
+  }
 
-getUserById(id:Number): Observable<User> {
-  return this.http.get<User>(
-    `http://localhost:8082/api/users/${id}`
-  );
-}
+  getUserByUsername(username: String): Observable<User> {
+    return this.http.get<User>(
+      `http://localhost:8082/api/users/username/${username}`
+    );
+  }
 
-getUserByUsername(username:String): Observable<User> {
-  return this.http.get<User>(
-    `http://localhost:8082/api/users/username/${username}`
-  );
-}
+  getLocaleByOwnerId(id: Number): Observable<CityLocale> {
+    return this.http.get<CityLocale>(
+      `http://localhost:8082/api/locales/owner/${id}`
+    );
+  }
 
-getLocaleByOwnerId(id:Number): Observable<CityLocale> {
-  return this.http.get<CityLocale>(
-    `http://localhost:8082/api/locales/owner/${id}`
-  );
-}
-
-getLocaleByOwnerUsername(username:String): Observable<CityLocale> {
-  return this.http.get<CityLocale>(
-    `http://localhost:8082/api/locales/ownerUsername/${username}`
-  );
-}
+  getLocaleByOwnerUsername(username: String): Observable<CityLocale> {
+    return this.http.get<CityLocale>(
+      `http://localhost:8082/api/locales/ownerUsername/${username}`
+    );
+  }
 }

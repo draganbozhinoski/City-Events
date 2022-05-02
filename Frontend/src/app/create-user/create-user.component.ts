@@ -47,12 +47,6 @@ export class CreateUserComponent implements OnInit {
       this.errorMessage=err.error.errorMessage
       this.isSignupFailed=true;
     })
-    // this.service.saveUser(this.createUser.get('name')!!.value,this.createUser.get('username')!!.value,this.createUser.get('email')!!.value,
-    //               this.createUser.get('password')!!.value,this.createUser.get('phoneNumber')!!.value,this.createUser.get('role')!!.value)
-    //               .subscribe(data => {
-    //                 console.log(data),
-    //                 window.parent.location.href = "http://localhost:4200/home";
-    //               });
   }
 
 }

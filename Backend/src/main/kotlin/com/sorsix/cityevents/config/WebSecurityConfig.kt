@@ -33,28 +33,11 @@ class WebSecurityConfig(val userDetailsService:UserDetailsServiceImpl,val unauth
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
             .authorizeRequests().antMatchers("/api/**").permitAll()
             .anyRequest().authenticated()
-//        http.addFilterBefore(authenticationJwtTokenFilter(),UsernamePasswordAuthenticationFilter::class.java)
     }
 
     override fun configure(auth: AuthenticationManagerBuilder) {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder())
     }
-
-//    @Bean
-//    fun corsConfigurationSource(): CorsConfigurationSource? {
-//        val configuration = CorsConfiguration()
-//        configuration.allowedOrigins = listOf("*")
-//        configuration.allowedMethods = listOf("*")
-//        configuration.allowedHeaders = listOf("*")
-//        configuration.allowCredentials = true
-//        val source = UrlBasedCorsConfigurationSource()
-//        source.registerCorsConfiguration("/**", configuration)
-//        return source
-//    }
-//    @Bean
-//    fun authenticationJwtTokenFilter(): AuthTokenFilter {
-//        return AuthTokenFilter()
-//    }
     @Bean
     fun passwordEncoder():PasswordEncoder {
         return BCryptPasswordEncoder()

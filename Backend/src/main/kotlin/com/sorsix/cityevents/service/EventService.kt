@@ -36,8 +36,8 @@ class EventService(private val eventsRepository: EventsRepository, val eventImag
         date: LocalDateTime,
         locale: Locale,
         logoUrl: String,
-        description:String,
-        image:Image
+        description: String,
+        image: Image
     ) {
         eventsRepository.save(
             Event(
@@ -66,7 +66,7 @@ class EventService(private val eventsRepository: EventsRepository, val eventImag
         date: LocalDateTime,
         locale: Locale,
         logoUrl: String,
-        description:String
+        description: String
     )
             : EventResponse {
         eventsRepository.updateEvent(id, name, numReservations, city, adult, covidCertificate, date, locale, logoUrl)

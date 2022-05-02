@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
 <div class="bg">
   <div class="container border border-primary">
-  <div id="header">CREATE NEW LOCALE</div>
-  <form [formGroup]="createEvent" class="container" (ngSubmit)="submit()" >
+    <div id="header">CREATE NEW LOCALE</div>
+    <form [formGroup]="createEvent" class="container" (ngSubmit)="submit()">
       <div class="form-group">
         <label for="name">Locale Name</label>
         <input
@@ -13,44 +13,40 @@
           placeholder="Enter event name"
           formControlName="name"
         />
-      </div><br/>
+      </div>
+      <br />
       <div class="form-group">
-          <label for="numTables">Number of Tables</label>
-          <input
-            type="number"
-            name="numTables"
-            class="form-control"
-            id="numTables"
-            placeholder="Enter number of tables"
-            formControlName="numTables"
-          />
-        </div><br/>
-        <!-- <div class="form-group">
-          <label for="owner">Choose owner</label>
-          <select class="form-select" formControlName="owner" id="owner" >
-            <option *ngFor="let t of usersList" [value]="t.id">{{t.name}}</option>
-          </select>
-        </div><br> -->
-          <label for="logoUrl">Locale logo</label>
-          <input
-          id="logoUrl"
-          name="logoUrl"
+        <label for="numTables">Number of Tables</label>
+        <input
+          type="number"
+          name="numTables"
           class="form-control"
-          type="text"
-          formControlName="logoUrl"
-          />
-          <br>
-          <div class="form-group" >
-            <label for="type">Locale type</label>
-            <select class="form-select" formControlName="type" id="type">
-              <option value="COFFEE_SHOP">Coffee Shop</option>
-              <option value="LUNCH_BAR">Lunch Bar</option>
-              <option value="NIGHT_CLUB">Night Club</option>
-              <option value="RESTAURANT">Restaurant</option>
-            </select>
-          </div>
-          <br/><br/>
+          id="numTables"
+          placeholder="Enter number of tables"
+          formControlName="numTables"
+        />
+      </div>
+      <br />
+      <label for="logoUrl">Locale logo</label>
+      <input
+        id="logoUrl"
+        name="logoUrl"
+        class="form-control"
+        type="text"
+        formControlName="logoUrl"
+      />
+      <br />
+      <div class="form-group">
+        <label for="type">Locale type</label>
+        <select class="form-select" formControlName="type" id="type">
+          <option value="COFFEE_SHOP">Coffee Shop</option>
+          <option value="LUNCH_BAR">Lunch Bar</option>
+          <option value="NIGHT_CLUB">Night Club</option>
+          <option value="RESTAURANT">Restaurant</option>
+        </select>
+      </div>
+      <br /><br />
       <button type="submit" class="btn btn-primary my-4">Submit</button>
-  </form>
-</div>
+    </form>
+  </div>
 </div>

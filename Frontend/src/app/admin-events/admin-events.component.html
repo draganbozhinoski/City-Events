@@ -1,33 +1,32 @@
 <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col"># of Reservations</th>
-        <th scope="col">City</th>
-        <th scope="col">Adult</th>
-        <th scope="col">Covid Certificate</th>
-        <th scope="col">Date</th>
-        <th scope="col">Description</th>
-        <th scope="col">Locale</th>
-        <th scope="col">Edit / Delete</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let e of events">
-        <th scope="row" style="width:5%">{{e.id}}</th>
-        <td>{{e.name}}</td>
-        <td>{{e.numReservations}}</td>
-        <td>{{e.city}}</td>
-        <td>{{e.adult}}</td>
-        <td>{{e.covidCertificate}}</td>
-        <td>{{e.date}}</td>
-        <td>{{e.description}}</td>
-        <td>{{e.locale.name}}</td>
-        <td style="width:12%">
-          <!-- <a href="/events/create/{{e.id}}" class="btn btn-primary btn-sm">Edit</a> |  -->
-          <a (click)="delete(e)" class="btn btn-danger btn-sm">Delete</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col"># of Reservations</th>
+      <th scope="col">City</th>
+      <th scope="col">Adult</th>
+      <th scope="col">Covid Certificate</th>
+      <th scope="col">Date</th>
+      <th scope="col">Description</th>
+      <th scope="col">Locale</th>
+      <th scope="col">Edit / Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let e of events">
+      <th scope="row" style="width: 5%">{{ e.id }}</th>
+      <td>{{ e.name }}</td>
+      <td>{{ e.numReservations }}</td>
+      <td>{{ e.city }}</td>
+      <td>{{ e.adult }}</td>
+      <td>{{ e.covidCertificate }}</td>
+      <td>{{ e.date }}</td>
+      <td>{{ e.description }}</td>
+      <td>{{ e.locale.name }}</td>
+      <td style="width: 12%">
+        <a (click)="delete(e)" class="btn btn-danger btn-sm">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>

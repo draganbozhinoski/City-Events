@@ -2,22 +2,27 @@
   <app-navbar></app-navbar>
 
   <div class="container locales">
-    <div *ngFor="let l of locales" class="locale row" routerLink="/locales/{{l.id}}">
-      <div class="col-4 picture" >
-        <img src="{{l.logoUrl}}" class="img">
-    </div>
+    <div
+      *ngFor="let l of locales"
+      class="locale row"
+      routerLink="/locales/{{ l.id }}"
+    >
+      <div class="col-4 picture">
+        <img src="{{ l.logoUrl }}" class="img" />
+      </div>
       <div class="col-8">
         <div class="row upper-des">
           {{ l.name }}
         </div>
         <div class="row lower-des">
           <div class="col-6 picture">{{ l.type }}</div>
-          <div class="col-6 picture">Num of tables {{l.numTables}}
-                        <span *ngIf="l.review > 0">★</span>
-                        <span *ngIf="l.review > 1">★</span>
-                        <span *ngIf="l.review > 2">★</span>
-                        <span *ngIf="l.review > 3">★</span>
-                        <span *ngIf="l.review > 4">★</span> 
+          <div class="col-6 picture">
+            Num of tables {{ l.numTables }}
+            <span *ngIf="l.review > 0">★</span>
+            <span *ngIf="l.review > 1">★</span>
+            <span *ngIf="l.review > 2">★</span>
+            <span *ngIf="l.review > 3">★</span>
+            <span *ngIf="l.review > 4">★</span>
           </div>
         </div>
       </div>

@@ -1,17 +1,6 @@
 .bg {
   background-color: rgb(57, 56, 56);
 }
-/* #title{
-     background-image: url("../../assets/images/frida-aguilar-estrada-4g0XOeKt5ns-unsplash.jpg"); 
-     height: 50em;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;  
-    font-family: BabasNeue;
-    color:white !important;
-    margin:auto;
-    position: relative;
-}  */
 @font-face {
   font-family: BabasNeue;
   src: url(../../assets/fonts/BabasNeue/BebasNeue-Regular.ttf)

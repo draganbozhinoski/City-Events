@@ -12,11 +12,9 @@ data class EventRequest(
     val city:String,
     val adult:Boolean,
     val covidCertificate:Boolean,
-    //@JsonFormat(pattern = "dd-MM-yyyy HH:mm")
     val date:LocalDateTime,
     val localeId: Long,
     val description:String,
     val logoUrl:String,
     val imageId:Long
-    //eventImage - upload od frontend, TODO:
 )
