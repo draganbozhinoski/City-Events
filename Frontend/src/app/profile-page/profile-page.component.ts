@@ -9,55 +9,25 @@ import { TokenStorageService } from '../_services/token-storage.service';
 @Component({
   selector: 'app-profile-page',
   templateUrl: './profile-page.component.html',
-  styleUrls: ['./profile-page.component.css']
+  styleUrls: ['./profile-page.component.css'],
 })
 export class ProfilePageComponent implements OnInit {
-  user:User|undefined
-  constructor(private route: ActivatedRoute,private service: EventsService,private token:TokenStorageService) { }
-  currentUser:any;
-  locale:CityLocale|undefined
+  user: User | undefined;
+  constructor(
+    private route: ActivatedRoute,
+    private service: EventsService,
+    private token: TokenStorageService
+  ) {}
+  currentUser: any;
+  locale: CityLocale | undefined;
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
-    console.log(this.currentUser)
-
-    // this.route.paramMap.pipe(
-    //   filter(params=>params.has("id")),
-    //   map(params=>+params.get("id")!),
-    //   mergeMap((p)=>this.service.getUserById(p))
-    //   )
-    //   .subscribe({
-    //     next: data => {
-    //         this.user = data
-    //     },
-    //     error: data => {
-            
-    //     }
-    // })
-
-    // this.route.paramMap.pipe(
-    //   filter(params=>params.has("id")),
-    //   map(params=>+params.get("id")!),
-    //   mergeMap((p)=>this.service.getLocaleByOwnerId(p))
-    //   )
-    //   .subscribe({
-    //     next: data => {
-          
-    //         this.user!.locale = data.name
-    //         console.log(this.user)
-    //     },
-    //     error: data => {
-            
-    //     }
-    // })
+    console.log(this.currentUser);
     this.service.getLocaleByOwnerUsername(this.currentUser.username).subscribe({
-      next:data=>{
-        this.locale=data
+      next: (data) => {
+        this.locale = data;
       },
-      error: data => {
-            
-      }
-    }
-    )
+      error: (data) => {},
+    });
   }
-
 }

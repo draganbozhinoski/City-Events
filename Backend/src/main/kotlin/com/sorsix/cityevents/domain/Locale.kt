@@ -25,7 +25,7 @@ data class Locale(
     val numTables:Int,
     @OneToOne
     @JsonManagedReference
-    val owner:User, // sredi go prasalnikot TODO:
+    val owner:User,
 
     @OneToMany(mappedBy = "locale")
     @JsonBackReference
@@ -46,7 +46,5 @@ data class Locale(
     @JsonBackReference
     @OnDelete(action = OnDeleteAction.CASCADE)
     val reviewsList:MutableList<Review> = mutableListOf(),
-
-//    val reviewAverage:Double
 
 )

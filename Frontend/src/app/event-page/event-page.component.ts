@@ -20,7 +20,6 @@ export class EventPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.user=this.storage.getUser()
-    //Dali vaka treba da se napravi
     this.route.paramMap.pipe(
       filter(params=>params.has("id")),
       map(params=>+params.get("id")!),

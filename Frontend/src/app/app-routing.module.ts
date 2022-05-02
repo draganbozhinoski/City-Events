@@ -23,31 +23,31 @@ import { ReviewFormComponent } from './review-form/review-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent},
+  { path: 'home', component: HomeComponent },
   { path: 'locales/create', component: LocalesFormComponent },
-  { path: 'locales/:id', component: LocalePageComponent},
-  { path: 'events/create', component: EventFormComponent},
-  { path: 'login', component: LoginFormComponent},
-  { path: 'profile', component: ProfilePageComponent},
-  { path: 'register', component: RegisterFormComponent},
-  { path: 'events/:id', component: EventPageComponent},
-  { path: 'events', component: ListEventsComponent},
-  { path: 'users/create', component: CreateUserComponent},
-  { path: 'locales/:id', component: LocalePageComponent},
-  { path: 'locales', component: ListLocalesComponent},
+  { path: 'locales/:id', component: LocalePageComponent },
+  { path: 'events/create', component: EventFormComponent },
+  { path: 'login', component: LoginFormComponent },
+  { path: 'profile', component: ProfilePageComponent },
+  { path: 'register', component: RegisterFormComponent },
+  { path: 'events/:id', component: EventPageComponent },
+  { path: 'events', component: ListEventsComponent },
+  { path: 'users/create', component: CreateUserComponent },
+  { path: 'locales/:id', component: LocalePageComponent },
+  { path: 'locales', component: ListLocalesComponent },
   { path: 'reservation/:id', component: ReserveFormComponent },
-  { path: 'reviews/create/:id', component: ReviewFormComponent},
-  { path: 'admin/events', component: AdminEventsComponent},
-  { path: 'admin/locales', component: AdminLocalesComponent},
-  { path: 'admin/users', component: AdminUsersComponent},
-  { path: 'admin/reservations', component: AdminReservationsComponent},
-  { path: 'admin/reviews', component: AdminReviewsComponent},
-  { path: 'admin', component: AdminPanelComponent},
-  { path: '**', redirectTo: 'home', pathMatch: 'full' }
+  { path: 'reviews/create/:id', component: ReviewFormComponent },
+  { path: 'admin/events', component: AdminEventsComponent },
+  { path: 'admin/locales', component: AdminLocalesComponent },
+  { path: 'admin/users', component: AdminUsersComponent },
+  { path: 'admin/reservations', component: AdminReservationsComponent },
+  { path: 'admin/reviews', component: AdminReviewsComponent },
+  { path: 'admin', component: AdminPanelComponent },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

@@ -3,9 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CityLocale } from 'src/model/CityLocale';
 import { EventsService } from '../events.service';
-import { Image } from 'src/model/Image';
 import { Router } from '@angular/router';
-import { finalize } from 'rxjs';
 import { TokenStorageService } from '../_services/token-storage.service';
 import { CityUser } from 'src/model/CityUser';
 
@@ -21,7 +19,6 @@ export class LocalesFormComponent implements OnInit {
   private file:File | undefined
   types=["COFFEE_SHOP","LUNCH_BAR","RESTAURANT","NIGHT_CLUB"]
   createEvent = new FormGroup({
-    // owner: new FormControl(null,Validators.required),
     name: new FormControl(null,Validators.required),
     numTables: new FormControl(null,Validators.required),
     logoUrl: new FormControl(null,Validators.required),
@@ -38,11 +35,6 @@ export class LocalesFormComponent implements OnInit {
       next:(data)=>{this.usersList=data}
     })
   }
-
-//   onFileChange(event:Event) {
-//     this.file = ((event.target) as HTMLInputElement).files!![0]
-//     this.createEvent.patchValue({fileSource: this.file})
-// }
 submit(){
   this.http.post('http://localhost:8082/api/locales/save',{
       "userId":this.userId,

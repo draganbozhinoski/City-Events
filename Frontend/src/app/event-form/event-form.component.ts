@@ -1,7 +1,6 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component,  OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EventsService } from '../events.service';
-import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { finalize, map, switchMap, tap } from 'rxjs';
 import { Image } from 'src/model/Image';
@@ -36,26 +35,6 @@ export class EventFormComponent implements OnInit {
   constructor(private service: EventsService,private http:HttpClient,private router:Router,private route: ActivatedRoute) { }
   
   ngOnInit(): void {
-    // this.id = +this.route.snapshot.params['id'];
-    // this.isAddMode = !this.id;
-    // if(!this.isAddMode){
-    //   this.service.getEventById(this.id).subscribe({
-    //     next:(data)=>{
-    //       this.createEvent.controls['eventName'].setValue(data.name)
-    //       this.createEvent.controls['numReservations'].setValue(data.numReservations)
-    //       this.createEvent.controls['city'].setValue(data.city)
-    //       this.createEvent.controls['date'].setValue(data.date)
-    //       this.createEvent.controls['description'].setValue(data.description)
-    //       this.createEvent.controls['eventImage'].setValue(data.image)
-    //       this.createEvent.controls['adult'].setValue(data.adult)
-    //       this.createEvent.controls['covidCertificate'].setValue(data.covidCertificate)
-    //       this.createEvent.controls['localeId'].setValue(data.locale.id)
-    //       this.createEvent.controls['logoUrl'].setValue(data.logoUrl)
-    //     },
-    //     error:(error)=>{
-    //       console.log(error)
-    //     }
-    //   })
     this.service.getLocales().subscribe(
       data => this.localesList = data
     );

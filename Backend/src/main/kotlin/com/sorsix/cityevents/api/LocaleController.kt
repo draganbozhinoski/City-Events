@@ -28,6 +28,7 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
 //        }
         return localeService.getAll()
     }
+
     //getbyid
     //read
     @GetMapping("/{id}")
@@ -45,8 +46,9 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
             is LocaleError -> ResponseEntity.badRequest().body(locale)
         }
     }
+
     @GetMapping("/ownerUsername/{username}")
-    fun getByOwnerUsername(@PathVariable username:String): ResponseEntity<Any> {
+    fun getByOwnerUsername(@PathVariable username: String): ResponseEntity<Any> {
         return when (val locale = localeService.getLocaleByOwnerUsername(username)) {
             is LocaleSuccess -> ResponseEntity.ok().body(locale.locale)
             is LocaleError -> ResponseEntity.badRequest().body(locale)
@@ -58,7 +60,7 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
     fun saveLocale(@RequestBody localeRequest: LocaleRequest): ResponseEntity<LocaleResponse> {
         with(localeRequest) {
             return when (val locale =
-                localeService.saveLocale(userId,name, type, numTables, logoUrl)) {
+                localeService.saveLocale(userId, name, type, numTables, logoUrl)) {
                 is LocaleError -> {
                     logger.error(locale.errorMessage)
                     ResponseEntity.badRequest().body(locale)
@@ -196,10 +198,11 @@ class LocaleController(val localeService: LocaleService, val reviewService: Revi
             }
         }
     }
+
     @GetMapping("/{id}/rating")
-    fun getRating(@PathVariable id:Long):ResponseEntity<Double>{
+    fun getRating(@PathVariable id: Long): ResponseEntity<Double> {
         val num = localeService.getRating(id)
-        return if(num == (-1).toDouble() || num.isNaN()) {
+        return if (num == (-1).toDouble() || num.isNaN()) {
             ResponseEntity.badRequest().body((-1).toDouble())
         } else {
             ResponseEntity.ok().body(num)

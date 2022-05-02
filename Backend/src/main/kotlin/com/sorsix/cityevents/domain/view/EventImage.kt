@@ -1,6 +1,5 @@
 package com.sorsix.cityevents.domain.view
 
-import com.sorsix.cityevents.domain.Event
 import com.sorsix.cityevents.domain.Image
 import org.hibernate.annotations.Immutable
 import org.hibernate.annotations.Subselect

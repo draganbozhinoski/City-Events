@@ -9,7 +9,6 @@ import { EventsService } from '../events.service';
 import { Image } from 'src/model/Image';
 import { EventImage } from 'src/model/EventImage';
 import { DomSanitizer } from '@angular/platform-browser';
-// import * as $ from 'jquery'
 
 @Component({
   selector: 'app-events-home',

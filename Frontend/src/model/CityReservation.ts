@@ -8,7 +8,7 @@ export interface CityReservation {
     description:String,
     phoneNumber:String,
     dateTime:String,
-    table:CityTable, //TODO:
+    table:CityTable, 
     locale:CityLocale,
     user:CityUser
 }
